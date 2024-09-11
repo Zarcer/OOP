@@ -1,1 +1,1 @@
-memberSearchIndex = [{"p":"ru.nsu.zarcer","c":"Main","l":"Main()","url":"%3Cinit%3E()"},{"p":"ru.nsu.zarcer","c":"Main","l":"main(String[])","url":"main(java.lang.String[])"},{"p":"ru.nsu.zarcer","c":"Main","l":"sum(int, int)","url":"sum(int,int)"}]
+memberSearchIndex = [{"p":"ru.nsu.zarcer","c":"HeapSort","l":"HeapSort()","url":"%3Cinit%3E()"},{"p":"ru.nsu.zarcer","c":"HeapSort","l":"heapsort(int[])"},{"p":"ru.nsu.zarcer","c":"HeapSort","l":"main(String[])","url":"main(java.lang.String[])"}]
