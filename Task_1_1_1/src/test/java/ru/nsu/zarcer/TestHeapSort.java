@@ -64,5 +64,12 @@ class HeapSortTest {
         assertArrayEquals(new int[] {-7, -5, 1, 2, 5}, arr);
     }
 
+    @Test
+    void Empty() {
+        int arr[] = new int[] {};
+        HeapSort.heapsort(arr);
+        assertArrayEquals(new int[] {}, arr);
+    }
+
 
 }
