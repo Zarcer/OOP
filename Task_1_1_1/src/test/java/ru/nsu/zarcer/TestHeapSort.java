@@ -71,5 +71,11 @@ class HeapSortTest {
         assertArrayEquals(new int[] {}, arr);
     }
 
+    @Test
+    void MainTest() {
+        HeapSort.main(null);
+        assertTrue(true);
+    }
+
 
 }
