@@ -33,5 +33,15 @@ class HeapSortTest {
         assertArrayEquals(new int[] {99}, arr);
     }
 
+    @Test
+    void TestHeapify() {
+        int arr[] = new int[] {4, 10, 3, 5, 1};
+        int n = arr.length;
+        for(int i = n/2-1; i>=0;i--) {
+            HeapSort.heapify(arr, n, i);
+        }
+        assertArrayEquals(new int[] {10, 5, 3, 4, 1}, arr);
+    }
+
 
 }
