@@ -14,7 +14,7 @@ public class HeapSort {
         }
     }
 
-    static void heapify(int arr[], int n, int i) {
+    static void heapify(int[] arr, int n, int i) {
         int largest = i;
         int left = 2 * i + 1;
         int right = 2 * i + 2;
@@ -33,7 +33,7 @@ public class HeapSort {
     }
 
     public static void main(String[] args) {
-        int arr[] = new int[]{5, 4, 3, 2, 1};
+        int[] arr = new int[]{5, 4, 3, 2, 1};
         int n = arr.length;
         heapsort(arr);
         System.out.print("[");
