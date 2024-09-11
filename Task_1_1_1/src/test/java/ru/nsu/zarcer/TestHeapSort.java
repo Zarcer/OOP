@@ -2,12 +2,12 @@ package ru.nsu.zarcer;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TestHeapSort {
 
     @Test
-
     void ordinarySort() {
         int[] arr = new int[]{5, 4, 3, 2, 1};
         HeapSort.heapsort(arr);
