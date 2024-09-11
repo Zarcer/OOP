@@ -36,7 +36,7 @@ class TestHeapSort {
     }
 
     @Test
-    void Heapify() {
+    void heapify() {
         int[] arr = new int[]{4, 10, 3, 5, 1};
         int n = arr.length;
         for (int i = n / 2 - 1; i >= 0; i--) {
@@ -67,7 +67,7 @@ class TestHeapSort {
     }
 
     @Test
-    void Empty() {
+    void empty() {
         int[] arr = new int[]{};
         HeapSort.heapsort(arr);
         assertArrayEquals(new int[]{}, arr);

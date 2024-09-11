@@ -4,7 +4,8 @@ package ru.nsu.zarcer;
 public class HeapSort {
     /**
      * Sort process
-     * @param arr
+     *
+     * @param arr array
      */
     public static void heapsort(int[] arr) {
         int n = arr.length;
@@ -21,9 +22,12 @@ public class HeapSort {
 
     /**
      * Transform array into a heap
-     * @param arr
-     * @param n
-     * @param i
+     *
+     * @param arr array
+     *
+     * @param n variable
+     *
+     * @param i variable
      */
     static void heapify(int[] arr, int n, int i) {
         int largest = i;
@@ -45,7 +49,8 @@ public class HeapSort {
 
     /**
      * Starts sorting and prints final array
-     * @param args
+     *
+     * @param args variable
      */
     public static void main(String[] args) {
         int[] arr = new int[]{5, 4, 3, 2, 1};
