@@ -1,0 +1,35 @@
+package ru.nsu.zarcer;
+
+public class Hands {
+    public static Card[] createhand() {
+        Card[] hand = new Card[52];
+        for(int i = 0;i<52;i++) {
+            hand[i] = new Card("hahaha", 0);
+        }
+        return hand;
+    }
+    public static void purgehand(Card[] hand) {
+        int i = 0;
+        while (hand[i].points != 0) {
+            hand[i].points = 0;
+            i++;
+        }
+
+    }
+    public static void withdraw(Card[] hand, Card[] deck, int[] number_cards) {
+        int check = 0;
+        int index = number_cards[0];
+        while(check == 0) {
+            int choice = (int)(Math.random()*52);
+            if(deck[choice].taken) {
+                continue;
+            }
+            hand[index].points = deck[choice].points;
+            hand[index].Name = deck[choice].Name;
+            deck[choice].taken = true;
+            check = 1;
+            number_cards[0]++;
+        }
+    }
+
+}
