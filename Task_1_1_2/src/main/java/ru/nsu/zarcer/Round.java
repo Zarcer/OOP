@@ -46,6 +46,7 @@ public class Round {
         }
         choice(player_hand, dealer_hand, player_cards, dealer_cards, deck);
     }
+
     public static void dealer_turn(Card[] player_hand, Card[] dealer_hand, int[] player_cards, int[] dealer_cards, Card[] deck) {
         System.out.print("Ход Дилера\n-------\n");
         int sum_dealer = 0;
@@ -92,6 +93,12 @@ public class Round {
         if(sum_player >= sum_dealer) {
             player_win();
         }
+        if(sum_dealer == 21) {
+            dealer_win();
+        }
+        if(sum_dealer > sum_player) {
+            dealer_win();
+        }
     }
 
     public static void choice(Card[] player_hand, Card[] dealer_hand, int[] player_cards, int[] dealer_cards, Card[] deck) {
@@ -104,6 +111,9 @@ public class Round {
             System.out.println("Введите "+1+", чтобы взять карту, и "+0+", чтобы остановиться...");
         }
         int choice = in.nextInt();
+        if(choice == -1) {
+            System.exit(0);
+        }
         if(choice == 1) {
             player_turn(player_hand, dealer_hand, player_cards, dealer_cards, deck);
         }
@@ -115,16 +125,13 @@ public class Round {
 
     public static void player_win() {
         Gameplay.player_score[0]++;
-        Gameplay.round_count[0]++;
         System.out.print("Вы выиграли раунд! Счёт "+Gameplay.player_score[0]+":"+Gameplay.dealer_score[0]+"\n\n");
         Gameplay.start_game();
-    }
+        }
 
     public static void dealer_win() {
         Gameplay.dealer_score[0]++;
-        Gameplay.round_count[0]++;
         System.out.print("Дилер выиграл раунд! Счёт "+Gameplay.player_score[0]+":"+Gameplay.dealer_score[0]+"\n\n");
         Gameplay.start_game();
-
     }
 }

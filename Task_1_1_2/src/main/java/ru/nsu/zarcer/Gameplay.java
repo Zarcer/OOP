@@ -27,6 +27,7 @@ public class Gameplay {
         Hands.withdraw(player_hand, Deck, player_card);
         Hands.withdraw(player_hand, Deck, player_card);
         Hands.withdraw(dealer_hand, Deck, dealer_card);
+        Gameplay.round_count[0]++;
         System.out.print("Раунд "+Gameplay.round_count[0]+"\nДилер раздал карты\n\tВаши карты: ["+player_hand[0].Name+" ("+player_hand[0].points+"), "+player_hand[1].Name+" ("+player_hand[1].points+")] -> "+(player_hand[0].points+player_hand[1].points+"\n\tКарты дилера: ["+dealer_hand[0].Name+" ("+dealer_hand[0].points)+"), <закрытая карта>]\n");
         Round.choice(player_hand, dealer_hand, player_card, dealer_card, Deck);
     }
