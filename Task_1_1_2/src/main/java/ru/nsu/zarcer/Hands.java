@@ -8,14 +8,7 @@ public class Hands {
         }
         return hand;
     }
-    public static void purgehand(Card[] hand) {
-        int i = 0;
-        while (hand[i].points != 0) {
-            hand[i].points = 0;
-            i++;
-        }
 
-    }
     public static void withdraw(Card[] hand, Card[] deck, int[] number_cards) {
         int check = 0;
         int index = number_cards[0];
