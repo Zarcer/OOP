@@ -16,7 +16,7 @@ public class Round {
         System.out.print("Ход Дилера\n-------\n");
         int sum_dealer = 0;
         int sum_player = 0;
-        while(sum_dealer<17) {
+        while(sum_dealer<Gameplay.DEALER_STOP_17) {
             Hands.withdraw(dealer_hand, deck, dealer_cards);
             if(!Gameplay.round_start[0]) {
                 System.out.print("Дилер открывает закрытую карту " + dealer_hand[dealer_cards[0] - 1].getName() + " (" + dealer_hand[dealer_cards[0] - 1].getPoints() + ")\n\t Ваши карты: [");
@@ -39,7 +39,7 @@ public class Round {
         else {
             System.out.println("Введите "+1+", чтобы взять карту, и "+0+", чтобы остановиться...");
         }
-        int choice = Gameplay.in.nextInt();
+        int choice = Gameplay.IN.nextInt();
         if(choice == -1) {
             System.exit(0);
         }
@@ -102,10 +102,10 @@ public class Round {
     }
 
     public static void round_result(int sum_player, int sum_dealer, boolean round_end) {
-        if(sum_player == Gameplay.critical_number_21 || sum_dealer > Gameplay.critical_number_21 ) {
+        if(sum_player == Gameplay.CRITICAL_NUMBER_21 || sum_dealer > Gameplay.CRITICAL_NUMBER_21) {
             player_win();
         }
-        if(sum_player > Gameplay.critical_number_21 || sum_dealer == Gameplay.critical_number_21) {
+        if(sum_player > Gameplay.CRITICAL_NUMBER_21 || sum_dealer == Gameplay.CRITICAL_NUMBER_21) {
             dealer_win();
         }
         if(round_end) {
