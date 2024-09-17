@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9};
+var data = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":9,"i6":9,"i7":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -183,6 +183,12 @@ extends java.lang.Object</pre>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#dealer_show_cards(ru.nsu.zarcer.Card%5B%5D,int%5B%5D)">dealer_show_cards</a></span>&#8203;(<a href="Card.html" title="class in ru.nsu.zarcer">Card</a>[]&nbsp;dealer_hand,
+                 int[]&nbsp;dealer_cards)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#dealer_turn(ru.nsu.zarcer.Card%5B%5D,ru.nsu.zarcer.Card%5B%5D,int%5B%5D,int%5B%5D,ru.nsu.zarcer.Card%5B%5D)">dealer_turn</a></span>&#8203;(<a href="Card.html" title="class in ru.nsu.zarcer">Card</a>[]&nbsp;player_hand,
            <a href="Card.html" title="class in ru.nsu.zarcer">Card</a>[]&nbsp;dealer_hand,
@@ -191,12 +197,18 @@ extends java.lang.Object</pre>
            <a href="Card.html" title="class in ru.nsu.zarcer">Card</a>[]&nbsp;deck)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#dealer_win()">dealer_win</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#player_show_cards(ru.nsu.zarcer.Card%5B%5D,int%5B%5D)">player_show_cards</a></span>&#8203;(<a href="Card.html" title="class in ru.nsu.zarcer">Card</a>[]&nbsp;player_hand,
+                 int[]&nbsp;player_cards)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#player_turn(ru.nsu.zarcer.Card%5B%5D,ru.nsu.zarcer.Card%5B%5D,int%5B%5D,int%5B%5D,ru.nsu.zarcer.Card%5B%5D)">player_turn</a></span>&#8203;(<a href="Card.html" title="class in ru.nsu.zarcer">Card</a>[]&nbsp;player_hand,
            <a href="Card.html" title="class in ru.nsu.zarcer">Card</a>[]&nbsp;dealer_hand,
@@ -205,9 +217,16 @@ extends java.lang.Object</pre>
            <a href="Card.html" title="class in ru.nsu.zarcer">Card</a>[]&nbsp;deck)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#player_win()">player_win</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code>static void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#round_result(int,int,boolean)">round_result</a></span>&#8203;(int&nbsp;sum_player,
+            int&nbsp;sum_dealer,
+            boolean&nbsp;round_end)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -304,10 +323,41 @@ extends java.lang.Object</pre>
 <a id="dealer_win()">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>dealer_win</h4>
 <pre class="methodSignature">public static&nbsp;void&nbsp;dealer_win()</pre>
+</li>
+</ul>
+<a id="player_show_cards(ru.nsu.zarcer.Card[],int[])">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>player_show_cards</h4>
+<pre class="methodSignature">public static&nbsp;int&nbsp;player_show_cards&#8203;(<a href="Card.html" title="class in ru.nsu.zarcer">Card</a>[]&nbsp;player_hand,
+                                    int[]&nbsp;player_cards)</pre>
+</li>
+</ul>
+<a id="dealer_show_cards(ru.nsu.zarcer.Card[],int[])">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>dealer_show_cards</h4>
+<pre class="methodSignature">public static&nbsp;int&nbsp;dealer_show_cards&#8203;(<a href="Card.html" title="class in ru.nsu.zarcer">Card</a>[]&nbsp;dealer_hand,
+                                    int[]&nbsp;dealer_cards)</pre>
+</li>
+</ul>
+<a id="round_result(int,int,boolean)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>round_result</h4>
+<pre class="methodSignature">public static&nbsp;void&nbsp;round_result&#8203;(int&nbsp;sum_player,
+                                int&nbsp;sum_dealer,
+                                boolean&nbsp;round_end)</pre>
 </li>
 </ul>
 </li>
