@@ -15,7 +15,7 @@ class DeckTest {
             if(i==51) {
                 break;
             }
-            if(Objects.equals(testing_deck[i].Name, testing_deck[i + 1].Name)) {
+            if(Objects.equals(testing_deck[i].getName(), testing_deck[i + 1].getName())) {
                 check = 1;
                 break;
             }

@@ -10,8 +10,8 @@ class CardTest {
     @Test
     void cardcreationtest() {
         Card TestingCard = new Card("Проверка", 1);
-        assertEquals(1, TestingCard.points);
-        assertFalse(TestingCard.taken);
-        assertEquals("Проверка", TestingCard.Name);
+        assertEquals(1, TestingCard.getPoints());
+        assertFalse(TestingCard.getTaken());
+        assertEquals("Проверка", TestingCard.getName());
     }
 }
