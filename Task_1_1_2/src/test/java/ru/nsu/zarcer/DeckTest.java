@@ -12,15 +12,8 @@ class DeckTest {
         Deck testing_deck = new Deck();
         testing_deck.createDeck();
         int check = 0;
-        for(int i = 0;i<52;i++) {
-            if(i==51) {
-                break;
-            }
-            if(Objects.equals(testing_deck.getCard(i).getName(), testing_deck.getCard(i + 1).getName())) {
-                check = 1;
-                break;
-            }
+        for(int i = 0;i<51;i++) {
+            assertNotEquals(testing_deck.getCard(i).getName(), testing_deck.getCard(i + 1).getName());
         }
-        assertEquals(check, 0);
     }
 }
