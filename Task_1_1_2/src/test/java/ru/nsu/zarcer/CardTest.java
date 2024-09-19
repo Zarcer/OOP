@@ -1,60 +1,59 @@
 package ru.nsu.zarcer;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import java.util.Objects;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 class CardTest {
 
     @Test
     void cardcreationtest() {
-        Card TestingCard = new Card("Проверка", 1);
-        assertEquals(1, TestingCard.getPoints());
-        assertFalse(TestingCard.getTaken());
-        assertEquals("Проверка", TestingCard.getName());
+        Card testingCard = new Card("Проверка", 1);
+        assertEquals(1, testingCard.getPoints());
+        assertFalse(testingCard.getTaken());
+        assertEquals("Проверка", testingCard.getName());
     }
 
     @Test
     void setNameTest() {
-        Card TestingCard = new Card("Проверка", 1);
-        TestingCard.setName("Совпадает");
-        assertEquals("Совпадает", TestingCard.getName());
+        Card testingCard = new Card("Проверка", 1);
+        testingCard.setName("Совпадает");
+        assertEquals("Совпадает", testingCard.getName());
     }
 
     @Test
     void setPointsTest() {
-        Card TestingCard = new Card("Проверка", 1);
-        TestingCard.setPoints(10);
-        assertEquals(10, TestingCard.getPoints());
+        Card testingCard = new Card("Проверка", 1);
+        testingCard.setPoints(10);
+        assertEquals(10, testingCard.getPoints());
     }
 
     @Test
     void setTakenTest() {
-        Card TestingCard = new Card("Проверка", 1);
-        TestingCard.setTaken(true);
-        assertTrue(TestingCard.getTaken());
+        Card testingCard = new Card("Проверка", 1);
+        testingCard.setTaken(true);
+        assertTrue(testingCard.getTaken());
     }
 
     @Test
     void getNameTest() {
-        Card TestingCard = new Card("Проверка", 1);
-        assertEquals("Проверка", TestingCard.getName());
+        Card testingCard = new Card("Проверка", 1);
+        assertEquals("Проверка", testingCard.getName());
     }
 
     @Test
     void getPointsTest() {
-        Card TestingCard = new Card("Проверка", 1);
-        assertEquals(1, TestingCard.getPoints());
+        Card testingCard = new Card("Проверка", 1);
+        assertEquals(1, testingCard.getPoints());
     }
 
     @Test
     void getTakenTest() {
-        Card TestingCard = new Card("Проверка", 1);
-        assertFalse(TestingCard.getTaken());
+        Card testingCard = new Card("Проверка", 1);
+        assertFalse(testingCard.getTaken());
     }
-
 
 
 }

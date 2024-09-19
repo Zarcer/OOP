@@ -4,39 +4,39 @@ import java.util.Scanner;
 
 public class Gameplay {
 
-    public static final Scanner IN = new Scanner(System.in);
     public static final int CRITICAL_NUMBER_21 = 21;
     public static final int DEALER_STOP_17 = 17;
 
     public static void main(String[] args) {
-        Deck final_deck = new Deck();
-        final_deck.createDeck();
-        Hand player_hand = new Hand();
-        player_hand.initializeHand();
-        Hand dealer_hand = new Hand();
-        dealer_hand.initializeHand();
+        Deck finaldeck = new Deck();
+        Scanner IN = new Scanner(System.in);
+        finaldeck.createDeck();
+        Hand playerhand = new Hand();
+        playerhand.initializeHand();
+        Hand dealerhand = new Hand();
+        dealerhand.initializeHand();
         Round round_state = new Round();
-        player_hand.withdraw(final_deck);
-        player_hand.withdraw(final_deck);
-        dealer_hand.withdraw(final_deck);
-        System.out.println("Добро пожаловать в Блэкджек!\nРаунд 1\nДилер раздал карты\n\tВаши карты: [" + player_hand.getCard(0).getName() + " (" + player_hand.getCard(0).getPoints() + "), " + player_hand.getCard(1).getName() + " (" + player_hand.getCard(1).getPoints() + ")] -> " + (player_hand.getCard(0).getPoints() + player_hand.getCard(1).getPoints() + "\n\tКарты дилера: [" + dealer_hand.getCard(0).getName() + " (" + dealer_hand.getCard(0).getPoints() + "), <закрытая карта>]"));
-        round_state.round_result(player_hand.getCard(0).getPoints() + player_hand.getCard(1).getPoints(), dealer_hand.getCard(0).getPoints(), false);
-        round_state.choice(player_hand, dealer_hand, final_deck);
+        playerhand.withdraw(finaldeck);
+        playerhand.withdraw(finaldeck);
+        dealerhand.withdraw(finaldeck);
+        System.out.println("Добро пожаловать в Блэкджек!\nРаунд 1\nДилер раздал карты\n\tВаши карты: [" + playerhand.getCard(0).getName() + " (" + playerhand.getCard(0).getPoints() + "), " + playerhand.getCard(1).getName() + " (" + playerhand.getCard(1).getPoints() + ")] -> " + (playerhand.getCard(0).getPoints() + playerhand.getCard(1).getPoints() + "\n\tКарты дилера: [" + dealerhand.getCard(0).getName() + " (" + dealerhand.getCard(0).getPoints() + "), <закрытая карта>]"));
+        round_state.roundResult(playerhand.getCard(0).getPoints() + playerhand.getCard(1).getPoints(), dealerhand.getCard(0).getPoints(), false, IN);
+        round_state.choice(playerhand, dealerhand, finaldeck, IN);
     }
 
-    public static void start_game(Round round_state) {
-        Deck final_deck = new Deck();
-        final_deck.createDeck();
-        Hand player_hand = new Hand();
-        player_hand.initializeHand();
-        Hand dealer_hand = new Hand();
-        dealer_hand.initializeHand();
-        player_hand.withdraw(final_deck);
-        player_hand.withdraw(final_deck);
-        dealer_hand.withdraw(final_deck);
+    public static void startGame(Round round_state, Scanner IN) {
+        Deck finaldeck = new Deck();
+        finaldeck.createDeck();
+        Hand playerhand = new Hand();
+        playerhand.initializeHand();
+        Hand dealerhand = new Hand();
+        dealerhand.initializeHand();
+        playerhand.withdraw(finaldeck);
+        playerhand.withdraw(finaldeck);
+        dealerhand.withdraw(finaldeck);
         round_state.round_count++;
-        System.out.println("Раунд " + round_state.round_count + "\nДилер раздал карты\n\tВаши карты: [" + player_hand.getCard(0).getName() + " (" + player_hand.getCard(0).getPoints() + "), " + player_hand.getCard(1).getName() + " (" + player_hand.getCard(1).getPoints() + ")] -> " + (player_hand.getCard(0).getPoints() + player_hand.getCard(1).getPoints() + "\n\tКарты дилера: [" + dealer_hand.getCard(0).getName() + " (" + dealer_hand.getCard(0).getPoints() + "), <закрытая карта>]"));
-        round_state.round_result(player_hand.getCard(0).getPoints() + player_hand.getCard(1).getPoints(), dealer_hand.getCard(0).getPoints(), false);
-        round_state.choice(player_hand, dealer_hand, final_deck);
+        System.out.println("Раунд " + round_state.round_count + "\nДилер раздал карты\n\tВаши карты: [" + playerhand.getCard(0).getName() + " (" + playerhand.getCard(0).getPoints() + "), " + playerhand.getCard(1).getName() + " (" + playerhand.getCard(1).getPoints() + ")] -> " + (playerhand.getCard(0).getPoints() + playerhand.getCard(1).getPoints() + "\n\tКарты дилера: [" + dealerhand.getCard(0).getName() + " (" + dealerhand.getCard(0).getPoints() + "), <закрытая карта>]"));
+        round_state.roundResult(playerhand.getCard(0).getPoints() + playerhand.getCard(1).getPoints(), dealerhand.getCard(0).getPoints(), false, IN);
+        round_state.choice(playerhand, dealerhand, finaldeck, IN);
     }
 }

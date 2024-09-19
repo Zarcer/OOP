@@ -1,9 +1,9 @@
 package ru.nsu.zarcer;
 
-import org.junit.jupiter.api.Test;
-import java.util.Objects;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 class DeckTest {
 
@@ -11,7 +11,7 @@ class DeckTest {
     void deckcreationtest() {
         Deck testing_deck = new Deck();
         testing_deck.createDeck();
-        for(int i = 0;i<51;i++) {
+        for (int i = 0; i < 51; i++) {
             assertNotEquals(testing_deck.getCard(i).getName(), testing_deck.getCard(i + 1).getName());
         }
     }
