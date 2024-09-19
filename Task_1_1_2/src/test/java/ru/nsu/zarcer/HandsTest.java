@@ -10,7 +10,7 @@ class HandsTest {
     void initializeTest() {
         Hand testinghand = new Hand();
         testinghand.initializeHand();
-        assertEquals(0, testinghand.getNumber_cards());
+        assertEquals(0, testinghand.getNumberCards());
         for (int i = 0; i < 10; i++) {
             assertEquals(0, testinghand.getCard(i).getPoints());
         }
@@ -36,7 +36,7 @@ class HandsTest {
         testinghand.setCard(testingcard1, 0);
         testinghand.setCard(testingcard2, 1);
         testinghand.setCard(testingcard3, 2);
-        assertEquals(3, testinghand.getNumber_cards());
+        assertEquals(3, testinghand.getNumberCards());
         assertEquals("Проверка_3", testinghand.lastCard().getName());
         assertEquals(3, testinghand.lastCard().getPoints());
     }

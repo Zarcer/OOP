@@ -4,6 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
+
 class RoundTest {
     @Test
     void playershowTesting() {
@@ -37,6 +42,17 @@ class RoundTest {
         assertEquals(6, sum);
     }
 
+    @Test
+    void playerWin() {
+        Round testingRound = new Round();
+        testingRound.playerWin();
+        assertEquals(1, testingRound.player_score);
+    }
 
-
+    @Test
+    void dealerWin() {
+        Round testingRound = new Round();
+        testingRound.dealerWin();
+        assertEquals(1, testingRound.dealer_score);
+    }
 }

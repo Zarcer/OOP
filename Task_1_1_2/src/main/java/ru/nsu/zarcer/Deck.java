@@ -5,10 +5,10 @@ import java.util.Collections;
 import java.util.List;
 
 public class Deck {
-    private Card[] deck_initial;
+    private Card[] deckInitial;
 
     {
-        deck_initial = new Card[52];
+        deckInitial = new Card[52];
     }
 
     public void createDeck() {
@@ -24,18 +24,18 @@ public class Deck {
                 if (j == 12) {
                     cost = 11;
                 }
-                this.deck_initial[cnt] = new Card((NUMBER[j] + " " + SUIT[i]), cost);
+                this.deckInitial[cnt] = new Card((NUMBER[j] + " " + SUIT[i]), cost);
                 cost++;
                 cnt++;
             }
         }
-        List<Card> listDeck = Arrays.asList(this.deck_initial);
+        List<Card> listDeck = Arrays.asList(this.deckInitial);
         Collections.shuffle(listDeck);
-        this.deck_initial = listDeck.toArray(new Card[0]);
+        this.deckInitial = listDeck.toArray(new Card[0]);
     }
 
     public Card getCard(int i) {
-        return this.deck_initial[i];
+        return this.deckInitial[i];
     }
 
     public Card drawCard() {

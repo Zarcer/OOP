@@ -3,7 +3,6 @@ package ru.nsu.zarcer;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -25,7 +24,7 @@ class GameplayTest {
 
     @Test
     void mainTest() {
-        runGame("-1\n");
+        runGame("1\n0\n-1\n");
         assertTrue(true);
     }
 }

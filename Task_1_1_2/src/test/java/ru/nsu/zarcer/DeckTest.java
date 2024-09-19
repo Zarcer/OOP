@@ -9,18 +9,18 @@ class DeckTest {
 
     @Test
     void deckcreationtest() {
-        Deck testing_deck = new Deck();
-        testing_deck.createDeck();
+        Deck testingDeck = new Deck();
+        testingDeck.createDeck();
         for (int i = 0; i < 51; i++) {
-            assertNotEquals(testing_deck.getCard(i).getName(), testing_deck.getCard(i + 1).getName());
+            assertNotEquals(testingDeck.getCard(i).getName(), testingDeck.getCard(i + 1).getName());
         }
     }
 
     @Test
     void drawCardTest() {
-        Deck testing_deck = new Deck();
-        testing_deck.createDeck();
-        Card testing_card = testing_deck.drawCard();
+        Deck testingDeck = new Deck();
+        testingDeck.createDeck();
+        Card testing_card = testingDeck.drawCard();
         assertTrue(testing_card.getTaken());
     }
 

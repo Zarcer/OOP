@@ -4,12 +4,13 @@ import java.util.Scanner;
 
 public class Round {
 
-    private int player_score;
-    private int dealer_score;
     private boolean round_start;
     private boolean dealer_round_start;
     private boolean player_turn_start_check;
+    Scanner IN;
     int round_count;
+    int dealer_score;
+    int player_score;
 
     {
         player_score = 0;
@@ -18,19 +19,20 @@ public class Round {
         dealer_round_start = false;
         player_turn_start_check = true;
         round_count = 1;
+        IN = new Scanner(System.in);
     }
 
-    public void playerturn(Hand playerhand, Hand dealerhand, Deck deck, Scanner IN) {
+    public void playerturn(Hand playerhand, Hand dealerhand, Deck deck) {
         this.dealer_round_start = false;
         playerhand.withdraw(deck);
         System.out.print("Вы открыли карту " + playerhand.lastCard().getName() + " (" + playerhand.lastCard().getPoints() + ")\n\t Ваши карты: [");
         int sumPlayer = playerShowCards(playerhand);
         int sumDealer = dealerShowCards(dealerhand);
-        roundResult(sumPlayer, sumDealer, false, IN);
-        choice(playerhand, dealerhand, deck, IN);
+        roundResult(sumPlayer, sumDealer, false);
+        choice(playerhand, dealerhand, deck);
     }
 
-    public void dealerturn(Hand playerhand, Hand dealerhand, Deck deck, Scanner IN) {
+    public void dealerturn(Hand playerhand, Hand dealerhand, Deck deck) {
         this.dealer_round_start = true;
         System.out.print("Ход Дилера\n-------\n");
         int sumDealer = 0;
@@ -46,40 +48,38 @@ public class Round {
             sumPlayer = playerShowCards(playerhand);
             sumDealer = dealerShowCards(dealerhand);
         }
-        roundResult(sumPlayer, sumDealer, true, IN);
+        roundResult(sumPlayer, sumDealer, true);
     }
 
-    public void choice(Hand playerhand, Hand dealerhand, Deck deck, Scanner IN) {
+    public void choice(Hand playerhand, Hand dealerhand, Deck deck) {
         if (this.player_turn_start_check) {
             System.out.println("Ваш ход\n-------\nВведите " + 1 + ", чтобы взять карту, и " + 0 + ", чтобы остановиться...");
             this.player_turn_start_check = false;
         } else {
             System.out.println("Введите " + 1 + ", чтобы взять карту, и " + 0 + ", чтобы остановиться...");
         }
-        int choice = IN.nextInt();
+        int choice = this.IN.nextInt();
         if (choice == -1) {
             return;
         }
         if (choice == 1) {
-            playerturn(playerhand, dealerhand, deck, IN);
+            playerturn(playerhand, dealerhand, deck);
         } else {
             this.round_start = false;
-            dealerturn(playerhand, dealerhand, deck, IN);
+            dealerturn(playerhand, dealerhand, deck);
         }
     }
 
-    public void playerWin(Scanner IN) {
+    public void playerWin() {
         this.player_score++;
         System.out.print("Вы выиграли раунд! Счёт " + this.player_score + ":" + this.dealer_score + "\n\n");
         this.player_turn_start_check = true;
-        Gameplay.startGame(this, IN);
     }
 
-    public void dealerWin(Scanner IN) {
+    public void dealerWin() {
         this.dealer_score++;
         System.out.print("Дилер выиграл раунд! Счёт " + this.player_score + ":" + this.dealer_score + "\n\n");
         this.player_turn_start_check = true;
-        Gameplay.startGame(this, IN);
     }
 
     public int playerShowCards(Hand playerhand) {
@@ -87,7 +87,7 @@ public class Round {
         int sumPlayer = 0;
         while (playerhand.getCard(player_index).getPoints() != 0) {
             sumPlayer = playerhand.handSum();
-            if (player_index == playerhand.getNumber_cards() - 1) {
+            if (player_index == playerhand.getNumberCards() - 1) {
                 System.out.print(playerhand.showCards(true, sumPlayer, player_index, false));
                 break;
             }
@@ -109,7 +109,7 @@ public class Round {
         }
         while (dealerhand.getCard(dealer_index).getPoints() != 0) {
             sumDealer = dealerhand.handSum();
-            if (dealer_index == dealerhand.getNumber_cards() - 1) {
+            if (dealer_index == dealerhand.getNumberCards() - 1) {
                 System.out.print(dealerhand.showCards(true, sumDealer, dealer_index, true));
                 break;
             }
@@ -119,19 +119,23 @@ public class Round {
         return sumDealer;
     }
 
-    public void roundResult(int sumPlayer, int sumDealer, boolean round_end, Scanner IN) {
+    public void roundResult(int sumPlayer, int sumDealer, boolean roundEnd) {
         if (sumPlayer == Gameplay.CRITICAL_NUMBER_21 || sumDealer > Gameplay.CRITICAL_NUMBER_21) {
-            playerWin(IN);
+            playerWin();
+            Gameplay.startGame(this);
         }
         if (sumPlayer > Gameplay.CRITICAL_NUMBER_21 || sumDealer == Gameplay.CRITICAL_NUMBER_21) {
-            dealerWin(IN);
+            dealerWin();
+            Gameplay.startGame(this);
         }
-        if (round_end) {
+        if (roundEnd) {
             if (sumPlayer >= sumDealer) {
-                playerWin(IN);
+                playerWin();
+                Gameplay.startGame(this);
             }
             if (sumDealer > sumPlayer) {
-                dealerWin(IN);
+                dealerWin();
+                Gameplay.startGame(this);
             }
         }
     }

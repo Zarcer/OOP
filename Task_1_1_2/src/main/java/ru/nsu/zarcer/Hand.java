@@ -1,34 +1,34 @@
 package ru.nsu.zarcer;
 
 public class Hand {
-    private Card[] cards_in_hand;
-    private int number_cards;
+    private Card[] cardsinhand;
+    private int numberCards;
     {
-        cards_in_hand = new Card[10];
-        number_cards = 0;
+        cardsinhand = new Card[10];
+        numberCards = 0;
     }
 
     void initializeHand() {
         for (int i = 0; i < 10; i++) {
-            this.cards_in_hand[i] = new Card("", 0);
+            this.cardsinhand[i] = new Card("", 0);
         }
     }
 
     Card getCard(int i) {
-        return this.cards_in_hand[i];
+        return this.cardsinhand[i];
     }
 
-    int getNumber_cards() {
-        return this.number_cards;
+    int getNumberCards() {
+        return this.numberCards;
     }
 
     void setCard(Card insert, int place) {
-        this.cards_in_hand[place] = insert;
-        this.number_cards++;
+        this.cardsinhand[place] = insert;
+        this.numberCards++;
     }
 
     Card lastCard() {
-        return this.getCard(this.getNumber_cards() - 1);
+        return this.getCard(this.getNumberCards() - 1);
     }
 
     int handSum() {
@@ -52,6 +52,6 @@ public class Hand {
     }
 
     void withdraw(Deck deck) {
-        this.setCard(deck.drawCard(), this.getNumber_cards());
+        this.setCard(deck.drawCard(), this.getNumberCards());
     }
 }
