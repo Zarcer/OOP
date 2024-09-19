@@ -8,33 +8,30 @@ public class Hand {
         number_cards = 0;
     }
 
-    public void initializeHand() {
-        for(int i = 0;i<10;i++) {
+    void initializeHand() {
+        for (int i = 0; i < 10; i++) {
             this.cards_in_hand[i] = new Card("", 0);
         }
     }
 
-    public Card getCard(int i) {
+    Card getCard(int i) {
         return this.cards_in_hand[i];
     }
 
-    public int getNumber_cards() {
+    int getNumber_cards() {
         return this.number_cards;
     }
 
-    private void setCard(Card insert, int place) {
+    void setCard(Card insert, int place) {
         this.cards_in_hand[place] = insert;
-    }
-
-    private void addCardcnt() {
         this.number_cards++;
     }
 
-    public Card lastCard() {
-        return this.getCard(this.getNumber_cards()-1);
+    Card lastCard() {
+        return this.getCard(this.getNumber_cards() - 1);
     }
 
-    public int handSum() {
+    int handSum() {
         int index = 0;
         int sum = 0;
         while (this.getCard(index).getPoints() != 0) {
@@ -44,18 +41,17 @@ public class Hand {
         return sum;
     }
 
-    public String showCards(boolean last, int sum, int index, boolean dealer) {
-        if(last && !dealer) {
-            return this.getCard(index).getName() + "(" + this.getCard(index).getPoints() + ")] -> " + sum + "\n\t";
+    String showCards(boolean last, int sum, int index, boolean dealer) {
+        if (last && !dealer) {
+            return (this.getCard(index).getName() + "(" + this.getCard(index).getPoints() + ")] -> " + sum + "\n\t");
         }
-        if(last && dealer) {
-            return this.getCard(index).getName() + "(" + this.getCard(index).getPoints() + ")] -> " + sum + "\n\n";
+        if (last && dealer) {
+            return (this.getCard(index).getName() + "(" + this.getCard(index).getPoints() + ")] -> " + sum + "\n\n");
         }
-        return this.getCard(index).getName() + "(" + this.getCard(index).getPoints() + "), ";
+        return (this.getCard(index).getName() + "(" + this.getCard(index).getPoints() + "), ");
     }
 
-    public void withdraw(Deck deck) {
+    void withdraw(Deck deck) {
         this.setCard(deck.drawCard(), this.getNumber_cards());
-        this.addCardcnt();
     }
 }

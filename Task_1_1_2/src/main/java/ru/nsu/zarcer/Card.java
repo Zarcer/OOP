@@ -6,8 +6,7 @@ public class Card {
     private int points;
     private boolean taken;
 
-    Card(String name, int price)
-    {
+    Card(String name, int price) {
         this.Name = name;
         this.points = price;
         taken = false;
