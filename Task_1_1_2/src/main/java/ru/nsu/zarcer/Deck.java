@@ -4,16 +4,22 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Deck class.
+ */
 public class Deck {
     private Card[] deckInitial;
-
     {
         deckInitial = new Card[52];
     }
 
+    /**
+     * Creation of deck.
+     */
     public void createDeck() {
         int cnt = 0;
-        final String[] NUMBER = new String[]{"Двойка", "Тройка", "Четвёрка", "Пятёрка", "Шестёрка", "Семёрка", "Восьмёрка", "Девятка", "Десятка", "Валет", "Дама", "Король", "Туз"};
+        final String[] NUMBER = new String[]{"Двойка", "Тройка", "Четвёрка", "Пятёрка", "Шестёрка",
+                "Семёрка", "Восьмёрка", "Девятка", "Десятка", "Валет", "Дама", "Король", "Туз"};
         final String[] SUIT = new String[]{"Трефы", "Бубны", "Черви", "Пики"};
         for (int i = 0; i < SUIT.length; i++) {
             int cost = 2;
@@ -34,10 +40,20 @@ public class Deck {
         this.deckInitial = listDeck.toArray(new Card[0]);
     }
 
+    /**
+     *
+     * @param i index of card
+     *
+     * @return getter
+     */
     public Card getCard(int i) {
         return this.deckInitial[i];
     }
 
+    /**
+     *
+     * @return random card drawing
+     */
     public Card drawCard() {
         while (true) {
             int choice = (int) (Math.random() * 52);

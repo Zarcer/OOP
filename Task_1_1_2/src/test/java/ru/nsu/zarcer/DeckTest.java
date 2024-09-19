@@ -20,8 +20,8 @@ class DeckTest {
     void drawCardTest() {
         Deck testingDeck = new Deck();
         testingDeck.createDeck();
-        Card testing_card = testingDeck.drawCard();
-        assertTrue(testing_card.getTaken());
+        Card testingCard = testingDeck.drawCard();
+        assertTrue(testingCard.getTaken());
     }
 
 }

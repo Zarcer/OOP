@@ -2,48 +2,69 @@ package ru.nsu.zarcer;
 
 import java.util.Scanner;
 
+/**
+ * Class of one game round.
+ */
 public class Round {
 
-    private boolean round_start;
-    private boolean dealer_round_start;
-    private boolean player_turn_start_check;
-    Scanner IN;
-    int round_count;
-    int dealer_score;
-    int player_score;
-
+    private boolean roundstart;
+    private boolean dealerRoundStart;
+    private boolean playerturnstartcheck;
+    Scanner in;
+    int roundcount;
+    int dealerscore;
+    int playerscore;
     {
-        player_score = 0;
-        dealer_score = 0;
-        round_start = true;
-        dealer_round_start = false;
-        player_turn_start_check = true;
-        round_count = 1;
-        IN = new Scanner(System.in);
+        playerscore = 0;
+        dealerscore = 0;
+        roundstart = true;
+        dealerRoundStart = false;
+        playerturnstartcheck = true;
+        roundcount = 1;
+        in = new Scanner(System.in);
     }
 
+    /**
+     *
+     * @param playerhand hand with player cards
+     *
+     * @param dealerhand hand with dealer cards
+     *
+     * @param deck shuffled deck
+     */
     public void playerturn(Hand playerhand, Hand dealerhand, Deck deck) {
-        this.dealer_round_start = false;
+        this.dealerRoundStart = false;
         playerhand.withdraw(deck);
-        System.out.print("Вы открыли карту " + playerhand.lastCard().getName() + " (" + playerhand.lastCard().getPoints() + ")\n\t Ваши карты: [");
+        System.out.print("Вы открыли карту " + playerhand.lastCard().getName() +
+                " (" + playerhand.lastCard().getPoints() + ")\n\t Ваши карты: [");
         int sumPlayer = playerShowCards(playerhand);
         int sumDealer = dealerShowCards(dealerhand);
         roundResult(sumPlayer, sumDealer, false);
         choice(playerhand, dealerhand, deck);
     }
 
+    /**
+     *
+     * @param playerhand hand with player cards
+     *
+     * @param dealerhand hand with dealer cards
+     *
+     * @param deck shuffled deck
+     */
     public void dealerturn(Hand playerhand, Hand dealerhand, Deck deck) {
-        this.dealer_round_start = true;
+        this.dealerRoundStart = true;
         System.out.print("Ход Дилера\n-------\n");
         int sumDealer = 0;
         int sumPlayer = 0;
-        while (sumDealer < Gameplay.DEALER_STOP_17) {
+        while (sumDealer < Gameplay.DEALERSTOP17) {
             dealerhand.withdraw(deck);
-            if (!this.round_start) {
-                System.out.print("Дилер открывает закрытую карту " + dealerhand.lastCard().getName() + " (" + dealerhand.lastCard().getPoints() + ")\n\t Ваши карты: [");
-                this.round_start = true;
+            if (!this.roundstart) {
+                System.out.print("Дилер открывает закрытую карту " + dealerhand.lastCard().getName() +
+                        " (" + dealerhand.lastCard().getPoints() + ")\n\t Ваши карты: [");
+                this.roundstart = true;
             } else {
-                System.out.print("Дилер открывает карту " + dealerhand.lastCard().getName() + " (" + dealerhand.lastCard().getPoints() + ")\n\t Ваши карты: [");
+                System.out.print("Дилер открывает карту " + dealerhand.lastCard().getName() +
+                        " (" + dealerhand.lastCard().getPoints() + ")\n\t Ваши карты: [");
             }
             sumPlayer = playerShowCards(playerhand);
             sumDealer = dealerShowCards(dealerhand);
@@ -51,80 +72,118 @@ public class Round {
         roundResult(sumPlayer, sumDealer, true);
     }
 
+    /**
+     *
+     * @param playerhand hand with player cards
+     *
+     * @param dealerhand hand with dealer cards
+     *
+     * @param deck shuffled deck
+     */
     public void choice(Hand playerhand, Hand dealerhand, Deck deck) {
-        if (this.player_turn_start_check) {
-            System.out.println("Ваш ход\n-------\nВведите " + 1 + ", чтобы взять карту, и " + 0 + ", чтобы остановиться...");
-            this.player_turn_start_check = false;
+        if (this.playerturnstartcheck) {
+            System.out.println("Ваш ход\n-------\nВведите " + 1 +
+                    ", чтобы взять карту, и " + 0 + ", чтобы остановиться...");
+            this.playerturnstartcheck = false;
         } else {
-            System.out.println("Введите " + 1 + ", чтобы взять карту, и " + 0 + ", чтобы остановиться...");
+            System.out.println("Введите " + 1 + ", чтобы взять карту, и " +
+                    0 + ", чтобы остановиться...");
         }
-        int choice = this.IN.nextInt();
+        int choice = this.in.nextInt();
         if (choice == -1) {
             return;
         }
         if (choice == 1) {
             playerturn(playerhand, dealerhand, deck);
         } else {
-            this.round_start = false;
+            this.roundstart = false;
             dealerturn(playerhand, dealerhand, deck);
         }
     }
 
+    /**
+     * Method if player wins
+     */
     public void playerWin() {
-        this.player_score++;
-        System.out.print("Вы выиграли раунд! Счёт " + this.player_score + ":" + this.dealer_score + "\n\n");
-        this.player_turn_start_check = true;
+        this.playerscore++;
+        System.out.print("Вы выиграли раунд! Счёт " +
+                this.playerscore + ":" + this.dealerscore + "\n\n");
+        this.playerturnstartcheck = true;
     }
 
+    /**
+     * Method if dealer wins
+     */
     public void dealerWin() {
-        this.dealer_score++;
-        System.out.print("Дилер выиграл раунд! Счёт " + this.player_score + ":" + this.dealer_score + "\n\n");
-        this.player_turn_start_check = true;
+        this.dealerscore++;
+        System.out.print("Дилер выиграл раунд! Счёт " +
+                this.playerscore + ":" + this.dealerscore + "\n\n");
+        this.playerturnstartcheck = true;
     }
 
+    /**
+     *
+     * @param playerhand hand with player cards
+     *
+     * @return int value(sum of player cards)
+     */
     public int playerShowCards(Hand playerhand) {
-        int player_index = 0;
+        int playerindex = 0;
         int sumPlayer = 0;
-        while (playerhand.getCard(player_index).getPoints() != 0) {
+        while (playerhand.getCard(playerindex).getPoints() != 0) {
             sumPlayer = playerhand.handSum();
-            if (player_index == playerhand.getNumberCards() - 1) {
-                System.out.print(playerhand.showCards(true, sumPlayer, player_index, false));
+            if (playerindex == playerhand.getNumberCards() - 1) {
+                System.out.print(playerhand.showCards(true, sumPlayer, playerindex, false));
                 break;
             }
-            System.out.print(playerhand.showCards(false, sumPlayer, player_index, false));
-            player_index++;
+            System.out.print(playerhand.showCards(false, sumPlayer, playerindex, false));
+            playerindex++;
         }
         return sumPlayer;
     }
 
+    /**
+     *
+     * @param dealerhand hand with dealer cards
+     *
+     * @return int value(sum of dealer cards)
+     */
     public int dealerShowCards(Hand dealerhand) {
         System.out.print("Карты Дилера: [");
-        int dealer_index = 0;
+        int dealerindex = 0;
         int sumDealer = 0;
-        if (!this.dealer_round_start) {
-            System.out.print(dealerhand.showCards(false, sumDealer, dealer_index, true));
+        if (!this.dealerRoundStart) {
+            System.out.print(dealerhand.showCards(false, sumDealer, dealerindex, true));
             System.out.print("<закрытая карта>]\n");
-            this.dealer_round_start = true;
+            this.dealerRoundStart = true;
             return sumDealer;
         }
-        while (dealerhand.getCard(dealer_index).getPoints() != 0) {
+        while (dealerhand.getCard(dealerindex).getPoints() != 0) {
             sumDealer = dealerhand.handSum();
-            if (dealer_index == dealerhand.getNumberCards() - 1) {
-                System.out.print(dealerhand.showCards(true, sumDealer, dealer_index, true));
+            if (dealerindex == dealerhand.getNumberCards() - 1) {
+                System.out.print(dealerhand.showCards(true, sumDealer, dealerindex, true));
                 break;
             }
-            System.out.print(dealerhand.showCards(false, sumDealer, dealer_index, true));
-            dealer_index++;
+            System.out.print(dealerhand.showCards(false, sumDealer, dealerindex, true));
+            dealerindex++;
         }
         return sumDealer;
     }
 
+    /**
+     *
+     * @param sumPlayer sum of player cards
+     *
+     * @param sumDealer sum of dealer cards
+     *
+     * @param roundEnd flas if round will end in standart way
+     */
     public void roundResult(int sumPlayer, int sumDealer, boolean roundEnd) {
-        if (sumPlayer == Gameplay.CRITICAL_NUMBER_21 || sumDealer > Gameplay.CRITICAL_NUMBER_21) {
+        if (sumPlayer == Gameplay.CRITICALNUMBER21 || sumDealer > Gameplay.CRITICALNUMBER21) {
             playerWin();
             Gameplay.startGame(this);
         }
-        if (sumPlayer > Gameplay.CRITICAL_NUMBER_21 || sumDealer == Gameplay.CRITICAL_NUMBER_21) {
+        if (sumPlayer > Gameplay.CRITICALNUMBER21 || sumDealer == Gameplay.CRITICALNUMBER21) {
             dealerWin();
             Gameplay.startGame(this);
         }

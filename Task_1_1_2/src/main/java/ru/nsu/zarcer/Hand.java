@@ -1,5 +1,8 @@
 package ru.nsu.zarcer;
 
+/**
+ * Hands with cards of participant/
+ */
 public class Hand {
     private Card[] cardsinhand;
     private int numberCards;
@@ -8,25 +11,48 @@ public class Hand {
         numberCards = 0;
     }
 
+    /**
+     * Initialization of hand.
+     */
     void initializeHand() {
         for (int i = 0; i < 10; i++) {
             this.cardsinhand[i] = new Card("", 0);
         }
     }
 
+    /**
+     *
+     * @param i index of card
+     *
+     * @return getter
+     */
     Card getCard(int i) {
         return this.cardsinhand[i];
     }
 
+    /**
+     *
+     * @return getter
+     */
     int getNumberCards() {
         return this.numberCards;
     }
 
+    /**
+     *
+     * @param insert which card to insert
+     *
+     * @param place at what index insert
+     */
     void setCard(Card insert, int place) {
         this.cardsinhand[place] = insert;
         this.numberCards++;
     }
 
+    /**
+     *
+     * @return getter of last card
+     */
     Card lastCard() {
         return this.getCard(this.getNumberCards() - 1);
     }
