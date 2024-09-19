@@ -8,6 +8,7 @@ import java.util.List;
  * Deck class.
  */
 public class Deck {
+
     
     private Card[] deckInitial;
 
@@ -20,9 +21,9 @@ public class Deck {
      */
     public void createDeck() {
         int cnt = 0;
-        final String[] number = new String[]{"Двойка", "Тройка", "Четвёрка", "Пятёрка",
-                "Шестёрка", "Семёрка", "Восьмёрка",
-                "Девятка", "Десятка", "Валет", "Дама", "Король", "Туз"};
+        final String[] number = new String[] {"Двойка", "Тройка", "Четвёрка", "Пятёрка",
+            "Шестёрка", "Семёрка", "Восьмёрка", "Девятка",
+            "Десятка", "Валет", "Дама", "Король", "Туз"};
         final String[] suit = new String[]{"Трефы", "Бубны", "Черви", "Пики"};
         for (int i = 0; i < suit.length; i++) {
             int cost = 2;

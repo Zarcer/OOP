@@ -22,7 +22,8 @@ public class Gameplay {
         playerhand.withdraw(finaldeck);
         playerhand.withdraw(finaldeck);
         dealerhand.withdraw(finaldeck);
-        System.out.println("Добро пожаловать в Блэкджек!\nРаунд 1\nДилер раздал карты\n\tВаши карты: ["
+        System.out.println("Добро пожаловать в Блэкджек!\nРаунд 1\n"
+                + "Дилер раздал карты\n\tВаши карты: ["
                 + playerhand.getCard(0).getNamee()
                 + " (" + playerhand.getCard(0).getPoints()
                 + "), "

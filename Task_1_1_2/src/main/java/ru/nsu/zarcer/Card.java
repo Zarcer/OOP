@@ -52,7 +52,7 @@ public class Card {
         return this.namee;
     }
 
-    /**Just getter
+    /**Just getter.
      *
      * @return getter
      */
@@ -60,7 +60,7 @@ public class Card {
         return this.points;
     }
 
-    /**Just getter
+    /**Just getter.
      *
      * @return getter
      */
