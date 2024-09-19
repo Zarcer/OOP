@@ -12,7 +12,8 @@ class DeckTest {
         Deck testingDeck = new Deck();
         testingDeck.createDeck();
         for (int i = 0; i < 51; i++) {
-            assertNotEquals(testingDeck.getCard(i).getName(), testingDeck.getCard(i + 1).getName());
+            assertNotEquals(testingDeck.getCard(i).getNamee(),
+                    testingDeck.getCard(i + 1).getNamee());
         }
     }
 

@@ -13,14 +13,14 @@ class CardTest {
         Card testingCard = new Card("Проверка", 1);
         assertEquals(1, testingCard.getPoints());
         assertFalse(testingCard.getTaken());
-        assertEquals("Проверка", testingCard.getName());
+        assertEquals("Проверка", testingCard.getNamee());
     }
 
     @Test
     void setNameTest() {
         Card testingCard = new Card("Проверка", 1);
-        testingCard.setName("Совпадает");
-        assertEquals("Совпадает", testingCard.getName());
+        testingCard.setNamee("Совпадает");
+        assertEquals("Совпадает", testingCard.getNamee());
     }
 
     @Test
@@ -40,7 +40,7 @@ class CardTest {
     @Test
     void getNameTest() {
         Card testingCard = new Card("Проверка", 1);
-        assertEquals("Проверка", testingCard.getName());
+        assertEquals("Проверка", testingCard.getNamee());
     }
 
     @Test

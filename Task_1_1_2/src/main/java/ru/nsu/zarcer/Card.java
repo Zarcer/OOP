@@ -4,31 +4,31 @@ package ru.nsu.zarcer;
  * Card class.
  */
 public class Card {
-    private String Name;
+    private String namee;
     private int points;
     private boolean taken;
 
-    /**
+    /**Creator of card.
      *
-     * @param name card name
+     * @param namee card namee
      *
      * @param price card cost
      */
-    Card(String name, int price) {
-        this.Name = name;
+    Card(String namee, int price) {
+        this.namee = namee;
         this.points = price;
         taken = false;
     }
 
-    /**
+    /**Just setter.
      *
-     * @param name setter
+     * @param namee setter
      */
-    public void setName(String name) {
-        this.Name = name;
+    public void setNamee(String namee) {
+        this.namee = namee;
     }
 
-    /**
+    /**Just setter.
      *
      * @param point setter
      */
@@ -36,7 +36,7 @@ public class Card {
         this.points = point;
     }
 
-    /**
+    /**Just setter.
      *
      * @param check setter
      */
@@ -44,15 +44,15 @@ public class Card {
         this.taken = check;
     }
 
-    /**
+    /**Just getter.
      *
      * @return getter
      */
-    public String getName() {
-        return this.Name;
+    public String getNamee() {
+        return this.namee;
     }
 
-    /**
+    /**Just getter
      *
      * @return getter
      */
@@ -60,7 +60,7 @@ public class Card {
         return this.points;
     }
 
-    /**
+    /**Just getter
      *
      * @return getter
      */

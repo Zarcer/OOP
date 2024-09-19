@@ -2,8 +2,8 @@ package ru.nsu.zarcer;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.io.ByteArrayOutputStream;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
 import org.junit.jupiter.api.Test;
@@ -15,9 +15,9 @@ class GameplayTest {
         System.setIn(in);
         final ByteArrayOutputStream myOut = new ByteArrayOutputStream();
         System.setOut(new PrintStream(myOut));
+        final InputStream inputStream = System.in;
+        final PrintStream outputStream = System.out;
         Gameplay.main(null);
-        InputStream inputStream = System.in;
-        PrintStream outputStream = System.out;
         System.setIn(inputStream);
         System.setOut(outputStream);
         return myOut.toString();

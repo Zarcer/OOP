@@ -22,7 +22,7 @@ class HandsTest {
         Hand testinghand = new Hand();
         testinghand.initializeHand();
         testinghand.setCard(testingcard, 0);
-        assertEquals("Проверка", testinghand.getCard(0).getName());
+        assertEquals("Проверка", testinghand.getCard(0).getNamee());
         assertEquals(1, testinghand.getCard(0).getPoints());
     }
 
@@ -37,7 +37,7 @@ class HandsTest {
         testinghand.setCard(testingcard2, 1);
         testinghand.setCard(testingcard3, 2);
         assertEquals(3, testinghand.getNumberCards());
-        assertEquals("Проверка_3", testinghand.lastCard().getName());
+        assertEquals("Проверка_3", testinghand.lastCard().getNamee());
         assertEquals(3, testinghand.lastCard().getPoints());
     }
 

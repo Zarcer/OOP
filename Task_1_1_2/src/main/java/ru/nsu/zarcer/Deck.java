@@ -8,7 +8,9 @@ import java.util.List;
  * Deck class.
  */
 public class Deck {
+    
     private Card[] deckInitial;
+
     {
         deckInitial = new Card[52];
     }
@@ -18,19 +20,20 @@ public class Deck {
      */
     public void createDeck() {
         int cnt = 0;
-        final String[] NUMBER = new String[]{"Двойка", "Тройка", "Четвёрка", "Пятёрка", "Шестёрка",
-                "Семёрка", "Восьмёрка", "Девятка", "Десятка", "Валет", "Дама", "Король", "Туз"};
-        final String[] SUIT = new String[]{"Трефы", "Бубны", "Черви", "Пики"};
-        for (int i = 0; i < SUIT.length; i++) {
+        final String[] number = new String[]{"Двойка", "Тройка", "Четвёрка", "Пятёрка",
+                "Шестёрка", "Семёрка", "Восьмёрка",
+                "Девятка", "Десятка", "Валет", "Дама", "Король", "Туз"};
+        final String[] suit = new String[]{"Трефы", "Бубны", "Черви", "Пики"};
+        for (int i = 0; i < suit.length; i++) {
             int cost = 2;
-            for (int j = 0; j < NUMBER.length; j++) {
+            for (int j = 0; j < number.length; j++) {
                 if (cost > 10) {
                     cost = 10;
                 }
                 if (j == 12) {
                     cost = 11;
                 }
-                this.deckInitial[cnt] = new Card((NUMBER[j] + " " + SUIT[i]), cost);
+                this.deckInitial[cnt] = new Card((number[j] + " " + suit[i]), cost);
                 cost++;
                 cnt++;
             }
@@ -40,7 +43,7 @@ public class Deck {
         this.deckInitial = listDeck.toArray(new Card[0]);
     }
 
-    /**
+    /**Just getter.
      *
      * @param i index of card
      *
@@ -50,7 +53,7 @@ public class Deck {
         return this.deckInitial[i];
     }
 
-    /**
+    /**Needs to draw cards randomly.
      *
      * @return random card drawing
      */
