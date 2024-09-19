@@ -132,6 +132,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">Round</span>
 extends java.lang.Object</pre>
+<div class="block">Class of one game round.</div>
 </li>
 </ul>
 </div>
@@ -195,7 +196,9 @@ extends java.lang.Object</pre>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#dealerWin()">dealerWin</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Method if dealer wins</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>int</code></td>
@@ -212,7 +215,9 @@ extends java.lang.Object</pre>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#playerWin()">playerWin</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Method if player wins</div>
+</td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
@@ -273,6 +278,12 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public&nbsp;void&nbsp;playerturn&#8203;(<a href="Hand.html" title="class in ru.nsu.zarcer">Hand</a>&nbsp;playerhand,
                        <a href="Hand.html" title="class in ru.nsu.zarcer">Hand</a>&nbsp;dealerhand,
                        <a href="Deck.html" title="class in ru.nsu.zarcer">Deck</a>&nbsp;deck)</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>playerhand</code> - hand with player cards</dd>
+<dd><code>dealerhand</code> - hand with dealer cards</dd>
+<dd><code>deck</code> - shuffled deck</dd>
+</dl>
 </li>
 </ul>
 <a id="dealerturn(ru.nsu.zarcer.Hand,ru.nsu.zarcer.Hand,ru.nsu.zarcer.Deck)">
@@ -284,6 +295,12 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public&nbsp;void&nbsp;dealerturn&#8203;(<a href="Hand.html" title="class in ru.nsu.zarcer">Hand</a>&nbsp;playerhand,
                        <a href="Hand.html" title="class in ru.nsu.zarcer">Hand</a>&nbsp;dealerhand,
                        <a href="Deck.html" title="class in ru.nsu.zarcer">Deck</a>&nbsp;deck)</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>playerhand</code> - hand with player cards</dd>
+<dd><code>dealerhand</code> - hand with dealer cards</dd>
+<dd><code>deck</code> - shuffled deck</dd>
+</dl>
 </li>
 </ul>
 <a id="choice(ru.nsu.zarcer.Hand,ru.nsu.zarcer.Hand,ru.nsu.zarcer.Deck)">
@@ -295,6 +312,12 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public&nbsp;void&nbsp;choice&#8203;(<a href="Hand.html" title="class in ru.nsu.zarcer">Hand</a>&nbsp;playerhand,
                    <a href="Hand.html" title="class in ru.nsu.zarcer">Hand</a>&nbsp;dealerhand,
                    <a href="Deck.html" title="class in ru.nsu.zarcer">Deck</a>&nbsp;deck)</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>playerhand</code> - hand with player cards</dd>
+<dd><code>dealerhand</code> - hand with dealer cards</dd>
+<dd><code>deck</code> - shuffled deck</dd>
+</dl>
 </li>
 </ul>
 <a id="playerWin()">
@@ -304,6 +327,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>playerWin</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;playerWin()</pre>
+<div class="block">Method if player wins</div>
 </li>
 </ul>
 <a id="dealerWin()">
@@ -313,6 +337,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>dealerWin</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;dealerWin()</pre>
+<div class="block">Method if dealer wins</div>
 </li>
 </ul>
 <a id="playerShowCards(ru.nsu.zarcer.Hand)">
@@ -322,6 +347,12 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>playerShowCards</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;playerShowCards&#8203;(<a href="Hand.html" title="class in ru.nsu.zarcer">Hand</a>&nbsp;playerhand)</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>playerhand</code> - hand with player cards</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>int value(sum of player cards)</dd>
+</dl>
 </li>
 </ul>
 <a id="dealerShowCards(ru.nsu.zarcer.Hand)">
@@ -331,6 +362,12 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>dealerShowCards</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;dealerShowCards&#8203;(<a href="Hand.html" title="class in ru.nsu.zarcer">Hand</a>&nbsp;dealerhand)</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>dealerhand</code> - hand with dealer cards</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>int value(sum of dealer cards)</dd>
+</dl>
 </li>
 </ul>
 <a id="roundResult(int,int,boolean)">
@@ -342,6 +379,12 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public&nbsp;void&nbsp;roundResult&#8203;(int&nbsp;sumPlayer,
                         int&nbsp;sumDealer,
                         boolean&nbsp;roundEnd)</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>sumPlayer</code> - sum of player cards</dd>
+<dd><code>sumDealer</code> - sum of dealer cards</dd>
+<dd><code>roundEnd</code> - flas if round will end in standart way</dd>
+</dl>
 </li>
 </ul>
 </li>
