@@ -175,10 +175,9 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#choice(ru.nsu.zarcer.Hand,ru.nsu.zarcer.Hand,ru.nsu.zarcer.Deck,java.util.Scanner)">choice</a></span>&#8203;(<a href="Hand.html" title="class in ru.nsu.zarcer">Hand</a>&nbsp;playerhand,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#choice(ru.nsu.zarcer.Hand,ru.nsu.zarcer.Hand,ru.nsu.zarcer.Deck)">choice</a></span>&#8203;(<a href="Hand.html" title="class in ru.nsu.zarcer">Hand</a>&nbsp;playerhand,
       <a href="Hand.html" title="class in ru.nsu.zarcer">Hand</a>&nbsp;dealerhand,
-      <a href="Deck.html" title="class in ru.nsu.zarcer">Deck</a>&nbsp;deck,
-      java.util.Scanner&nbsp;IN)</code></th>
+      <a href="Deck.html" title="class in ru.nsu.zarcer">Deck</a>&nbsp;deck)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
@@ -188,15 +187,14 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#dealerturn(ru.nsu.zarcer.Hand,ru.nsu.zarcer.Hand,ru.nsu.zarcer.Deck,java.util.Scanner)">dealerturn</a></span>&#8203;(<a href="Hand.html" title="class in ru.nsu.zarcer">Hand</a>&nbsp;playerhand,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#dealerturn(ru.nsu.zarcer.Hand,ru.nsu.zarcer.Hand,ru.nsu.zarcer.Deck)">dealerturn</a></span>&#8203;(<a href="Hand.html" title="class in ru.nsu.zarcer">Hand</a>&nbsp;playerhand,
           <a href="Hand.html" title="class in ru.nsu.zarcer">Hand</a>&nbsp;dealerhand,
-          <a href="Deck.html" title="class in ru.nsu.zarcer">Deck</a>&nbsp;deck,
-          java.util.Scanner&nbsp;IN)</code></th>
+          <a href="Deck.html" title="class in ru.nsu.zarcer">Deck</a>&nbsp;deck)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#dealerWin(java.util.Scanner)">dealerWin</a></span>&#8203;(java.util.Scanner&nbsp;IN)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#dealerWin()">dealerWin</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i4" class="altColor">
@@ -206,23 +204,21 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#playerturn(ru.nsu.zarcer.Hand,ru.nsu.zarcer.Hand,ru.nsu.zarcer.Deck,java.util.Scanner)">playerturn</a></span>&#8203;(<a href="Hand.html" title="class in ru.nsu.zarcer">Hand</a>&nbsp;playerhand,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#playerturn(ru.nsu.zarcer.Hand,ru.nsu.zarcer.Hand,ru.nsu.zarcer.Deck)">playerturn</a></span>&#8203;(<a href="Hand.html" title="class in ru.nsu.zarcer">Hand</a>&nbsp;playerhand,
           <a href="Hand.html" title="class in ru.nsu.zarcer">Hand</a>&nbsp;dealerhand,
-          <a href="Deck.html" title="class in ru.nsu.zarcer">Deck</a>&nbsp;deck,
-          java.util.Scanner&nbsp;IN)</code></th>
+          <a href="Deck.html" title="class in ru.nsu.zarcer">Deck</a>&nbsp;deck)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#playerWin(java.util.Scanner)">playerWin</a></span>&#8203;(java.util.Scanner&nbsp;IN)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#playerWin()">playerWin</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#roundResult(int,int,boolean,java.util.Scanner)">roundResult</a></span>&#8203;(int&nbsp;sumPlayer,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#roundResult(int,int,boolean)">roundResult</a></span>&#8203;(int&nbsp;sumPlayer,
            int&nbsp;sumDealer,
-           boolean&nbsp;round_end,
-           java.util.Scanner&nbsp;IN)</code></th>
+           boolean&nbsp;roundEnd)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -268,7 +264,7 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="playerturn(ru.nsu.zarcer.Hand,ru.nsu.zarcer.Hand,ru.nsu.zarcer.Deck,java.util.Scanner)">
+<a id="playerturn(ru.nsu.zarcer.Hand,ru.nsu.zarcer.Hand,ru.nsu.zarcer.Deck)">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -276,11 +272,10 @@ extends java.lang.Object</pre>
 <h4>playerturn</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;playerturn&#8203;(<a href="Hand.html" title="class in ru.nsu.zarcer">Hand</a>&nbsp;playerhand,
                        <a href="Hand.html" title="class in ru.nsu.zarcer">Hand</a>&nbsp;dealerhand,
-                       <a href="Deck.html" title="class in ru.nsu.zarcer">Deck</a>&nbsp;deck,
-                       java.util.Scanner&nbsp;IN)</pre>
+                       <a href="Deck.html" title="class in ru.nsu.zarcer">Deck</a>&nbsp;deck)</pre>
 </li>
 </ul>
-<a id="dealerturn(ru.nsu.zarcer.Hand,ru.nsu.zarcer.Hand,ru.nsu.zarcer.Deck,java.util.Scanner)">
+<a id="dealerturn(ru.nsu.zarcer.Hand,ru.nsu.zarcer.Hand,ru.nsu.zarcer.Deck)">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -288,11 +283,10 @@ extends java.lang.Object</pre>
 <h4>dealerturn</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;dealerturn&#8203;(<a href="Hand.html" title="class in ru.nsu.zarcer">Hand</a>&nbsp;playerhand,
                        <a href="Hand.html" title="class in ru.nsu.zarcer">Hand</a>&nbsp;dealerhand,
-                       <a href="Deck.html" title="class in ru.nsu.zarcer">Deck</a>&nbsp;deck,
-                       java.util.Scanner&nbsp;IN)</pre>
+                       <a href="Deck.html" title="class in ru.nsu.zarcer">Deck</a>&nbsp;deck)</pre>
 </li>
 </ul>
-<a id="choice(ru.nsu.zarcer.Hand,ru.nsu.zarcer.Hand,ru.nsu.zarcer.Deck,java.util.Scanner)">
+<a id="choice(ru.nsu.zarcer.Hand,ru.nsu.zarcer.Hand,ru.nsu.zarcer.Deck)">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -300,26 +294,25 @@ extends java.lang.Object</pre>
 <h4>choice</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;choice&#8203;(<a href="Hand.html" title="class in ru.nsu.zarcer">Hand</a>&nbsp;playerhand,
                    <a href="Hand.html" title="class in ru.nsu.zarcer">Hand</a>&nbsp;dealerhand,
-                   <a href="Deck.html" title="class in ru.nsu.zarcer">Deck</a>&nbsp;deck,
-                   java.util.Scanner&nbsp;IN)</pre>
+                   <a href="Deck.html" title="class in ru.nsu.zarcer">Deck</a>&nbsp;deck)</pre>
 </li>
 </ul>
-<a id="playerWin(java.util.Scanner)">
+<a id="playerWin()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>playerWin</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;playerWin&#8203;(java.util.Scanner&nbsp;IN)</pre>
+<pre class="methodSignature">public&nbsp;void&nbsp;playerWin()</pre>
 </li>
 </ul>
-<a id="dealerWin(java.util.Scanner)">
+<a id="dealerWin()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>dealerWin</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;dealerWin&#8203;(java.util.Scanner&nbsp;IN)</pre>
+<pre class="methodSignature">public&nbsp;void&nbsp;dealerWin()</pre>
 </li>
 </ul>
 <a id="playerShowCards(ru.nsu.zarcer.Hand)">
@@ -340,7 +333,7 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public&nbsp;int&nbsp;dealerShowCards&#8203;(<a href="Hand.html" title="class in ru.nsu.zarcer">Hand</a>&nbsp;dealerhand)</pre>
 </li>
 </ul>
-<a id="roundResult(int,int,boolean,java.util.Scanner)">
+<a id="roundResult(int,int,boolean)">
 <!--   -->
 </a>
 <ul class="blockListLast">
@@ -348,8 +341,7 @@ extends java.lang.Object</pre>
 <h4>roundResult</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;roundResult&#8203;(int&nbsp;sumPlayer,
                         int&nbsp;sumDealer,
-                        boolean&nbsp;round_end,
-                        java.util.Scanner&nbsp;IN)</pre>
+                        boolean&nbsp;roundEnd)</pre>
 </li>
 </ul>
 </li>
