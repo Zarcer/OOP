@@ -10,10 +10,10 @@ public class Round {
     private boolean roundstart;
     private boolean dealerRoundStart;
     private boolean playerturnstartcheck;
-    Scanner in;
-    int roundcount;
-    int dealerscore;
-    int playerscore;
+    private Scanner in;
+    private int roundcount;
+    private int dealerscore;
+    private int playerscore;
 
     {
         playerscore = 0;
@@ -45,6 +45,37 @@ public class Round {
         int sumDealer = dealerShowCards(dealerhand);
         roundResult(sumPlayer, sumDealer, false);
         choice(playerhand, dealerhand, deck);
+    }
+
+    /**Just getter.
+     *
+     * @return return round count
+     */
+    public int roundcountGet() {
+        return this.roundcount;
+    }
+
+    /**
+     * Adds 1 round to round counter.
+     */
+    public void roundcountAdd() {
+        this.roundcount++;
+    }
+
+    /**Just getter.
+     *
+     * @return returns player score
+     */
+    public int getPlayerscore() {
+        return this.playerscore;
+    }
+
+    /**Just getter.
+     *
+     * @return returns dealer score
+     */
+    public int getDealerscore() {
+        return this.dealerscore;
     }
 
     /**invokes when player pass the turn to dealer.
@@ -201,11 +232,11 @@ public class Round {
      * @param roundEnd flag if round will end in standart way
      */
     public void roundResult(int sumPlayer, int sumDealer, boolean roundEnd) {
-        if (sumPlayer == Gameplay.CRITICALNUMBER21 || sumDealer > Gameplay.CRITICALNUMBER21) {
+        if (sumPlayer == Gameplay.CRITICAL_NUMBER21 || sumDealer > Gameplay.CRITICAL_NUMBER21) {
             playerWin();
             Gameplay.startGame(this);
         }
-        if (sumPlayer > Gameplay.CRITICALNUMBER21 || sumDealer == Gameplay.CRITICALNUMBER21) {
+        if (sumPlayer > Gameplay.CRITICAL_NUMBER21 || sumDealer == Gameplay.CRITICAL_NUMBER21) {
             dealerWin();
             Gameplay.startGame(this);
         }

@@ -5,7 +5,7 @@ package ru.nsu.zarcer;
  */
 public class Gameplay {
 
-    public static final int CRITICALNUMBER21 = 21;
+    public static final int CRITICAL_NUMBER21 = 21;
     public static final int DEALERSTOP17 = 17;
 
     /**Just main.
@@ -59,9 +59,9 @@ public class Gameplay {
         playerhand.withdraw(finaldeck);
         playerhand.withdraw(finaldeck);
         dealerhand.withdraw(finaldeck);
-        roundstate.roundcount++;
+        roundstate.roundcountAdd();
         System.out.println("Раунд "
-                + roundstate.roundcount
+                + roundstate.roundcountGet()
                 + "\nДилер раздал карты\n\tВаши карты: ["
                 + playerhand.getCard(0).getNamee()
                 + " ("

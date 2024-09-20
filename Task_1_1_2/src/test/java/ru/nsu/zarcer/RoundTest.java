@@ -41,13 +41,13 @@ class RoundTest {
     void playerWin() {
         Round testingRound = new Round();
         testingRound.playerWin();
-        assertEquals(1, testingRound.playerscore);
+        assertEquals(1, testingRound.getPlayerscore());
     }
 
     @Test
     void dealerWin() {
         Round testingRound = new Round();
         testingRound.dealerWin();
-        assertEquals(1, testingRound.dealerscore);
+        assertEquals(1, testingRound.getDealerscore());
     }
 }
