@@ -5,6 +5,9 @@ import java.util.Objects;
 public class Variable extends Expression {
 
     String name;
+    Variable(String tag) {
+        this.name = tag;
+    }
     @Override
     public void print() {
         System.out.print(name);
@@ -24,18 +27,15 @@ public class Variable extends Expression {
     @Override
     public int eval(String variables) {
         String[] words = variables.split(";");
-        for(int i = 0;i< words.length;i++) {
+        for(int i = 0;i < words.length;i++) {
+            words[i] = words[i].trim();
             int wordLength = words[i].length();
             int lastSpaceIndex = words[i].lastIndexOf(' ');
             int firstSpaceIndex = words[i].indexOf(' ');
-            String valueVariableString = words[i].substring(lastSpaceIndex+1, wordLength-1);
-            if(i==0) {
-                String nameVariable = words[i].substring(0, firstSpaceIndex-1);
-            }
-            else {
-            }
+            String nameVariable = words[i].substring(0, firstSpaceIndex);
+            String valueVariableString = words[i].substring(lastSpaceIndex+1, wordLength);
             int valueVariableInt = Integer.parseInt(valueVariableString);
-            if(nameVariable==name) {
+            if(nameVariable.equals(this.name)) {
                 return valueVariableInt;
             }
         }
