@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"ru.nsu.zarcer","l":"Add"},{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.nsu.zarcer","l":"Div"},{"p":"ru.nsu.zarcer","l":"Expression"},{"p":"ru.nsu.zarcer","l":"Main"},{"p":"ru.nsu.zarcer","l":"Mul"},{"p":"ru.nsu.zarcer","l":"Number"},{"p":"ru.nsu.zarcer","l":"Sub"},{"p":"ru.nsu.zarcer","l":"Variable"}]
