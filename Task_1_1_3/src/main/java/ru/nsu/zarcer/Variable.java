@@ -1,10 +1,11 @@
 package ru.nsu.zarcer;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 public class Variable extends Expression {
 
-    String name;
+    private String name;
     Variable(String tag) {
         this.name = tag;
     }
@@ -23,22 +24,8 @@ public class Variable extends Expression {
         }
     }
 
-
     @Override
-    public int eval(String variables) {
-        String[] words = variables.split(";");
-        for(int i = 0;i < words.length;i++) {
-            words[i] = words[i].trim();
-            int wordLength = words[i].length();
-            int lastSpaceIndex = words[i].lastIndexOf(' ');
-            int firstSpaceIndex = words[i].indexOf(' ');
-            String nameVariable = words[i].substring(0, firstSpaceIndex);
-            String valueVariableString = words[i].substring(lastSpaceIndex+1, wordLength);
-            int valueVariableInt = Integer.parseInt(valueVariableString);
-            if(nameVariable.equals(this.name)) {
-                return valueVariableInt;
-            }
-        }
-        return -1;
+    public int evaluate(HashMap<String, Integer> dict) {
+        return dict.get(name);
     }
 }

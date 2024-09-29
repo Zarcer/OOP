@@ -1,8 +1,10 @@
 package ru.nsu.zarcer;
 
+import java.util.HashMap;
+
 public class Number extends Expression {
 
-    int value;
+    private int value;
     Number(int value) {
         this.value = value;
     }
@@ -15,7 +17,11 @@ public class Number extends Expression {
         return new Number(0);
     }
     @Override
-    public int eval(String variables) {
-        return this.value;
+    public int evaluate(HashMap<String, Integer> dict) {
+        return value;
+    }
+
+    public int getValue() {
+        return value;
     }
 }

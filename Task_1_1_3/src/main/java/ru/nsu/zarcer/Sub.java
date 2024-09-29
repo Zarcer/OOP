@@ -1,8 +1,10 @@
 package ru.nsu.zarcer;
 
+import java.util.HashMap;
+
 public class Sub extends Expression {
-    Expression First;
-    Expression Second;
+    private Expression First;
+    private Expression Second;
     Sub(Expression first, Expression second) {
         this.First = first;
         this.Second = second;
@@ -23,7 +25,14 @@ public class Sub extends Expression {
     }
 
     @Override
-    public int eval(String variables) {
-        return (this.First.eval(variables)-this.Second.eval(variables));
+    public int evaluate(HashMap<String, Integer> dict) {
+        return First.evaluate(dict)-Second.evaluate(dict);
+    }
+    public Expression getFirst() {
+        return First;
+    }
+
+    public Expression getSecond() {
+        return Second;
     }
 }
