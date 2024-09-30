@@ -47,6 +47,8 @@ public class Main {
                     return new Div(first, second);
                 case '*':
                     return new Mul(first, second);
+                default:
+                    return new Number(-1);
             }
         }
         if (Character.isDigit(s.charAt(0))) {

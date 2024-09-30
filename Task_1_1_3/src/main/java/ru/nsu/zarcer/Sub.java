@@ -3,13 +3,16 @@ package ru.nsu.zarcer;
 import java.util.HashMap;
 import java.util.Objects;
 
+/**
+ * Just class for sub.
+ */
 public class Sub extends Expression {
-    private Expression First;
-    private Expression Second;
+    private Expression first;
+    private Expression second;
 
     Sub(Expression first, Expression second) {
-        this.First = first;
-        this.Second = second;
+        this.first = first;
+        this.second = second;
     }
 
     /**
@@ -21,7 +24,7 @@ public class Sub extends Expression {
      */
     @Override
     public Expression derivate(String variable) {
-        return new Sub(this.First.derivate(variable), this.Second.derivate(variable));
+        return new Sub(this.first.derivate(variable), this.second.derivate(variable));
     }
 
     /**
@@ -33,7 +36,7 @@ public class Sub extends Expression {
      */
     @Override
     public int evaluate(HashMap<String, Integer> dict) {
-        return First.evaluate(dict) - Second.evaluate(dict);
+        return first.evaluate(dict) - second.evaluate(dict);
     }
 
     /**
@@ -46,7 +49,7 @@ public class Sub extends Expression {
     @Override
     public boolean equals(Object obj) {
         Sub sub = (Sub) obj;
-        return First.equals(sub.First) && Second.equals(sub.Second);
+        return first.equals(sub.first) && second.equals(sub.second);
     }
 
     /**
@@ -56,7 +59,7 @@ public class Sub extends Expression {
      */
     @Override
     public String toString() {
-        return "(" + First.toString() + "-" + Second.toString() + ")";
+        return "(" + first.toString() + "-" + second.toString() + ")";
     }
 
     /**
@@ -66,6 +69,6 @@ public class Sub extends Expression {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(First, Second);
+        return Objects.hash(first, second);
     }
 }
