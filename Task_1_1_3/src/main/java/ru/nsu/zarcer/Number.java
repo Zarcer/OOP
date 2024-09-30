@@ -10,7 +10,8 @@ public class Number extends Expression {
         this.value = value;
     }
 
-    /**Just derivation.
+    /**
+     * Just derivation.
      *
      * @param variable if there is no correct variable, all variables will just go to zero
      *
@@ -21,9 +22,10 @@ public class Number extends Expression {
         return new Number(0);
     }
 
-    /**Calculation of expression.
+    /**
+     * Calculation of expression.
      *
-     * @param dict dictionary with pairs variable name-> value
+     * @param dict dictionary with pairs variable name value
      *
      * @return returns value of number
      */
@@ -32,7 +34,8 @@ public class Number extends Expression {
         return value;
     }
 
-    /**Override for equals method.
+    /**
+     * Override for equals method.
      *
      * @param obj with what compare
      *
@@ -40,11 +43,12 @@ public class Number extends Expression {
      */
     @Override
     public boolean equals(Object obj) {
-        Number numb = (Number)obj;
+        Number numb = (Number) obj;
         return value == numb.value;
     }
 
-    /**Override for toString method.
+    /**
+     * Override for toString method.
      *
      * @return cast value to string and returns it
      */
@@ -53,7 +57,8 @@ public class Number extends Expression {
         return Integer.toString(value);
     }
 
-    /**Override for hash method.
+    /**
+     * Override for hash method.
      *
      * @return hash for single object
      */

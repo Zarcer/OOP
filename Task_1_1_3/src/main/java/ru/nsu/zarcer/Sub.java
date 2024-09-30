@@ -12,7 +12,8 @@ public class Sub extends Expression {
         this.Second = second;
     }
 
-    /**Just derivation.
+    /**
+     * Just derivation.
      *
      * @param variable if there is no correct variable, all variables will just go to zero
      *
@@ -23,18 +24,20 @@ public class Sub extends Expression {
         return new Sub(this.First.derivate(variable), this.Second.derivate(variable));
     }
 
-    /**Calculation of expression.
+    /**
+     * Calculation of expression.
      *
-     * @param dict dictionary with pairs variable name-> value
+     * @param dict dictionary with pairs variable name value
      *
      * @return recursive call
      */
     @Override
     public int evaluate(HashMap<String, Integer> dict) {
-        return First.evaluate(dict)-Second.evaluate(dict);
+        return First.evaluate(dict) - Second.evaluate(dict);
     }
 
-    /**Override for equals method.
+    /**
+     * Override for equals method.
      *
      * @param obj with what compare
      *
@@ -42,20 +45,22 @@ public class Sub extends Expression {
      */
     @Override
     public boolean equals(Object obj) {
-        Sub sub = (Sub)obj;
+        Sub sub = (Sub) obj;
         return First.equals(sub.First) && Second.equals(sub.Second);
     }
 
-    /**Override for toString method.
+    /**
+     * Override for toString method.
      *
      * @return recursive call
      */
     @Override
     public String toString() {
-        return "("+First.toString()+"-"+Second.toString()+")";
+        return "(" + First.toString() + "-" + Second.toString() + ")";
     }
 
-    /**Override for hash method.
+    /**
+     * Override for hash method.
      *
      * @return hash for multiple objects
      */

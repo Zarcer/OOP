@@ -10,7 +10,7 @@ class AddTest {
     void derivateTest() {
         Add test = new Add(new Variable("x"), new Number(2));
         Add derivateTest = new Add(new Number(1), new Number(0));
-        Add zero = (Add)test.derivate("x");
+        Add zero = (Add) test.derivate("x");
         assertTrue(derivateTest.equals(zero));
     }
 

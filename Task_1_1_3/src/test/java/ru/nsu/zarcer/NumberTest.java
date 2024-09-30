@@ -9,7 +9,7 @@ class NumberTest {
     @Test
     void derivateTesting() {
         Number test = new Number(5);
-        Number testDerivate = (Number)test.derivate("x");
+        Number testDerivate = (Number) test.derivate("x");
         Number testZero = new Number(0);
         assertTrue(testDerivate.equals(testZero));
     }

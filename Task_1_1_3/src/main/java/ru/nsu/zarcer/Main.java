@@ -4,7 +4,8 @@ public class Main {
     public static void main(String[] args) {
     }
 
-    /**Parse string to expression class.
+    /**
+     * Parse string to expression class.
      *
      * @param s string that will be parsed
      *
@@ -12,31 +13,29 @@ public class Main {
      */
     public static Expression parseIntoExpr(String s) {
         int parentCnt = 0;
-        int operIndex=-1;
-        char oper=' ';
-        if(s.startsWith("(") && s.endsWith(")")) {
-            s=s.substring(1, s.length()-1);
+        int operIndex = -1;
+        char oper = ' ';
+        if (s.startsWith("(") && s.endsWith(")")) {
+            s = s.substring(1, s.length() - 1);
         }
-        for(int i = 0;i<s.length();i++) {
+        for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            if(c == '(') {
+            if (c == '(') {
                 parentCnt++;
-            }
-            else if(c == ')') {
+            } else if (c == ')') {
                 parentCnt--;
-            }
-            else if(parentCnt==0 && (c=='+' || c=='-' || c=='/'||c=='*')) {
+            } else if (parentCnt == 0 && (c == '+' || c == '-' || c == '/' || c == '*')) {
                 operIndex = i;
                 oper = c;
                 break;
             }
         }
-        if(operIndex!=-1) {
+        if (operIndex != -1) {
             String firstString = s.substring(0, operIndex);
-            String secondString = s.substring(operIndex+1);
+            String secondString = s.substring(operIndex + 1);
             Expression first = parseIntoExpr(firstString);
             Expression second = parseIntoExpr(secondString);
-            switch(oper) {
+            switch (oper) {
                 case '+':
                     return new Add(first, second);
                 case '-':
@@ -47,10 +46,9 @@ public class Main {
                     return new Mul(first, second);
             }
         }
-        if(Character.isDigit(s.charAt(0))) {
+        if (Character.isDigit(s.charAt(0))) {
             return new Number(Integer.parseInt(s));
-        }
-        else {
+        } else {
             return new Variable(s);
         }
     }

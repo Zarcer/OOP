@@ -11,7 +11,7 @@ class VariableTest {
         Variable first = new Variable("x");
         Variable second = new Variable("y");
         Expression testing = new Add(first, second);
-        Add testingDerivate = (Add)testing.derivate("x");
+        Add testingDerivate = (Add) testing.derivate("x");
         Add afterTesting = new Add(new Number(1), new Number(0));
         assertTrue(testingDerivate.equals(afterTesting));
     }

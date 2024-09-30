@@ -12,7 +12,8 @@ public class Div extends Expression {
         this.Second = second;
     }
 
-    /**Just derivation.
+    /**
+     * Just derivation.
      *
      * @param variable if there is no correct variable, all variables will just go to zero
      *
@@ -23,18 +24,20 @@ public class Div extends Expression {
         return new Div(new Sub(new Mul(this.First.derivate(variable), this.Second), new Mul(this.First, this.Second.derivate(variable))), new Mul(this.Second, this.Second));
     }
 
-    /**Calculation of expression.
+    /**
+     * Calculation of expression.
      *
-     * @param dict dictionary with pairs variable name-> value
+     * @param dict dictionary with pairs variable name value
      *
      * @return recursive call
      */
     @Override
     public int evaluate(HashMap<String, Integer> dict) {
-        return First.evaluate(dict)/Second.evaluate(dict);
+        return First.evaluate(dict) / Second.evaluate(dict);
     }
 
-    /**Override for equals method.
+    /**
+     * Override for equals method.
      *
      * @param obj with what compare
      *
@@ -42,20 +45,22 @@ public class Div extends Expression {
      */
     @Override
     public boolean equals(Object obj) {
-        Div div = (Div)obj;
+        Div div = (Div) obj;
         return First.equals(div.First) && Second.equals(div.Second);
     }
 
-    /**Override for toString method.
+    /**
+     * Override for toString method.
      *
      * @return recursive call
      */
     @Override
     public String toString() {
-        return "("+First.toString()+"/"+Second.toString()+")";
+        return "(" + First.toString() + "/" + Second.toString() + ")";
     }
 
-    /**Override for hash method.
+    /**
+     * Override for hash method.
      *
      * @return hash for multiple objects
      */

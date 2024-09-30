@@ -10,7 +10,7 @@ class SubTest {
     void derivateTest() {
         Sub test = new Sub(new Variable("x"), new Number(2));
         Sub derivateTest = new Sub(new Number(1), new Number(0));
-        Sub zero = (Sub)test.derivate("x");
+        Sub zero = (Sub) test.derivate("x");
         assertTrue(derivateTest.equals(zero));
     }
 

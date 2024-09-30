@@ -10,7 +10,8 @@ public class Variable extends Expression {
         this.name = tag;
     }
 
-    /**Just derivation.
+    /**
+     * Just derivation.
      *
      * @param variable if there is no correct variable, all variables will just go to zero
      *
@@ -18,17 +19,17 @@ public class Variable extends Expression {
      */
     @Override
     public Expression derivate(String variable) {
-        if(Objects.equals(variable, name)) {
+        if (Objects.equals(variable, name)) {
             return new Number(1);
-        }
-        else {
+        } else {
             return new Number(0);
         }
     }
 
-    /**Calculation of expression.
+    /**
+     * Calculation of expression.
      *
-     * @param dict dictionary with pairs variable name-> value
+     * @param dict dictionary with pairs variable name value
      *
      * @return returns variable value, using as a key name of variable
      */
@@ -37,7 +38,8 @@ public class Variable extends Expression {
         return dict.get(name);
     }
 
-    /**Override for equals method.
+    /**
+     * Override for equals method.
      *
      * @param obj with what compare
      *
@@ -49,7 +51,8 @@ public class Variable extends Expression {
         return Objects.equals(name, vari.name);
     }
 
-    /**Override for toString method.
+    /**
+     * Override for toString method.
      *
      * @return just returns name of variable, it is already in String
      */
@@ -58,7 +61,8 @@ public class Variable extends Expression {
         return name;
     }
 
-    /**Override for hash method.
+    /**
+     * Override for hash method.
      *
      * @return hash for single object
      */
