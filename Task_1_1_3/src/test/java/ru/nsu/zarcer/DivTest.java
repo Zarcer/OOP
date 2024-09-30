@@ -10,7 +10,9 @@ class DivTest {
     void derivateTest() {
         Div test = new Div(new Number(6), new Number(2));
         Div zero = (Div) test.derivate("x");
-        Div afterDer = new Div(new Sub(new Mul(new Number(0), new Number(2)), new Mul(new Number(6), new Number(0))), new Mul(new Number(2), new Number(2)));
+        Div afterDer = new Div(new Sub(new Mul(new Number(0), new Number(2)),
+                new Mul(new Number(6),
+                new Number(0))), new Mul(new Number(2), new Number(2)));
         assertTrue(zero.equals(afterDer));
     }
 

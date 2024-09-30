@@ -3,6 +3,9 @@ package ru.nsu.zarcer;
 import java.util.HashMap;
 import java.util.Objects;
 
+/**
+ * Class for int numbers.
+ */
 public class Number extends Expression {
     private int value;
 

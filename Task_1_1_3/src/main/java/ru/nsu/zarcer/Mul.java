@@ -3,13 +3,16 @@ package ru.nsu.zarcer;
 import java.util.HashMap;
 import java.util.Objects;
 
+/**
+ * Just Mul class.
+ */
 public class Mul extends Expression {
-    private Expression First;
-    private Expression Second;
+    private Expression first;
+    private Expression second;
 
     Mul(Expression first, Expression second) {
-        this.First = first;
-        this.Second = second;
+        this.first = first;
+        this.second = second;
     }
 
     /**
@@ -21,7 +24,8 @@ public class Mul extends Expression {
      */
     @Override
     public Expression derivate(String variable) {
-        return new Add(new Mul(this.First.derivate(variable), this.Second), new Mul(this.First, this.Second.derivate(variable)));
+        return new Add(new Mul(this.first.derivate(variable), this.second),
+                new Mul(this.first, this.second.derivate(variable)));
     }
 
     /**
@@ -33,7 +37,7 @@ public class Mul extends Expression {
      */
     @Override
     public int evaluate(HashMap<String, Integer> dict) {
-        return First.evaluate(dict) * Second.evaluate(dict);
+        return first.evaluate(dict) * second.evaluate(dict);
     }
 
     /**
@@ -46,7 +50,7 @@ public class Mul extends Expression {
     @Override
     public boolean equals(Object obj) {
         Mul mul = (Mul) obj;
-        return First.equals(mul.First) && Second.equals(mul.Second);
+        return first.equals(mul.first) && second.equals(mul.second);
     }
 
     /**
@@ -56,7 +60,7 @@ public class Mul extends Expression {
      */
     @Override
     public String toString() {
-        return "(" + First.toString() + "*" + Second.toString() + ")";
+        return "(" + first.toString() + "*" + second.toString() + ")";
     }
 
     /**
@@ -66,6 +70,6 @@ public class Mul extends Expression {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(First, Second);
+        return Objects.hash(first, second);
     }
 }

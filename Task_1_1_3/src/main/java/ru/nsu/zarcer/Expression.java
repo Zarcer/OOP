@@ -2,6 +2,9 @@ package ru.nsu.zarcer;
 
 import java.util.HashMap;
 
+/**
+ * Baseclass for other classes.
+ */
 public abstract class Expression {
 
     /**

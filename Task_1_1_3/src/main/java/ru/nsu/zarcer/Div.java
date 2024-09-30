@@ -3,13 +3,16 @@ package ru.nsu.zarcer;
 import java.util.HashMap;
 import java.util.Objects;
 
+/**
+ * Just div class.
+ */
 public class Div extends Expression {
-    private Expression First;
-    private Expression Second;
+    private Expression first;
+    private Expression second;
 
     Div(Expression first, Expression second) {
-        this.First = first;
-        this.Second = second;
+        this.first = first;
+        this.second = second;
     }
 
     /**
@@ -21,7 +24,9 @@ public class Div extends Expression {
      */
     @Override
     public Expression derivate(String variable) {
-        return new Div(new Sub(new Mul(this.First.derivate(variable), this.Second), new Mul(this.First, this.Second.derivate(variable))), new Mul(this.Second, this.Second));
+        return new Div(new Sub(new Mul(this.first.derivate(variable), this.second),
+                new Mul(this.first, this.second.derivate(variable))),
+                new Mul(this.second, this.second));
     }
 
     /**
@@ -33,7 +38,7 @@ public class Div extends Expression {
      */
     @Override
     public int evaluate(HashMap<String, Integer> dict) {
-        return First.evaluate(dict) / Second.evaluate(dict);
+        return first.evaluate(dict) / second.evaluate(dict);
     }
 
     /**
@@ -46,7 +51,7 @@ public class Div extends Expression {
     @Override
     public boolean equals(Object obj) {
         Div div = (Div) obj;
-        return First.equals(div.First) && Second.equals(div.Second);
+        return first.equals(div.first) && second.equals(div.second);
     }
 
     /**
@@ -56,7 +61,7 @@ public class Div extends Expression {
      */
     @Override
     public String toString() {
-        return "(" + First.toString() + "/" + Second.toString() + ")";
+        return "(" + first.toString() + "/" + second.toString() + ")";
     }
 
     /**
@@ -66,6 +71,6 @@ public class Div extends Expression {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(First, Second);
+        return Objects.hash(first, second);
     }
 }

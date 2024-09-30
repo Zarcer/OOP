@@ -1,5 +1,8 @@
 package ru.nsu.zarcer;
 
+/**
+ * Main class for executing program.
+ */
 public class Main {
     public static void main(String[] args) {
     }

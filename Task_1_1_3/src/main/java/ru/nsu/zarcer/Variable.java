@@ -3,6 +3,9 @@ package ru.nsu.zarcer;
 import java.util.HashMap;
 import java.util.Objects;
 
+/**
+ * Just variable class.
+ */
 public class Variable extends Expression {
     private String name;
 
