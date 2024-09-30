@@ -30,11 +30,9 @@ public class Div extends Expression {
         return First.evaluate(dict)/Second.evaluate(dict);
     }
 
-    public Expression getFirst() {
-        return First;
-    }
-
-    public Expression getSecond() {
-        return Second;
+    @Override
+    public boolean equals(Object obj) {
+        Div div = (Div)obj;
+        return First.equals(div.First) && Second.equals(div.Second);
     }
 }

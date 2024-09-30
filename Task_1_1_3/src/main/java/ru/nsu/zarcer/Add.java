@@ -29,12 +29,10 @@ public class Add extends Expression {
         return First.evaluate(dict)+Second.evaluate(dict);
     }
 
-    public Expression getFirst() {
-        return First;
-    }
-
-    public Expression getSecond() {
-        return Second;
+    @Override
+    public boolean equals(Object obj) {
+        Add add = (Add)obj;
+        return First.equals(add.First) && Second.equals(add.Second);
     }
 
 }

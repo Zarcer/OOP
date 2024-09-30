@@ -21,7 +21,9 @@ public class Number extends Expression {
         return value;
     }
 
-    public int getValue() {
-        return value;
+    @Override
+    public boolean equals(Object obj) {
+        Number numb = (Number)obj;
+        return value == numb.value;
     }
 }

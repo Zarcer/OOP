@@ -28,11 +28,10 @@ public class Sub extends Expression {
     public int evaluate(HashMap<String, Integer> dict) {
         return First.evaluate(dict)-Second.evaluate(dict);
     }
-    public Expression getFirst() {
-        return First;
-    }
 
-    public Expression getSecond() {
-        return Second;
+    @Override
+    public boolean equals(Object obj) {
+        Sub sub = (Sub)obj;
+        return First.equals(sub.First) && Second.equals(sub.Second);
     }
 }

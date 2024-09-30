@@ -28,4 +28,10 @@ public class Variable extends Expression {
     public int evaluate(HashMap<String, Integer> dict) {
         return dict.get(name);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        Variable vari = (Variable) obj;
+        return Objects.equals(name, vari.name);
+    }
 }

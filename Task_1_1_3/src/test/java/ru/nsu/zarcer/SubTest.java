@@ -10,11 +10,7 @@ class SubTest {
         Sub test = new Sub(new Variable("x"), new Number(2));
         Sub derivateTest = new Sub(new Number(1), new Number(0));
         Sub zero = (Sub)test.derivate("x");
-        Number value1Der = (Number)derivateTest.getFirst();
-        Number value2Der = (Number)derivateTest.getSecond();
-        Number value1Zer = (Number)zero.getFirst();
-        Number value2Zer = (Number)zero.getSecond();
-        assertTrue(value1Der.getValue()==value1Zer.getValue()&&value2Der.getValue()==value2Zer.getValue());
+        assertTrue(derivateTest.equals(zero));
     }
 
     @Test
