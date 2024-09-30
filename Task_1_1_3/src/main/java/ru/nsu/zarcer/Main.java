@@ -4,6 +4,12 @@ public class Main {
     public static void main(String[] args) {
     }
 
+    /**Parse string to expression class.
+     *
+     * @param s string that will be parsed
+     *
+     * @return recursive call
+     */
     public static Expression parseIntoExpr(String s) {
         int parentCnt = 0;
         int operIndex=-1;

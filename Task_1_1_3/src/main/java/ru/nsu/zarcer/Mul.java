@@ -1,38 +1,66 @@
 package ru.nsu.zarcer;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 public class Mul extends Expression {
     private Expression First;
     private Expression Second;
+
     Mul(Expression first, Expression second) {
         this.First = first;
         this.Second = second;
     }
 
-
-    @Override
-    public void print() {
-        System.out.print("(");
-        this.First.print();
-        System.out.print("*");
-        this.Second.print();
-        System.out.print(")");
-    }
-
+    /**Just derivation.
+     *
+     * @param variable if there is no correct variable, all variables will just go to zero
+     *
+     * @return recursive call
+     */
     @Override
     public Expression derivate(String variable) {
         return new Add(new Mul(this.First.derivate(variable), this.Second), new Mul(this.First, this.Second.derivate(variable)));
     }
 
+    /**Calculation of expression.
+     *
+     * @param dict dictionary with pairs variable name-> value
+     *
+     * @return recursive call
+     */
     @Override
     public int evaluate(HashMap<String, Integer> dict) {
         return First.evaluate(dict)*Second.evaluate(dict);
     }
 
+    /**Override for equals method.
+     *
+     * @param obj with what compare
+     *
+     * @return recursive call
+     */
     @Override
     public boolean equals(Object obj) {
         Mul mul = (Mul)obj;
         return First.equals(mul.First) && Second.equals(mul.Second);
+    }
+
+    /**Override for toString method.
+     *
+     * @return recursive call
+     */
+    @Override
+    public String toString() {
+        return "("+First.toString()+"*"+Second.toString()+")";
+    }
+
+    /**Override for hash method.
+     *
+     * @return hash for multiple objects
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(First, Second);
     }
 }
