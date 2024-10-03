@@ -5,69 +5,45 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
-public class AdjacencyMatrix<T> implements Graph<T> {
+public class AdjacencyList<T> implements Graph<T> {
 
-    private ArrayList<ArrayList<Integer>> adjMat;
+    private HashMap<Integer, List<Integer>> adjList;
     private Map<Integer, T> vertexValues;
-    private Map<Integer, Integer> idToIndex;
     private int nextId = 0;
     private T typeCheck;
-    AdjacencyMatrix() {
-        adjMat = new ArrayList<>();
+    AdjacencyList() {
         vertexValues = new HashMap<>();
-        idToIndex = new HashMap<>();
+        adjList = new HashMap<>();
     }
+
 
     public void createVertex(T vertex) {
         vertexValues.put(nextId, vertex);
-        int newIndex = adjMat.size();
-        idToIndex.put(nextId, newIndex);
-        for(ArrayList<Integer> test : adjMat) {
-            test.add(0);
-        }
-        ArrayList<Integer> newVert = new ArrayList<Integer>();
-        for(int i = 0; i <= newIndex; i++) {
-            newVert.add(0);
-        }
-        adjMat.add(newVert);
+        adjList.put(nextId, new ArrayList<>());
         nextId++;
     }
 
-    public void deleteVertex(int vertexId) {
-        vertexValues.remove(vertexId);
-        int indexVertex = idToIndex.get(vertexId);
-        adjMat.remove(indexVertex);
-        for(ArrayList<Integer> test : adjMat) {
-            test.remove(indexVertex);
-        }
-        idToIndex.remove(vertexId);
-        for(Map.Entry<Integer, Integer> entry : idToIndex.entrySet()){
-            if(entry.getValue()>indexVertex){
-                idToIndex.put(entry.getKey(), entry.getValue()-1);
-            }
+    public void deleteVertex(int indexId) {
+        vertexValues.remove(indexId);
+        adjList.remove(indexId);
+        for(List<Integer> adjVert : adjList.values()){
+            adjVert.remove(Integer.valueOf(indexId));
         }
     }
 
     public void addEdge(int firstVertexId, int secondVertexId) {
-        adjMat.get(idToIndex.get(firstVertexId)).set(idToIndex.get(secondVertexId), 1);
+        adjList.get(firstVertexId).add(secondVertexId);
     }
 
     public void deleteEdge(int firstVertexId, int secondVertexId) {
-        adjMat.get(idToIndex.get(firstVertexId)).set(idToIndex.get(secondVertexId), 0);
+        adjList.get(firstVertexId).remove(Integer.valueOf(secondVertexId));
     }
 
     public List<T> getNeighbors(int vertexId) {
         ArrayList<T> output = new ArrayList<>();
-        int vertexIndex = idToIndex.get(vertexId);
-        for(int i = 0;i< adjMat.size();i++){
-            if(adjMat.get(vertexIndex).get(i)!=0){
-                for(Integer key : idToIndex.keySet()){
-                    if(idToIndex.get(key) == i){
-                        output.add(vertexValues.get(key));
-                        break;
-                    }
-                }
-            }
+        List<Integer> adjVert = adjList.get(vertexId);
+        for(int vert : adjVert){
+            output.add(vertexValues.get(vert));
         }
         return output;
     }
@@ -94,9 +70,9 @@ public class AdjacencyMatrix<T> implements Graph<T> {
                 }
                 else {
                     String[] parts = line.split(" ");
-                    int firstVertexId = Integer.parseInt(parts[0]);
-                    int secondVertexId = Integer.parseInt(parts[1]);
-                    addEdge(firstVertexId, secondVertexId);
+                    int firstVertexIndex = Integer.parseInt(parts[0]);
+                    int secondVertexIndex = Integer.parseInt(parts[1]);
+                    addEdge(firstVertexIndex, secondVertexIndex);
                 }
             }
         }
@@ -121,5 +97,4 @@ public class AdjacencyMatrix<T> implements Graph<T> {
     public T getVertex(int vertexId) {
         return vertexValues.get(vertexId);
     }
-
 }
