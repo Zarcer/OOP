@@ -6,24 +6,18 @@ import java.util.Deque;
 import java.util.List;
 
 public class TopologicalSort<T> {
-    private Graph<T> graph;
     private boolean[] visited;
     private Deque<Integer> stack;
 
-    TopologicalSort(Graph<T> graph) {
-        this.graph = graph;
+    public List<T> sort(Graph<T> graph) {
         int verticesCnt = graph.getVertexCnt();
         visited = new boolean[verticesCnt];
         stack = new ArrayDeque<>();
-    }
-
-    public List<T> sort() {
         for(int i = 0;i< visited.length;i++) {
             if(!visited[i]) {
-                dfs(i);
+                dfs(i, graph);
             }
         }
-
         List<T> topSortedList = new ArrayList<>();
         while(!stack.isEmpty()) {
             topSortedList.add(graph.getVertex(stack.pop()));
@@ -31,7 +25,7 @@ public class TopologicalSort<T> {
         return topSortedList;
     }
 
-    private void dfs(int vertexId) {
+    private void dfs(int vertexId, Graph<T> graph) {
         if(visited[vertexId]) {
             return;
         }
@@ -39,7 +33,7 @@ public class TopologicalSort<T> {
         List<T> neighbors = graph.getNeighbors(vertexId);
         for(T neigbor : neighbors) {
             int neighborId = graph.getVertexId(neigbor);
-            dfs(neighborId);
+            dfs(neighborId, graph);
         }
         stack.push(vertexId);
 

@@ -1,8 +1,5 @@
 package ru.nsu.zarcer;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.*;
 
 public class AdjacencyList<T> implements Graph<T> {
@@ -11,11 +8,10 @@ public class AdjacencyList<T> implements Graph<T> {
     private Map<Integer, T> vertexValues;
     private int nextId = 0;
     private T typeCheck;
-    AdjacencyList() {
+    public AdjacencyList() {
         vertexValues = new HashMap<>();
         adjList = new HashMap<>();
     }
-
 
     public void createVertex(T vertex) {
         vertexValues.put(nextId, vertex);
@@ -23,24 +19,36 @@ public class AdjacencyList<T> implements Graph<T> {
         nextId++;
     }
 
-    public void deleteVertex(int indexId) {
-        vertexValues.remove(indexId);
-        adjList.remove(indexId);
+    public void deleteVertex(int vertexId) {
+        if(vertexValues.get(vertexId)==null){
+            return;
+        }
+        vertexValues.remove(vertexId);
+        adjList.remove(vertexId);
         for(List<Integer> adjVert : adjList.values()){
-            adjVert.remove(Integer.valueOf(indexId));
+            adjVert.remove(Integer.valueOf(vertexId));
         }
     }
 
     public void addEdge(int firstVertexId, int secondVertexId) {
+        if(vertexValues.get(firstVertexId)==null||vertexValues.get(secondVertexId)==null){
+            return;
+        }
         adjList.get(firstVertexId).add(secondVertexId);
     }
 
     public void deleteEdge(int firstVertexId, int secondVertexId) {
+        if(vertexValues.get(firstVertexId)==null||vertexValues.get(secondVertexId)==null){
+            return;
+        }
         adjList.get(firstVertexId).remove(Integer.valueOf(secondVertexId));
     }
 
     public List<T> getNeighbors(int vertexId) {
         ArrayList<T> output = new ArrayList<>();
+        if(vertexValues.get(vertexId)==null){
+            return output;
+        }
         List<Integer> adjVert = adjList.get(vertexId);
         for(int vert : adjVert){
             output.add(vertexValues.get(vert));
@@ -48,50 +56,19 @@ public class AdjacencyList<T> implements Graph<T> {
         return output;
     }
 
-    public void readFile(String fileName) {
-        try (BufferedReader scaning = new BufferedReader(new FileReader(fileName))) {
-            String line;
-            boolean readingVertices = true;
-            while((line = scaning.readLine()) != null) {
-                if(Objects.equals(line, "VERTEX")) {
-                    continue;
-                }
-                else if(Objects.equals(line, "EDGE")) {
-                    readingVertices = false;
-                    continue;
-                }
-                if(readingVertices) {
-                    if(typeCheck instanceof String){
-                        createVertex((T) line);
-                    }
-                    else if(typeCheck instanceof Integer){
-                        createVertex((T)Integer.valueOf(line));
-                    }
-                }
-                else {
-                    String[] parts = line.split(" ");
-                    int firstVertexIndex = Integer.parseInt(parts[0]);
-                    int secondVertexIndex = Integer.parseInt(parts[1]);
-                    addEdge(firstVertexIndex, secondVertexIndex);
-                }
-            }
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public int getVertexCnt() {
         return vertexValues.size();
     }
 
     public int getVertexId(T vertex) {
+        int key = 0;
         for(Map.Entry<Integer, T> entry : vertexValues.entrySet()) {
-            if(entry.getValue()==vertex) {
-                return entry.getKey();
+            if(Objects.equals(entry.getValue(), vertex)) {
+                key = entry.getKey();
+                break;
             }
         }
-        return -1;
+        return key;
     }
 
     public T getVertex(int vertexId) {
