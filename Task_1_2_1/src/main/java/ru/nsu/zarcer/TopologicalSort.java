@@ -13,25 +13,25 @@ public class TopologicalSort<T> {
         int verticesCnt = graph.getVertexCnt();
         visited = new boolean[verticesCnt];
         stack = new ArrayDeque<>();
-        for(int i = 0;i< visited.length;i++) {
-            if(!visited[i]) {
+        for (int i = 0; i < visited.length; i++) {
+            if (!visited[i]) {
                 dfs(i, graph);
             }
         }
         List<T> topSortedList = new ArrayList<>();
-        while(!stack.isEmpty()) {
+        while (!stack.isEmpty()) {
             topSortedList.add(graph.getVertex(stack.pop()));
         }
         return topSortedList;
     }
 
     private void dfs(int vertexId, Graph<T> graph) {
-        if(visited[vertexId]) {
+        if (visited[vertexId]) {
             return;
         }
         visited[vertexId] = true;
         List<T> neighbors = graph.getNeighbors(vertexId);
-        for(T neigbor : neighbors) {
+        for (T neigbor : neighbors) {
             int neighborId = graph.getVertexId(neigbor);
             dfs(neighborId, graph);
         }

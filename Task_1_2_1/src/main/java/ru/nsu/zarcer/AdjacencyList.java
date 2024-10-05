@@ -20,40 +20,37 @@ public class AdjacencyList<T> implements Graph<T> {
     }
 
     public void deleteVertex(int vertexId) {
-        try{
-            if(vertexValues.get(vertexId)==null){
+        try {
+            if (vertexValues.get(vertexId) == null) {
                 throw new Exception("Invalid Id");
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         vertexValues.remove(vertexId);
         adjList.remove(vertexId);
-        for(List<Integer> adjVert : adjList.values()){
+        for (List<Integer> adjVert : adjList.values()) {
             adjVert.remove(Integer.valueOf(vertexId));
         }
     }
 
     public void addEdge(int firstVertexId, int secondVertexId) {
-        try{
-            if(vertexValues.get(firstVertexId) == null || vertexValues.get(secondVertexId)==null) {
+        try {
+            if (vertexValues.get(firstVertexId) == null || vertexValues.get(secondVertexId) == null) {
                 throw new Exception("Invalid Id");
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         adjList.get(firstVertexId).add(secondVertexId);
     }
 
     public void deleteEdge(int firstVertexId, int secondVertexId) {
-        try{
-            if(vertexValues.get(firstVertexId) == null || vertexValues.get(secondVertexId)==null) {
+        try {
+            if (vertexValues.get(firstVertexId) == null || vertexValues.get(secondVertexId) == null) {
                 throw new Exception("Invalid Id");
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         adjList.get(firstVertexId).remove(Integer.valueOf(secondVertexId));
@@ -61,16 +58,15 @@ public class AdjacencyList<T> implements Graph<T> {
 
     public List<T> getNeighbors(int vertexId) {
         ArrayList<T> output = new ArrayList<>();
-        try{
-            if(vertexValues.get(vertexId)==null){
+        try {
+            if (vertexValues.get(vertexId) == null) {
                 throw new Exception("Invalid Id");
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         List<Integer> adjVert = adjList.get(vertexId);
-        for(int vert : adjVert){
+        for (int vert : adjVert) {
             output.add(vertexValues.get(vert));
         }
         return output;
@@ -82,18 +78,17 @@ public class AdjacencyList<T> implements Graph<T> {
 
     public int getVertexId(T vertex) {
         int key = -1;
-        for(Map.Entry<Integer, T> entry : vertexValues.entrySet()) {
-            if(Objects.equals(entry.getValue(), vertex)) {
+        for (Map.Entry<Integer, T> entry : vertexValues.entrySet()) {
+            if (Objects.equals(entry.getValue(), vertex)) {
                 key = entry.getKey();
                 break;
             }
         }
-        try{
-            if(key==-1){
+        try {
+            if (key == -1) {
                 throw new Exception("No such vertex");
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return key;

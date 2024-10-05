@@ -19,8 +19,7 @@ class GraphTest {
     void createVertexTest(Graph<String> graph) {
         try {
             graph.readFile("input.txt", "string");
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
         graph.createVertex("stringTest");
@@ -33,8 +32,7 @@ class GraphTest {
     void deleteVertexTest(Graph<String> graph) {
         try {
             graph.readFile("input.txt", "string");
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
         graph.deleteVertex(1);
@@ -49,8 +47,7 @@ class GraphTest {
     void addEdgeTest(Graph<String> graph) {
         try {
             graph.readFile("input.txt", "string");
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
         graph.addEdge(1, 0);
@@ -65,8 +62,7 @@ class GraphTest {
     void deleteEdgeTest(Graph<String> graph) {
         try {
             graph.readFile("input.txt", "string");
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
         graph.deleteEdge(0, 1);
@@ -81,8 +77,7 @@ class GraphTest {
     void getNeighborsTest(Graph<String> graph) {
         try {
             graph.readFile("input.txt", "string");
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
         List<String> neighborsTest = graph.getNeighbors(0);
@@ -97,8 +92,7 @@ class GraphTest {
     void getVertexCnt(Graph<String> graph) {
         try {
             graph.readFile("input.txt", "string");
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
         assertEquals(3, graph.getVertexCnt());
@@ -109,8 +103,7 @@ class GraphTest {
     void getVertexIdTest(Graph<String> graph) {
         try {
             graph.readFile("input.txt", "string");
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
         assertEquals(0, graph.getVertexId("A"));
@@ -121,8 +114,7 @@ class GraphTest {
     void getVertexTest(Graph<String> graph) {
         try {
             graph.readFile("input.txt", "string");
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
         assertEquals("A", graph.getVertex(0));

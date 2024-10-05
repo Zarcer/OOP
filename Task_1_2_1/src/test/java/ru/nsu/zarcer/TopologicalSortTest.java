@@ -20,8 +20,7 @@ class TopologicalSortTest {
     void topSortTest(Graph<String> graph) {
         try {
             graph.readFile("input.txt", "string");
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
         TopologicalSort<String> topSort = new TopologicalSort<>();
