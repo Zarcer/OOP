@@ -1,0 +1,8 @@
+VERTEX
+A
+B
+C
+EDGE
+0 1
+0 2
+2 1
