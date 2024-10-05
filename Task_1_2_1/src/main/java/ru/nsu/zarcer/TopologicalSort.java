@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
 
-/**TopSort algorithm
+/**TopSort algorithm.
  *
  * @param <T> generic type
  */

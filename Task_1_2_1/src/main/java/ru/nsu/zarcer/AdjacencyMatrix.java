@@ -97,8 +97,8 @@ public class AdjacencyMatrix<T> implements Graph<T> {
             || idToIndex.get(secondVertexId) == null) {
             throw new IndexOutOfBoundsException("Invalid Id");
         }
-        adjMat.get(idToIndex.get(firstVertexId)).
-            set(idToIndex.get(idToIndex.get(secondVertexId)), 0);
+        adjMat.get(idToIndex.get(firstVertexId))
+            .set(idToIndex.get(idToIndex.get(secondVertexId)), 0);
     }
 
     /**Get neighbors of vertex, returns their values.
