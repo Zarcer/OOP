@@ -17,6 +17,9 @@ public class AdjacencyMatrix<T> implements Graph<T> {
     private Map<Integer, Integer> idToIndex;
     private int nextId = 0;
 
+    /**
+     * Constructor that initializes lists and maps.
+     */
     public AdjacencyMatrix() {
         adjMat = new ArrayList<>();
         vertexValues = new HashMap<>();
@@ -74,12 +77,12 @@ public class AdjacencyMatrix<T> implements Graph<T> {
      *
      */
     public void addEdge(int firstVertexId, int secondVertexId) throws IndexOutOfBoundsException {
-        if (idToIndex.get(firstVertexId) == null ||
-            idToIndex.get(secondVertexId) == null) {
+        if (idToIndex.get(firstVertexId) == null
+            || idToIndex.get(secondVertexId) == null) {
             throw new IndexOutOfBoundsException("Invalid Id");
         }
-        adjMat.get(idToIndex.get(firstVertexId)).
-            set(idToIndex.get(idToIndex.get(secondVertexId)), 1);
+        adjMat.get(idToIndex.get(firstVertexId))
+            .set(idToIndex.get(idToIndex.get(secondVertexId)), 1);
     }
 
     /**Just deletion of edge based on ids.
@@ -90,8 +93,8 @@ public class AdjacencyMatrix<T> implements Graph<T> {
      *
      */
     public void deleteEdge(int firstVertexId, int secondVertexId) throws IndexOutOfBoundsException {
-        if (idToIndex.get(firstVertexId) == null ||
-            idToIndex.get(secondVertexId) == null) {
+        if (idToIndex.get(firstVertexId) == null
+            || idToIndex.get(secondVertexId) == null) {
             throw new IndexOutOfBoundsException("Invalid Id");
         }
         adjMat.get(idToIndex.get(firstVertexId)).

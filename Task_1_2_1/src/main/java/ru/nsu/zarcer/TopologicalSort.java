@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
 
+/**TopSort algorithm
+ *
+ * @param <T> generic type
+ */
 public class TopologicalSort<T> {
     private boolean[] visited;
     private Deque<Integer> stack;

@@ -18,6 +18,9 @@ public class IncidenceMatrix<T> implements Graph<T> {
     private int edgeCount = 0;
     private int nextId = 0;
 
+    /**
+     * Constructor that initializes lists and maps.
+     */
     public IncidenceMatrix() {
         incMat = new ArrayList<>();
         vertexValues = new HashMap<>();
@@ -77,8 +80,8 @@ public class IncidenceMatrix<T> implements Graph<T> {
      *
      */
     public void addEdge(int firstVertexId, int secondVertexId) throws IndexOutOfBoundsException {
-        if (idToIndex.get(firstVertexId) == null ||
-            idToIndex.get(secondVertexId) == null) {
+        if (idToIndex.get(firstVertexId) == null
+            || idToIndex.get(secondVertexId) == null) {
             throw new IndexOutOfBoundsException("Invalid Id");
         }
         for (ArrayList<Integer> vertex : incMat) {
@@ -97,13 +100,13 @@ public class IncidenceMatrix<T> implements Graph<T> {
      *
      */
     public void deleteEdge(int firstVertexId, int secondVertexId) throws IndexOutOfBoundsException {
-        if (idToIndex.get(firstVertexId) == null ||
-            idToIndex.get(secondVertexId) == null) {
+        if (idToIndex.get(firstVertexId) == null
+            || idToIndex.get(secondVertexId) == null) {
             throw new IndexOutOfBoundsException("Invalid Id");
         }
         for (int i = 0; i < edgeCount; i++) {
-            if ((incMat.get(idToIndex.get(firstVertexId)).get(i) == 1) &&
-                (incMat.get(idToIndex.get(secondVertexId)).get(i) == -1)) {
+            if ((incMat.get(idToIndex.get(firstVertexId)).get(i) == 1)
+                && (incMat.get(idToIndex.get(secondVertexId)).get(i) == -1)) {
                 for (ArrayList<Integer> vertex : incMat) {
                     vertex.remove(i);
                 }

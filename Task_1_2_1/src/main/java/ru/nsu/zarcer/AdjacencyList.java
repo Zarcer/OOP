@@ -16,6 +16,9 @@ public class AdjacencyList<T> implements Graph<T> {
     private Map<Integer, T> vertexValues;
     private int nextId = 0;
 
+    /**
+     * Constructor that initializes lists and maps.
+     */
     public AdjacencyList() {
         vertexValues = new HashMap<>();
         adjList = new HashMap<>();
@@ -56,8 +59,8 @@ public class AdjacencyList<T> implements Graph<T> {
      *
      */
     public void addEdge(int firstVertexId, int secondVertexId) throws IndexOutOfBoundsException {
-        if (vertexValues.get(firstVertexId) == null ||
-            vertexValues.get(secondVertexId) == null) {
+        if (vertexValues.get(firstVertexId) == null
+            || vertexValues.get(secondVertexId) == null) {
             throw new IndexOutOfBoundsException("Invalid Id");
         }
         adjList.get(firstVertexId).add(secondVertexId);
@@ -71,8 +74,8 @@ public class AdjacencyList<T> implements Graph<T> {
      *
      */
     public void deleteEdge(int firstVertexId, int secondVertexId) throws IndexOutOfBoundsException {
-        if (vertexValues.get(firstVertexId) == null ||
-            vertexValues.get(secondVertexId) == null) {
+        if (vertexValues.get(firstVertexId) == null
+            || vertexValues.get(secondVertexId) == null) {
             throw new IndexOutOfBoundsException("Invalid Id");
         }
         adjList.get(firstVertexId).remove(Integer.valueOf(secondVertexId));
