@@ -1,21 +1,20 @@
 package ru.nsu.zarcer;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Stream;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 class GraphTest {
     @ParameterizedTest
-    @ArgumentsSource(GraphTest.testArgumentsProvider.class)
+    @ArgumentsSource(TestArgumentsProvider.class)
     void createVertexTest(Graph<String> graph) {
         try {
             graph.readFile("input.txt", "string");
@@ -28,7 +27,7 @@ class GraphTest {
     }
 
     @ParameterizedTest
-    @ArgumentsSource(GraphTest.testArgumentsProvider.class)
+    @ArgumentsSource(TestArgumentsProvider.class)
     void deleteVertexTest(Graph<String> graph) {
         try {
             graph.readFile("input.txt", "string");
@@ -43,7 +42,7 @@ class GraphTest {
     }
 
     @ParameterizedTest
-    @ArgumentsSource(GraphTest.testArgumentsProvider.class)
+    @ArgumentsSource(TestArgumentsProvider.class)
     void addEdgeTest(Graph<String> graph) {
         try {
             graph.readFile("input.txt", "string");
@@ -58,7 +57,7 @@ class GraphTest {
     }
 
     @ParameterizedTest
-    @ArgumentsSource(GraphTest.testArgumentsProvider.class)
+    @ArgumentsSource(TestArgumentsProvider.class)
     void deleteEdgeTest(Graph<String> graph) {
         try {
             graph.readFile("input.txt", "string");
@@ -73,7 +72,7 @@ class GraphTest {
     }
 
     @ParameterizedTest
-    @ArgumentsSource(GraphTest.testArgumentsProvider.class)
+    @ArgumentsSource(TestArgumentsProvider.class)
     void getNeighborsTest(Graph<String> graph) {
         try {
             graph.readFile("input.txt", "string");
@@ -88,7 +87,7 @@ class GraphTest {
     }
 
     @ParameterizedTest
-    @ArgumentsSource(GraphTest.testArgumentsProvider.class)
+    @ArgumentsSource(TestArgumentsProvider.class)
     void getVertexCnt(Graph<String> graph) {
         try {
             graph.readFile("input.txt", "string");
@@ -99,7 +98,7 @@ class GraphTest {
     }
 
     @ParameterizedTest
-    @ArgumentsSource(GraphTest.testArgumentsProvider.class)
+    @ArgumentsSource(TestArgumentsProvider.class)
     void getVertexIdTest(Graph<String> graph) {
         try {
             graph.readFile("input.txt", "string");
@@ -110,7 +109,7 @@ class GraphTest {
     }
 
     @ParameterizedTest
-    @ArgumentsSource(GraphTest.testArgumentsProvider.class)
+    @ArgumentsSource(TestArgumentsProvider.class)
     void getVertexTest(Graph<String> graph) {
         try {
             graph.readFile("input.txt", "string");
@@ -121,7 +120,7 @@ class GraphTest {
     }
 
 
-    static class testArgumentsProvider implements ArgumentsProvider {
+    static class TestArgumentsProvider implements ArgumentsProvider {
         @Override
         public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
             return Stream.of(

@@ -9,6 +9,13 @@ public class TopologicalSort<T> {
     private boolean[] visited;
     private Deque<Integer> stack;
 
+    /**Sorting algorithm itself.
+     *
+     * @param graph graph on which sorted be executed
+     *
+     * @return returns sorted List based of graph vertices
+     *
+     */
     public List<T> sort(Graph<T> graph) {
         int verticesCnt = graph.getVertexCnt();
         visited = new boolean[verticesCnt];
@@ -25,6 +32,12 @@ public class TopologicalSort<T> {
         return topSortedList;
     }
 
+    /**Just dfs that uses recursion.
+     *
+     * @param vertexId from what node execute dfs
+     *
+     * @param graph graph that need to be sorted
+     */
     private void dfs(int vertexId, Graph<T> graph) {
         if (visited[vertexId]) {
             return;
@@ -36,7 +49,5 @@ public class TopologicalSort<T> {
             dfs(neighborId, graph);
         }
         stack.push(vertexId);
-
     }
-
 }
