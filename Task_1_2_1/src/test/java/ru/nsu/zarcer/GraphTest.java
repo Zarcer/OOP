@@ -34,7 +34,11 @@ class GraphTest {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-        graph.deleteVertex(1);
+        try {
+            graph.deleteVertex(1);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         List<String> neighborsTest = graph.getNeighbors(0);
         List<String> test = new ArrayList<String>();
         test.add("C");

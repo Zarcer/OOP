@@ -9,13 +9,13 @@ import java.util.Objects;
 interface Graph<T> {
     void createVertex(T vertex);
 
-    void deleteVertex(int indexId);
+    void deleteVertex(int indexId) throws IndexOutOfBoundsException;
 
-    void addEdge(int firstVertexId, int secondVertexId);
+    void addEdge(int firstVertexId, int secondVertexId) throws IndexOutOfBoundsException;
 
-    void deleteEdge(int firstVertexId, int secondVertexId);
+    void deleteEdge(int firstVertexId, int secondVertexId) throws IndexOutOfBoundsException;
 
-    List<T> getNeighbors(int vertexId);
+    List<T> getNeighbors(int vertexId) throws IndexOutOfBoundsException;
 
     default void readFile(String fileName, T typeCheck) throws IOException {
         BufferedReader scaning = new BufferedReader(new FileReader(fileName));
@@ -46,7 +46,7 @@ interface Graph<T> {
 
     int getVertexCnt();
 
-    int getVertexId(T vertex);
+    int getVertexId(T vertex) throws IndexOutOfBoundsException;
 
     T getVertex(int vertexId);
 }

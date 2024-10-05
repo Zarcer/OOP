@@ -1,7 +1,15 @@
 package ru.nsu.zarcer;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
+/**Graph representation as adjList.
+ *
+ * @param <T> generic type
+ */
 public class AdjacencyList<T> implements Graph<T> {
 
     private HashMap<Integer, List<Integer>> adjList;
@@ -29,13 +37,9 @@ public class AdjacencyList<T> implements Graph<T> {
      * @param vertexId id of vertex, indexation starting with zero
      *
      */
-    public void deleteVertex(int vertexId) {
-        try {
-            if (vertexValues.get(vertexId) == null) {
-                throw new Exception("Invalid Id");
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+    public void deleteVertex(int vertexId) throws IndexOutOfBoundsException {
+        if (vertexValues.get(vertexId) == null) {
+            throw new IndexOutOfBoundsException("Invalid Id");
         }
         vertexValues.remove(vertexId);
         adjList.remove(vertexId);
@@ -51,13 +55,10 @@ public class AdjacencyList<T> implements Graph<T> {
      * @param secondVertexId id of ending vertex
      *
      */
-    public void addEdge(int firstVertexId, int secondVertexId) {
-        try {
-            if (vertexValues.get(firstVertexId) == null || vertexValues.get(secondVertexId) == null) {
-                throw new Exception("Invalid Id");
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+    public void addEdge(int firstVertexId, int secondVertexId) throws IndexOutOfBoundsException {
+        if (vertexValues.get(firstVertexId) == null ||
+            vertexValues.get(secondVertexId) == null) {
+            throw new IndexOutOfBoundsException("Invalid Id");
         }
         adjList.get(firstVertexId).add(secondVertexId);
     }
@@ -69,13 +70,10 @@ public class AdjacencyList<T> implements Graph<T> {
      * @param secondVertexId id of ending vertex
      *
      */
-    public void deleteEdge(int firstVertexId, int secondVertexId) {
-        try {
-            if (vertexValues.get(firstVertexId) == null || vertexValues.get(secondVertexId) == null) {
-                throw new Exception("Invalid Id");
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+    public void deleteEdge(int firstVertexId, int secondVertexId) throws IndexOutOfBoundsException {
+        if (vertexValues.get(firstVertexId) == null ||
+            vertexValues.get(secondVertexId) == null) {
+            throw new IndexOutOfBoundsException("Invalid Id");
         }
         adjList.get(firstVertexId).remove(Integer.valueOf(secondVertexId));
     }
@@ -86,14 +84,10 @@ public class AdjacencyList<T> implements Graph<T> {
      *
      * @return returns List of values of vertices
      */
-    public List<T> getNeighbors(int vertexId) {
+    public List<T> getNeighbors(int vertexId) throws IndexOutOfBoundsException {
         ArrayList<T> output = new ArrayList<>();
-        try {
-            if (vertexValues.get(vertexId) == null) {
-                throw new Exception("Invalid Id");
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        if (vertexValues.get(vertexId) == null) {
+            throw new IndexOutOfBoundsException("Invalid Id");
         }
         List<Integer> adjVert = adjList.get(vertexId);
         for (int vert : adjVert) {
@@ -118,7 +112,7 @@ public class AdjacencyList<T> implements Graph<T> {
      * @return just int
      *
      */
-    public int getVertexId(T vertex) {
+    public int getVertexId(T vertex) throws IndexOutOfBoundsException {
         int key = -1;
         for (Map.Entry<Integer, T> entry : vertexValues.entrySet()) {
             if (Objects.equals(entry.getValue(), vertex)) {
@@ -126,12 +120,8 @@ public class AdjacencyList<T> implements Graph<T> {
                 break;
             }
         }
-        try {
-            if (key == -1) {
-                throw new Exception("No such vertex");
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        if (key == -1) {
+            throw new IndexOutOfBoundsException("No such vertex");
         }
         return key;
     }
