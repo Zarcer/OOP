@@ -12,8 +12,8 @@ interface Graph<T> {
     void addEdge(int firstVertexId, int secondVertexId);
     void deleteEdge(int firstVertexId, int secondVertexId);
     List<T> getNeighbors(int vertexId);
-    default void readFile(String fileName, T typeCheck) {
-        try (BufferedReader scaning = new BufferedReader(new FileReader(fileName))) {
+    default void readFile(String fileName, T typeCheck) throws IOException {
+            BufferedReader scaning = new BufferedReader(new FileReader(fileName));
             String line;
             boolean readingVertices = true;
             while((line = scaning.readLine()) != null) {
@@ -39,10 +39,6 @@ interface Graph<T> {
                     addEdge(firstVertexId, secondVertexId);
                 }
             }
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
     }
     int getVertexCnt();
     int getVertexId(T vertex);

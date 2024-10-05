@@ -9,6 +9,7 @@ public class IncidenceMatrix<T> implements Graph<T> {
     private Map<Integer, Integer> idToIndex;
     private int edgeCount=0;
     private int nextId=0;
+
     public IncidenceMatrix() {
         incMat = new ArrayList<>();
         vertexValues = new HashMap<>();
@@ -27,8 +28,13 @@ public class IncidenceMatrix<T> implements Graph<T> {
     }
 
     public void deleteVertex(int vertexId) {
-        if(idToIndex.get(vertexId)==null){
-            return;
+        try{
+            if(idToIndex.get(vertexId)==null){
+                throw new Exception("Invalid Id");
+            }
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
         }
         vertexValues.remove(vertexId);
         int indexVertex = idToIndex.get(vertexId);
@@ -51,8 +57,13 @@ public class IncidenceMatrix<T> implements Graph<T> {
     }
 
     public void addEdge(int firstVertexId, int secondVertexId) {
-        if(idToIndex.get(firstVertexId)==null||idToIndex.get(secondVertexId)==null){
-            return;
+        try{
+            if(idToIndex.get(firstVertexId) == null || idToIndex.get(secondVertexId)==null) {
+                throw new Exception("Invalid Id");
+            }
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
         }
         for(ArrayList<Integer> vertex: incMat) {
             vertex.add(0);
@@ -63,8 +74,13 @@ public class IncidenceMatrix<T> implements Graph<T> {
     }
 
     public void deleteEdge(int firstVertexId, int secondVertexId) {
-        if(idToIndex.get(firstVertexId)==null||idToIndex.get(secondVertexId)==null){
-            return;
+        try{
+            if(idToIndex.get(firstVertexId) == null || idToIndex.get(secondVertexId)==null) {
+                throw new Exception("Invalid Id");
+            }
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
         }
         for(int i = 0;i<edgeCount;i++){
             if((incMat.get(idToIndex.get(firstVertexId)).get(i)==1)&&(incMat.get(idToIndex.get(secondVertexId)).get(i)==-1)){
@@ -79,8 +95,13 @@ public class IncidenceMatrix<T> implements Graph<T> {
 
     public List<T> getNeighbors(int vertexId) {
         ArrayList<T> output = new ArrayList<>();
-        if(idToIndex.get(vertexId)==null){
-            return output;
+        try{
+            if(idToIndex.get(vertexId)==null){
+                throw new Exception("Invalid Id");
+            }
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
         }
         int vertexIndex = idToIndex.get(vertexId);
         for(int i = 0;i<edgeCount;i++) {
@@ -94,7 +115,6 @@ public class IncidenceMatrix<T> implements Graph<T> {
                             }
                         }
                         break;
-
                     }
                 }
             }
@@ -107,12 +127,20 @@ public class IncidenceMatrix<T> implements Graph<T> {
     }
 
     public int getVertexId(T vertex) {
-        int key = 0;
+        int key = -1;
         for(Map.Entry<Integer, T> entry : vertexValues.entrySet()) {
             if(Objects.equals(entry.getValue(), vertex)) {
                 key = entry.getKey();
                 break;
             }
+        }
+        try{
+            if(key==-1){
+                throw new Exception("No such vertex");
+            }
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
         }
         return key;
     }

@@ -8,7 +8,7 @@ public class AdjacencyMatrix<T> implements Graph<T> {
     private Map<Integer, T> vertexValues;
     private Map<Integer, Integer> idToIndex;
     private int nextId = 0;
-    private T typeCheck;
+
     public AdjacencyMatrix() {
         adjMat = new ArrayList<>();
         vertexValues = new HashMap<>();
@@ -31,10 +31,15 @@ public class AdjacencyMatrix<T> implements Graph<T> {
     }
 
     public void deleteVertex(int vertexId) {
-        vertexValues.remove(vertexId);
-        if(idToIndex.get(vertexId)==null){
-            return;
+        try{
+            if(idToIndex.get(vertexId)==null){
+                throw new Exception("Invalid Id");
+            }
         }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        vertexValues.remove(vertexId);
         int indexVertex = idToIndex.get(vertexId);
         adjMat.remove(indexVertex);
         for(ArrayList<Integer> test : adjMat) {
@@ -49,23 +54,38 @@ public class AdjacencyMatrix<T> implements Graph<T> {
     }
 
     public void addEdge(int firstVertexId, int secondVertexId) {
-        if(idToIndex.get(firstVertexId) == null || idToIndex.get(secondVertexId)==null) {
-            return;
+        try{
+            if(idToIndex.get(firstVertexId) == null || idToIndex.get(secondVertexId)==null) {
+                throw new Exception("Invalid Id");
+            }
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
         }
         adjMat.get(idToIndex.get(firstVertexId)).set(idToIndex.get(idToIndex.get(secondVertexId)), 1);
     }
 
     public void deleteEdge(int firstVertexId, int secondVertexId) {
-        if(idToIndex.get(firstVertexId) == null || idToIndex.get(secondVertexId)==null) {
-            return;
+        try{
+            if(idToIndex.get(firstVertexId) == null || idToIndex.get(secondVertexId)==null) {
+                throw new Exception("Invalid Id");
+            }
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
         }
         adjMat.get(idToIndex.get(firstVertexId)).set(idToIndex.get(idToIndex.get(secondVertexId)), 0);
     }
 
     public List<T> getNeighbors(int vertexId) {
         ArrayList<T> output = new ArrayList<>();
-        if(idToIndex.get(vertexId)==null){
-            return output;
+        try{
+            if(idToIndex.get(vertexId)==null){
+                throw new Exception("Invalid Id");
+            }
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
         }
         int vertexIndex = idToIndex.get(vertexId);
         for(int i = 0;i< adjMat.size();i++){
@@ -86,12 +106,20 @@ public class AdjacencyMatrix<T> implements Graph<T> {
     }
 
     public int getVertexId(T vertex) {
-        int key = 0;
+        int key = -1;
         for(Map.Entry<Integer, T> entry : vertexValues.entrySet()) {
             if(Objects.equals(entry.getValue(), vertex)) {
                 key = entry.getKey();
                 break;
             }
+        }
+        try{
+            if(key==-1){
+                throw new Exception("No such vertex");
+            }
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
         }
         return key;
     }
