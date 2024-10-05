@@ -177,43 +177,59 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addEdge(int,int)">addEdge</a></span>&#8203;(int&nbsp;firstVertexId,
        int&nbsp;secondVertexId)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Just addition of edge based on ids.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#createVertex(T)">createVertex</a></span>&#8203;(<a href="IncidenceMatrix.html" title="type parameter in IncidenceMatrix">T</a>&nbsp;vertex)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Just creation of vertex.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#deleteEdge(int,int)">deleteEdge</a></span>&#8203;(int&nbsp;firstVertexId,
           int&nbsp;secondVertexId)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Just deletion of edge based on ids.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#deleteVertex(int)">deleteVertex</a></span>&#8203;(int&nbsp;vertexId)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Just deletion of vertex.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>java.util.List&lt;<a href="IncidenceMatrix.html" title="type parameter in IncidenceMatrix">T</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getNeighbors(int)">getNeighbors</a></span>&#8203;(int&nbsp;vertexId)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Get neighbors of vertex, returns their values.</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code><a href="IncidenceMatrix.html" title="type parameter in IncidenceMatrix">T</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVertex(int)">getVertex</a></span>&#8203;(int&nbsp;vertexId)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Just returns value of vertex based on id.</div>
+</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVertexCnt()">getVertexCnt</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Returns number of vertices.</div>
+</td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVertexId(T)">getVertexId</a></span>&#8203;(<a href="IncidenceMatrix.html" title="type parameter in IncidenceMatrix">T</a>&nbsp;vertex)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Returns id of vertex based on id.</div>
+</td>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>default void</code></td>
@@ -273,6 +289,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>createVertex</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;createVertex&#8203;(<a href="IncidenceMatrix.html" title="type parameter in IncidenceMatrix">T</a>&nbsp;vertex)</pre>
+<div class="block">Just creation of vertex.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>vertex</code> - value of vertex generic type</dd>
+</dl>
 </li>
 </ul>
 <a id="deleteVertex(int)">
@@ -282,6 +303,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>deleteVertex</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;deleteVertex&#8203;(int&nbsp;vertexId)</pre>
+<div class="block">Just deletion of vertex.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>vertexId</code> - id of vertex, indexation starting with zero</dd>
+</dl>
 </li>
 </ul>
 <a id="addEdge(int,int)">
@@ -292,6 +318,12 @@ extends java.lang.Object</pre>
 <h4>addEdge</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;addEdge&#8203;(int&nbsp;firstVertexId,
                     int&nbsp;secondVertexId)</pre>
+<div class="block">Just addition of edge based on ids.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>firstVertexId</code> - id of initial vertex</dd>
+<dd><code>secondVertexId</code> - id of ending vertex</dd>
+</dl>
 </li>
 </ul>
 <a id="deleteEdge(int,int)">
@@ -302,6 +334,12 @@ extends java.lang.Object</pre>
 <h4>deleteEdge</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;deleteEdge&#8203;(int&nbsp;firstVertexId,
                        int&nbsp;secondVertexId)</pre>
+<div class="block">Just deletion of edge based on ids.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>firstVertexId</code> - id of initial vertex</dd>
+<dd><code>secondVertexId</code> - id of ending vertex</dd>
+</dl>
 </li>
 </ul>
 <a id="getNeighbors(int)">
@@ -311,6 +349,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getNeighbors</h4>
 <pre class="methodSignature">public&nbsp;java.util.List&lt;<a href="IncidenceMatrix.html" title="type parameter in IncidenceMatrix">T</a>&gt;&nbsp;getNeighbors&#8203;(int&nbsp;vertexId)</pre>
+<div class="block">Get neighbors of vertex, returns their values.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>vertexId</code> - id of vertex</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>returns List of values of vertices</dd>
+</dl>
 </li>
 </ul>
 <a id="getVertexCnt()">
@@ -320,6 +365,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getVertexCnt</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getVertexCnt()</pre>
+<div class="block">Returns number of vertices.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>just int</dd>
+</dl>
 </li>
 </ul>
 <a id="getVertexId(java.lang.Object)">
@@ -331,6 +381,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getVertexId</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getVertexId&#8203;(<a href="IncidenceMatrix.html" title="type parameter in IncidenceMatrix">T</a>&nbsp;vertex)</pre>
+<div class="block">Returns id of vertex based on id.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>vertex</code> - value of vertex which id method will return</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>just int</dd>
+</dl>
 </li>
 </ul>
 <a id="getVertex(int)">
@@ -340,6 +397,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getVertex</h4>
 <pre class="methodSignature">public&nbsp;<a href="IncidenceMatrix.html" title="type parameter in IncidenceMatrix">T</a>&nbsp;getVertex&#8203;(int&nbsp;vertexId)</pre>
+<div class="block">Just returns value of vertex based on id.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>vertexId</code> - id of vertex</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>generic type T</dd>
+</dl>
 </li>
 </ul>
 <a id="readFile(java.lang.String,java.lang.Object)">
