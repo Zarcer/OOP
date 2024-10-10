@@ -15,7 +15,6 @@ import java.util.Objects;
 public class HashTable<K, V> implements Iterable<Element<K, V>> {
 
     private ArrayList<ArrayList<Element<K, V>>> table;
-    final private int EXTEND_NUMBER = 2;
     private int size;
     private int changes;
 
@@ -149,16 +148,17 @@ public class HashTable<K, V> implements Iterable<Element<K, V>> {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(EXTEND_NUMBER, size);
+        return Objects.hash(size);
     }
 
     /**
      * Resize method, used when table filled more or equal 50%.
      */
     public void resize() {
+        int newCapacity = table.size() * 2;
         ArrayList<ArrayList<Element<K, V>>> newTable =
-            new ArrayList<>(table.size() * EXTEND_NUMBER);
-        for (int i = 0; i < table.size() * EXTEND_NUMBER; i++) {
+            new ArrayList<>(newCapacity);
+        for (int i = 0; i < newCapacity; i++) {
             newTable.add(new ArrayList<>());
         }
         for (ArrayList<Element<K, V>> list : table) {
