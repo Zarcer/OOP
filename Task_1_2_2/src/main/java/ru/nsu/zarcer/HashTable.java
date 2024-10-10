@@ -8,29 +8,30 @@ import java.util.Objects;
 public class HashTable<K, V> implements Iterable<Element<K, V>> {
 
     private ArrayList<ArrayList<Element<K, V>>> table;
+    private final int EXTEND_NUMBER = 2;
     private int size;
     private int changes;
 
-    public HashTable(){
-        table = new ArrayList<>(100);
+    public HashTable() {
+        table = new ArrayList<>(5);
         size = 0;
         changes = 0;
-        for(int i = 0;i<100;i++){
+        for (int i = 0; i < 5; i++) {
             table.add(new ArrayList<>());
         }
     }
 
-    public int hashFunc(K key){
-        return (Objects.hashCode(key)% table.size());
+    public int hashFunc(K key) {
+        return (Objects.hashCode(key) % table.size());
     }
 
-    public void put(K key, V value){
-        if((double) size / table.size()>0.50){
+    public void put(K key, V value) {
+        if ((double) size / table.size() > 0.50) {
             resize();
         }
         int index = hashFunc(key);
-        for(Element<K, V> test : table.get(index)){
-            if(Objects.equals(key, test.getKey())){
+        for (Element<K, V> test : table.get(index)) {
+            if (Objects.equals(key, test.getKey())) {
                 test.setValue(value);
                 return;
             }
@@ -40,23 +41,24 @@ public class HashTable<K, V> implements Iterable<Element<K, V>> {
         changes++;
     }
 
-    public void remove(K key){
+    public boolean remove(K key) {
         int index = hashFunc(key);
-        for(Element<K, V> test : table.get(index)){
-            if(Objects.equals(key, test.getKey())){
+        for (Element<K, V> test : table.get(index)) {
+            if (Objects.equals(key, test.getKey())) {
                 table.get(index).remove(test);
                 size--;
                 changes++;
-                break;
+                return true;
             }
         }
+        return false;
 
     }
 
-    public V get(K key){
+    public V get(K key) {
         int index = hashFunc(key);
-        for(Element<K, V> test : table.get(index)){
-            if(Objects.equals(key, test.getKey())){
+        for (Element<K, V> test : table.get(index)) {
+            if (Objects.equals(key, test.getKey())) {
                 return test.getValue();
             }
         }
@@ -65,38 +67,42 @@ public class HashTable<K, V> implements Iterable<Element<K, V>> {
 
     public void update(K key, V value) {
         int index = hashFunc(key);
-        for(Element<K, V> test : table.get(index)){
-            if(Objects.equals(key, test.getKey())){
+        for (Element<K, V> test : table.get(index)) {
+            if (Objects.equals(key, test.getKey())) {
                 test.setValue(value);
             }
         }
     }
 
-    public int checkExist(K key){
+    public boolean checkExist(K key) {
         boolean check = false;
         int index = hashFunc(key);
-        for(Element<K, V> test : table.get(index)){
+        for (Element<K, V> test : table.get(index)) {
             if (Objects.equals(key, test.getKey())) {
                 check = true;
                 break;
             }
         }
-        if(check){
-            return 1;
-        }
-        else{
-            return 0;
+        if (check) {
+            return true;
+        } else {
+            return false;
         }
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(EXTEND_NUMBER, size);
+    }
+
     public void resize() {
-        ArrayList<ArrayList<Element<K, V>>> newTable = new ArrayList<>(table.size()*2);
-        for(int i = 0;i< table.size()*2;i++){
+        ArrayList<ArrayList<Element<K, V>>> newTable = new ArrayList<>(table.size() * EXTEND_NUMBER);
+        for (int i = 0; i < table.size() * EXTEND_NUMBER; i++) {
             newTable.add(new ArrayList<>());
         }
-        for(ArrayList<Element<K, V>> list : table){
-            for(Element<K, V> entry : list){
-                int index = (Objects.hashCode(entry.getKey())% newTable.size());
+        for (ArrayList<Element<K, V>> list : table) {
+            for (Element<K, V> entry : list) {
+                int index = (Objects.hashCode(entry.getKey()) % newTable.size());
                 newTable.get(index).add(entry);
             }
         }
@@ -110,18 +116,18 @@ public class HashTable<K, V> implements Iterable<Element<K, V>> {
     }
 
     @Override
-    public boolean equals(Object obj){
-        if(!(obj instanceof HashTable)){
+    public boolean equals(Object obj) {
+        if (!(obj instanceof HashTable)) {
             return false;
         }
-        HashTable<K, V> test = (HashTable<K, V>) obj; //how check????
-        if(size!=test.size){
+        HashTable<K, V> test = (HashTable<K, V>) obj;
+        if (size != test.size) {
             return false;
         }
-        for(ArrayList<Element<K, V>> list : table){
-            for(Element<K, V> entry : list){
+        for (ArrayList<Element<K, V>> list : table) {
+            for (Element<K, V> entry : list) {
                 V testValue = test.get(entry.getKey());
-                if(!Objects.equals(entry.getValue(), testValue)){
+                if (!Objects.equals(entry.getValue(), testValue)) {
                     return false;
                 }
             }
@@ -130,14 +136,14 @@ public class HashTable<K, V> implements Iterable<Element<K, V>> {
     }
 
     @Override
-    public String toString(){
-        String output="";
-        for(ArrayList<Element<K, V>> list : table){
-            for(Element<K, V> entry : list){
-                output = output+"["+entry.getKey()+" "+entry.getValue()+"]\n";
+    public String toString() {
+        StringBuilder output = new StringBuilder();
+        for (ArrayList<Element<K, V>> list : table) {
+            for (Element<K, V> entry : list) {
+                output.append("[").append(entry.getKey()).append(" ").append(entry.getValue()).append("]\n");
             }
         }
-        return output;
+        return output.toString();
     }
 
     private class HashTableIterator implements Iterator<Element<K, V>> {
@@ -146,7 +152,7 @@ public class HashTable<K, V> implements Iterable<Element<K, V>> {
         private int currIndexElem;
         private int captureChanges;
 
-        private HashTableIterator(){
+        private HashTableIterator() {
             captureChanges = changes;
             currIndexList = 0;
             currIndexElem = 0;
@@ -154,11 +160,11 @@ public class HashTable<K, V> implements Iterable<Element<K, V>> {
 
         @Override
         public boolean hasNext() {
-            if(captureChanges!=changes){
+            if (captureChanges != changes) {
                 throw new ConcurrentModificationException();
             }
-            for(int i = currIndexList;i<table.size();i++){
-                if(!table.get(i).isEmpty()){
+            for (int i = currIndexList; i < table.size(); i++) {
+                if (!table.get(i).isEmpty()) {
                     return true;
                 }
             }
@@ -167,14 +173,19 @@ public class HashTable<K, V> implements Iterable<Element<K, V>> {
 
         @Override
         public Element<K, V> next() {
-            if(captureChanges!=changes){
+            if (captureChanges != changes) {
                 throw new ConcurrentModificationException();
             }
-            while(currIndexList<table.size()){
-                if (currIndexElem<table.get(currIndexList).size()){
+            while (currIndexList < table.size()) {
+                if (currIndexElem < table.get(currIndexList).size()) {
                     int temp = currIndexElem;
+                    int tempList = currIndexList;
                     currIndexElem++;
-                    return table.get(currIndexList).get(temp);
+                    if (currIndexElem == table.get(currIndexList).size()) {
+                        currIndexList++;
+                        currIndexElem = 0;
+                    }
+                    return table.get(tempList).get(temp);
                 }
                 currIndexList++;
                 currIndexElem = 0;
