@@ -1,10 +1,11 @@
 package ru.nsu.zarcer;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 import org.junit.jupiter.api.Test;
 
@@ -60,10 +61,10 @@ class HashTableTest {
     @Test
     public void equalsTest() {
         HashTable<String, Number> hashTable = new HashTable<>();
-        HashTable<String, Number> test = new HashTable<>();
         hashTable.put("one", 1);
         hashTable.put("two", 2);
         hashTable.put("three", 3);
+        HashTable<String, Number> test = new HashTable<>();
         test.put("one", 1);
         test.put("two", 2);
         test.put("three", 3);
@@ -80,7 +81,7 @@ class HashTableTest {
     }
 
     @Test
-    public void IteratorTest() {
+    public void iteratorTest() {
         HashTable<String, Number> hashTable = new HashTable<>();
         hashTable.put("one", 1);
         hashTable.put("two", 2);
