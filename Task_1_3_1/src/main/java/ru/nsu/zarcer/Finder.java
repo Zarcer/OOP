@@ -36,13 +36,21 @@ public class Finder {
     }
 
     public static ArrayList<Integer> findFile(String fileName, String subName) throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader(fileName));
-        return find(br, subName);
+        try(BufferedReader br = new BufferedReader(new FileReader(fileName))){
+            return find(br, subName);
+        }
+        catch(IOException e){
+            throw e;
+        }
+
     }
 
     public static ArrayList<Integer> findRecourse(String fileName, String subName) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(Finder.class.getResourceAsStream("/"+fileName)));
-        return find(br, subName);
+        try(BufferedReader br = new BufferedReader(new InputStreamReader(Finder.class.getResourceAsStream("/"+fileName)))){
+            return find(br, subName);
+        } catch (IOException e) {
+            throw e;
+        }
     }
 
 

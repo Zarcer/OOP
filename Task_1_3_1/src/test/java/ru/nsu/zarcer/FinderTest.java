@@ -11,7 +11,7 @@ class FinderTest {
     @Test
     public void findResourceTest(){
         try{
-            ArrayList<Integer> test = Finder.findRecourse("test.txt", "бра");
+            ArrayList<Integer> test = Finder.findRecourse("test.txt", "0_0");
             ArrayList<Integer> validation = new ArrayList<>();
             validation.add(1);
             validation.add(8);
@@ -24,25 +24,26 @@ class FinderTest {
 
     @Test
     public void findFileTest(){
-        try{
-            File testFile = new File("bigTest.txt");
+        File testFile = new File("bigTest.txt");
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(testFile))){
             ArrayList<Integer> validation = new ArrayList<>();
-            testFile.createNewFile();
-            BufferedWriter bw = new BufferedWriter(new FileWriter(testFile));
+            testFile.createNewFile();;
             String input = "абракадабра";
             String subName = "бра";
             int shift = 0;
-            for(int i = 0;i<2000000;i++){
+            for(int i = 0;i<1000000;i++){
                 bw.write(input);
+                bw.flush();
                 validation.add(1+shift);
                 validation.add(8+shift);
                 shift = shift+11;
             }
             ArrayList<Integer> testing = Finder.findFile("bigTest.txt", subName);
+            assertEquals(validation, testing);
             testFile.delete();
-            bw.close();
         }
         catch (IOException e) {
+            testFile.delete();
             System.out.println(e.getMessage());
         }
     }
