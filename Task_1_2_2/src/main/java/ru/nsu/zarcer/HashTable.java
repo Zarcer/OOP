@@ -134,11 +134,7 @@ public class HashTable<K, V> implements Iterable<Element<K, V>> {
                 break;
             }
         }
-        if (check) {
-            return true;
-        } else {
-            return false;
-        }
+        return check;
     }
 
     /**Override for hashCode().
