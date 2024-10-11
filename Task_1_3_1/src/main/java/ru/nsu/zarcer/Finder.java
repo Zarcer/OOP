@@ -1,41 +1,49 @@
 package ru.nsu.zarcer;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 
 public class Finder {
-    public static ArrayList<Integer> find(String fileName, String subName) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(Finder.class.getResourceAsStream("/input.txt")));
+    private static ArrayList<Integer> find(Reader readerr, String subName) throws IOException {
         int length = subName.length();
         ArrayList<Integer> output = new ArrayList<>();
         int c;
         int indexRead=-1;
-        while((c=br.read())!=-1){
+        while((c=readerr.read())!=-1){
             int i = 0;
             indexRead++;
             int startingIndex=0;
-            char character = (char)c;
-            while(subName.charAt(i)==character){
+            while(subName.charAt(i)==(char)c){
                 if(i==0){
                     startingIndex=indexRead;
                 }
                 if(i==length-1){
                     output.add(startingIndex);
+                    break;
                 }
                 else{
                     i++;
                 }
-                if((c=br.read())==-1){
-                    br.close();
+                if((c=readerr.read())==-1){
+                    readerr.close();
                     return output;
                 }
-                character = (char)c;
                 indexRead++;
             }
         }
-        br.close();
+        readerr.close();
         return output;
     }
+
+    public static ArrayList<Integer> findFile(String fileName, String subName) throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(fileName));
+        return find(br, subName);
+    }
+
+    public static ArrayList<Integer> findRecourse(String fileName, String subName) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(Finder.class.getResourceAsStream("/"+fileName)));
+        return find(br, subName);
+    }
+
+
 }
