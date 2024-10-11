@@ -1,6 +1,7 @@
 package ru.nsu.zarcer;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class Finder {
@@ -36,7 +37,7 @@ public class Finder {
     }
 
     public static ArrayList<Integer> findFile(String fileName, String subName) throws IOException {
-        try(BufferedReader br = new BufferedReader(new FileReader(fileName))){
+        try(BufferedReader br = new BufferedReader(new FileReader(fileName, StandardCharsets.UTF_8))){
             return find(br, subName);
         }
         catch(IOException e){
@@ -46,7 +47,7 @@ public class Finder {
     }
 
     public static ArrayList<Integer> findRecourse(String fileName, String subName) throws IOException {
-        try(BufferedReader br = new BufferedReader(new InputStreamReader(Finder.class.getResourceAsStream("/"+fileName)))){
+        try(BufferedReader br = new BufferedReader(new InputStreamReader(Finder.class.getResourceAsStream("/"+fileName), StandardCharsets.UTF_8))){
             return find(br, subName);
         } catch (IOException e) {
             throw e;
