@@ -1,0 +1,87 @@
+package ru.nsu.zarcer;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ElectronicBook {
+    private List<Semester> semesters;
+
+    ElectronicBook(){
+        semesters = new ArrayList<>();
+        semesters.add(new Semester(2, 3, 1, 3, 3, 3, 0, 0));
+        semesters.add(new Semester(2, 3, 1, 3, 3, 2, 0, 0));
+        semesters.add(new Semester(3, 2, 0, 2, 6, 0, 0, 0));
+        semesters.add(new Semester(2, 1, 0, 5, 5, 0, 0, 0));
+        semesters.add(new Semester(2, 2, 0, 3, 4, 0, 0, 0));
+        semesters.add(new Semester(2, 2, 0, 2, 6, 0, 0, 0));
+        semesters.add(new Semester(2, 0, 0, 1, 4, 1, 1, 0));
+        semesters.add(new Semester(0, 0, 0, 0, 0, 0, 0, 1));
+    }
+
+    public boolean addGradeBook(int semesterNumber, int grade, typeControl type){
+        return semesters.get(semesterNumber-1).addGradeSemester(grade, type);
+    }
+
+    public double averageGrade(){
+        int totalMarks=0;
+        int totalValueMarks=0;
+        for(Semester iterating : semesters){
+            totalMarks=totalMarks+iterating.getMarksCnt();
+            totalValueMarks=totalValueMarks+ iterating.getMarksValue();
+        }
+        if(totalMarks==0){
+            return 0;
+        }
+        return (double)totalValueMarks/totalMarks;
+    }
+
+    public boolean checkPaidFree(int currentSemester){
+        if(currentSemester==1||currentSemester==2){
+            return false;
+        }
+        return (semesters.get(currentSemester-3).checkFinalMarks(4, 3)&&semesters.get(currentSemester-2).checkFinalMarks(4, 3));
+    }
+
+    public boolean checkRedDiploma(int currentSemester){
+        int totalMarks = 0;
+        int totalFiveMarks = 0;
+        for(int i = 0;i<currentSemester;i++){
+            totalMarks = totalMarks+semesters.get(i).getMarksCnt();
+            totalFiveMarks=totalFiveMarks+semesters.get(i).getFiveMarksCnt();
+            if(!semesters.get(i).checkFinalMarks(4, 4)){
+                return false;
+            }
+            if(i==7){
+                if(semesters.get(i).getMarksValue()!=5){
+                    return false;
+                }
+            }
+        }
+        if(totalMarks==0){
+            return false;
+        }
+        if(((double)totalFiveMarks/totalMarks)<0.75){
+            return false;
+        }
+        return true;
+    }
+
+    public boolean increasedScholarship(int currentSemester){
+        if(currentSemester==1||currentSemester==2){
+            return false;
+        }
+        return (semesters.get(currentSemester-3).checkFinalMarks(4, 4)&&semesters.get(currentSemester-2).checkFinalMarks(4, 4));
+    }
+
+    public enum typeControl {
+        TASK,
+        TEST,
+        COLLOQUIUM,
+        EXAM,
+        DIFF_CREDIT,
+        CREDIT,
+        PRACTICE_DEFENCE,
+        VKR;
+    }
+}
+
