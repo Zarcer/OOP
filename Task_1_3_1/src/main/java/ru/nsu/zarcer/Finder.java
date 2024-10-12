@@ -3,8 +3,8 @@ package ru.nsu.zarcer;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.Reader;
 import java.io.FileReader;
+import java.io.Reader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
@@ -60,12 +60,12 @@ public class Finder {
      *
      */
     public static ArrayList<Integer> findFile(String fileName, String subName) throws IOException {
-        try (BufferedReader br = new BufferedReader(new FileReader(fileName, StandardCharsets.UTF_8))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName
+                , StandardCharsets.UTF_8))) {
             return find(br, subName);
         } catch (IOException e) {
             throw e;
         }
-
     }
 
     /**Shell method for find using resources.
@@ -80,7 +80,9 @@ public class Finder {
      *
      */
     public static ArrayList<Integer> findRecourse(String fileName, String subName) throws IOException {
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(Finder.class.getResourceAsStream("/" + fileName), StandardCharsets.UTF_8))) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader
+                (Finder.class.getResourceAsStream("/" + fileName)
+                        , StandardCharsets.UTF_8))) {
             return find(br, subName);
         } catch (IOException e) {
             throw e;
