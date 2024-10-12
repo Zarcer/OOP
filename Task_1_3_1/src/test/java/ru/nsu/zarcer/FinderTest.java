@@ -8,7 +8,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-
 import org.junit.jupiter.api.Test;
 
 class FinderTest {
@@ -53,8 +52,8 @@ class FinderTest {
     @Test
     public void findFileTest() {
         File testFile = new File("bigTest.txt");
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(testFile
-                , StandardCharsets.UTF_8))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(testFile,
+                StandardCharsets.UTF_8))) {
             ArrayList<Integer> validation = new ArrayList<>();
             testFile.createNewFile();
             String input = "абракадабра";
