@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.nsu.zarcer","l":"ElectronicBook"},{"p":"ru.nsu.zarcer","l":"Semester"},{"p":"ru.nsu.zarcer","l":"ElectronicBook.typeControl"}]
