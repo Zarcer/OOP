@@ -1,18 +1,19 @@
 package ru.nsu.zarcer;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 class Grades {
-    private ArrayList<Integer> grades;
+    private HashMap<String, Integer> grades;
     private int max;
     Grades(int maxCnt){
-        grades = new ArrayList<>();
+        grades = new HashMap<>();
         max=maxCnt;
     }
 
-    public boolean addGrade(int number){
+    public boolean addGrade(int number, String subject){
         if(grades.size()<max){
-            grades.add(number);
+            grades.put(subject, number);
             return true;
         }
         else {
@@ -25,24 +26,14 @@ class Grades {
     }
 
     public int getMarksValue(){
-        int marksValue = 0;
-        for(Integer mark : grades){
-            marksValue=marksValue+mark;
-        }
-        return marksValue;
+        return grades.values().stream().mapToInt(Integer::intValue).sum();
     }
 
     public int getFiveMarksCnt() {
-        int fiveMarksCnt = 0;
-        for(Integer mark : grades){
-            if(mark==5){
-                fiveMarksCnt++;
-            }
-        }
-        return fiveMarksCnt;
+        return (int)grades.values().stream().filter(s->s==5).count();
     }
 
     public ArrayList<Integer> getGrades(){
-        return grades;
+        return (ArrayList<Integer>) grades.values();
     }
 }

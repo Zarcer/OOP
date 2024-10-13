@@ -2,6 +2,7 @@ package ru.nsu.zarcer;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Stream;
 
 public class Semester {
 
@@ -19,47 +20,26 @@ public class Semester {
         records.put(ElectronicBook.typeControl.VKR, new Grades(vkrRestriction));
     }
 
-    public boolean addGradeSemester(int grade, ElectronicBook.typeControl type){
-        return records.get(type).addGrade(grade);
+    public boolean addGradeSemester(int grade, ElectronicBook.typeControl type, String subject){
+        return records.get(type).addGrade(grade, subject);
     }
 
     public int getMarksCnt() {
-        int marksCnt = 0;
-        for(Grades grade : records.values()){
-            marksCnt = marksCnt+grade.getMarksCnt();
-        }
-        return marksCnt;
+        return records.values().stream().mapToInt(Grades::getMarksCnt).sum();
     }
 
     public int getFiveMarksCnt() {
-        int fiveMarksCnt = 0;
-        for(Grades grade : records.values()){
-            fiveMarksCnt = fiveMarksCnt+grade.getFiveMarksCnt();
-        }
-        return fiveMarksCnt;
+        return records.values().stream().mapToInt(Grades::getFiveMarksCnt).sum();
     }
 
     public int getMarksValue(){
-        int marksValue = 0;
-        for(Grades grade : records.values()){
-            marksValue = marksValue+grade.getMarksValue();
-        }
-        return marksValue;
+        return records.values().stream().mapToInt(Grades::getMarksValue).sum();
     }
 
     public boolean checkFinalMarks(int exam, int diffCredit){
-        for(Integer grade : records.get(ElectronicBook.typeControl.EXAM).getGrades()){
-            if(grade < exam){
-                return false;
-            }
+        if(!records.get(ElectronicBook.typeControl.EXAM).getGrades().stream().allMatch(s->s>=exam)){
+            return false;
         }
-        for(Integer grade : records.get(ElectronicBook.typeControl.DIFF_CREDIT).getGrades()){
-            if(grade<diffCredit){
-                return false;
-            }
-        }
-        return true;
+        return records.get(ElectronicBook.typeControl.DIFF_CREDIT).getGrades().stream().allMatch(s -> s >= exam);
     }
-
-
 }

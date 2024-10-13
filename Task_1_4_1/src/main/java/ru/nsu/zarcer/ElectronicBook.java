@@ -18,17 +18,13 @@ public class ElectronicBook {
         semesters.add(new Semester(0, 0, 0, 0, 0, 0, 0, 1));
     }
 
-    public boolean addGradeBook(int semesterNumber, int grade, typeControl type){
-        return semesters.get(semesterNumber-1).addGradeSemester(grade, type);
+    public boolean addGradeBook(int semesterNumber, int grade, typeControl type, String subject){
+        return semesters.get(semesterNumber-1).addGradeSemester(grade, type, subject);
     }
 
     public double averageGrade(){
-        int totalMarks=0;
-        int totalValueMarks=0;
-        for(Semester iterating : semesters){
-            totalMarks=totalMarks+iterating.getMarksCnt();
-            totalValueMarks=totalValueMarks+ iterating.getMarksValue();
-        }
+        int totalMarks=semesters.stream().mapToInt(Semester::getMarksCnt).sum();
+        int totalValueMarks=semesters.stream().mapToInt(Semester::getMarksValue).sum();
         if(totalMarks==0){
             return 0;
         }
@@ -43,11 +39,9 @@ public class ElectronicBook {
     }
 
     public boolean checkRedDiploma(int currentSemester){
-        int totalMarks = 0;
-        int totalFiveMarks = 0;
+        int totalMarks = semesters.stream().mapToInt(Semester::getMarksCnt).sum();
+        int totalFiveMarks = semesters.stream().mapToInt(Semester::getFiveMarksCnt).sum();
         for(int i = 0;i<currentSemester;i++){
-            totalMarks = totalMarks+semesters.get(i).getMarksCnt();
-            totalFiveMarks=totalFiveMarks+semesters.get(i).getFiveMarksCnt();
             if(!semesters.get(i).checkFinalMarks(4, 4)){
                 return false;
             }
@@ -70,7 +64,7 @@ public class ElectronicBook {
         if(currentSemester==1||currentSemester==2){
             return false;
         }
-        return (semesters.get(currentSemester-3).checkFinalMarks(4, 4)&&semesters.get(currentSemester-2).checkFinalMarks(4, 4));
+        return (semesters.get(currentSemester-3).checkFinalMarks(5, 5)&&semesters.get(currentSemester-2).checkFinalMarks(5, 5));
     }
 
     public enum typeControl {
