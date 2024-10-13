@@ -132,6 +132,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">Semester</span>
 extends java.lang.Object</pre>
+<div class="block">Class for semester.</div>
 </li>
 </ul>
 </div>
@@ -160,7 +161,9 @@ extends java.lang.Object</pre>
         int&nbsp;creditRestriction,
         int&nbsp;practiceDefenceRestriction,
         int&nbsp;vkrRestriction)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Constructor with restrictions per semester.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -185,28 +188,38 @@ extends java.lang.Object</pre>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addGradeSemester(int,ru.nsu.zarcer.ElectronicBook.typeControl,java.lang.String)">addGradeSemester</a></span>&#8203;(int&nbsp;grade,
                 <a href="ElectronicBook.typeControl.html" title="enum in ru.nsu.zarcer">ElectronicBook.typeControl</a>&nbsp;type,
                 java.lang.String&nbsp;subject)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Adds grade to book, shell.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#checkFinalMarks(int,int)">checkFinalMarks</a></span>&#8203;(int&nbsp;exam,
                int&nbsp;diffCredit)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Checks exam and diff credit values, because they are final usually.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getFiveMarksCnt()">getFiveMarksCnt</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Getter for five marks cnt in this semester.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getMarksCnt()">getMarksCnt</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Getter for marks cnt in this semester.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getMarksValue()">getMarksValue</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Getter for marks value in this semester.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -246,6 +259,18 @@ extends java.lang.Object</pre>
                 int&nbsp;creditRestriction,
                 int&nbsp;practiceDefenceRestriction,
                 int&nbsp;vkrRestriction)</pre>
+<div class="block">Constructor with restrictions per semester.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>taskRestriction</code> - restriction</dd>
+<dd><code>testRestriction</code> - restriction</dd>
+<dd><code>colloquiumRestriction</code> - restriction</dd>
+<dd><code>examRestriction</code> - restriction</dd>
+<dd><code>diffCreditRestriction</code> - restriction</dd>
+<dd><code>creditRestriction</code> - restriction</dd>
+<dd><code>practiceDefenceRestriction</code> - restriction</dd>
+<dd><code>vkrRestriction</code> - restriction</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -267,6 +292,15 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;addGradeSemester&#8203;(int&nbsp;grade,
                                 <a href="ElectronicBook.typeControl.html" title="enum in ru.nsu.zarcer">ElectronicBook.typeControl</a>&nbsp;type,
                                 java.lang.String&nbsp;subject)</pre>
+<div class="block">Adds grade to book, shell.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>grade</code> - from 1 to 5</dd>
+<dd><code>type</code> - type of assignment</dd>
+<dd><code>subject</code> - type of subject</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>true if successful, false otherwise</dd>
+</dl>
 </li>
 </ul>
 <a id="getMarksCnt()">
@@ -276,6 +310,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getMarksCnt</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getMarksCnt()</pre>
+<div class="block">Getter for marks cnt in this semester.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>just int</dd>
+</dl>
 </li>
 </ul>
 <a id="getFiveMarksCnt()">
@@ -285,6 +324,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getFiveMarksCnt</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getFiveMarksCnt()</pre>
+<div class="block">Getter for five marks cnt in this semester.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>just int</dd>
+</dl>
 </li>
 </ul>
 <a id="getMarksValue()">
@@ -294,6 +338,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getMarksValue</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getMarksValue()</pre>
+<div class="block">Getter for marks value in this semester.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>just int</dd>
+</dl>
 </li>
 </ul>
 <a id="checkFinalMarks(int,int)">
@@ -304,6 +353,14 @@ extends java.lang.Object</pre>
 <h4>checkFinalMarks</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;checkFinalMarks&#8203;(int&nbsp;exam,
                                int&nbsp;diffCredit)</pre>
+<div class="block">Checks exam and diff credit values, because they are final usually.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>exam</code> - mark should be at least that number</dd>
+<dd><code>diffCredit</code> - mark should be at least that number</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>true if they satisfied arguments</dd>
+</dl>
 </li>
 </ul>
 </li>

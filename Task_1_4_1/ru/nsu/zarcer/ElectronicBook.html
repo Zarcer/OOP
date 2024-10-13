@@ -132,6 +132,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">ElectronicBook</span>
 extends java.lang.Object</pre>
+<div class="block">Class of book itself.</div>
 </li>
 </ul>
 </div>
@@ -155,7 +156,9 @@ extends java.lang.Object</pre>
 <tr class="altColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="ElectronicBook.typeControl.html" title="enum in ru.nsu.zarcer">ElectronicBook.typeControl</a></span></code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Enum class for types of assignments.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -181,32 +184,44 @@ extends java.lang.Object</pre>
             int&nbsp;grade,
             <a href="ElectronicBook.typeControl.html" title="enum in ru.nsu.zarcer">ElectronicBook.typeControl</a>&nbsp;type,
             java.lang.String&nbsp;subject)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Adds grade to book.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#averageGrade()">averageGrade</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Arithmetic medium.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#checkPaidFree(int)">checkPaidFree</a></span>&#8203;(int&nbsp;currentSemester)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Checks can person go to free education.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#checkRedDiploma(int)">checkRedDiploma</a></span>&#8203;(int&nbsp;currentSemester)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Checks if person can get red diploma.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>java.util.List&lt;<a href="Semester.html" title="class in ru.nsu.zarcer">Semester</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSemesters()">getSemesters</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Just getter for semesters.</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#increasedScholarship(int)">increasedScholarship</a></span>&#8203;(int&nbsp;currentSemester)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Checks if person can get increased scholarship.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -242,6 +257,16 @@ extends java.lang.Object</pre>
                             int&nbsp;grade,
                             <a href="ElectronicBook.typeControl.html" title="enum in ru.nsu.zarcer">ElectronicBook.typeControl</a>&nbsp;type,
                             java.lang.String&nbsp;subject)</pre>
+<div class="block">Adds grade to book.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>semesterNumber</code> - int number of semester</dd>
+<dd><code>grade</code> - from 1 to 5</dd>
+<dd><code>type</code> - type of assignment</dd>
+<dd><code>subject</code> - type of subject</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>true if successful, false otherwise</dd>
+</dl>
 </li>
 </ul>
 <a id="averageGrade()">
@@ -251,6 +276,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>averageGrade</h4>
 <pre class="methodSignature">public&nbsp;double&nbsp;averageGrade()</pre>
+<div class="block">Arithmetic medium.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>just double</dd>
+</dl>
 </li>
 </ul>
 <a id="checkPaidFree(int)">
@@ -260,6 +290,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>checkPaidFree</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;checkPaidFree&#8203;(int&nbsp;currentSemester)</pre>
+<div class="block">Checks can person go to free education.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>currentSemester</code> - number of current semester</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>true if person can, false otherwise</dd>
+</dl>
 </li>
 </ul>
 <a id="checkRedDiploma(int)">
@@ -269,6 +306,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>checkRedDiploma</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;checkRedDiploma&#8203;(int&nbsp;currentSemester)</pre>
+<div class="block">Checks if person can get red diploma.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>currentSemester</code> - number of current semester</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>true if person can, false otherwise</dd>
+</dl>
 </li>
 </ul>
 <a id="increasedScholarship(int)">
@@ -278,6 +322,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>increasedScholarship</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;increasedScholarship&#8203;(int&nbsp;currentSemester)</pre>
+<div class="block">Checks if person can get increased scholarship.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>currentSemester</code> - number of current semester</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>true if person can, false otherwise</dd>
+</dl>
 </li>
 </ul>
 <a id="getSemesters()">
@@ -287,6 +338,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getSemesters</h4>
 <pre class="methodSignature">public&nbsp;java.util.List&lt;<a href="Semester.html" title="class in ru.nsu.zarcer">Semester</a>&gt;&nbsp;getSemesters()</pre>
+<div class="block">Just getter for semesters.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>list of semesters</dd>
+</dl>
 </li>
 </ul>
 </li>
