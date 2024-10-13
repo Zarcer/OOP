@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Class for grades per assignment
+ * Class for grades per assignment.
  */
 class Grades {
     private HashMap<String, ArrayList<Integer>> grades;
@@ -76,7 +76,7 @@ class Grades {
      *
      */
     public ArrayList<Integer> getGrades() {
-        return (ArrayList<Integer>) grades.values().stream().
-            flatMap(List::stream).collect(Collectors.toList());
+        return (ArrayList<Integer>) grades.values().stream()
+            .flatMap(List::stream).collect(Collectors.toList());
     }
 }

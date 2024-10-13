@@ -8,7 +8,7 @@ import java.util.Map;
  */
 public class Semester {
 
-    private Map<ElectronicBook.typeControl, Grades> records;
+    private Map<ElectronicBook.TypeControl, Grades> records;
 
     /**Constructor with restrictions per semester.
      *
@@ -29,18 +29,20 @@ public class Semester {
      * @param vkrRestriction restriction
      *
      */
-    public Semester(int taskRestriction, int testRestriction, int colloquiumRestriction, int examRestriction,
+    public Semester(int taskRestriction, int testRestriction,
+                    int colloquiumRestriction, int examRestriction,
                     int diffCreditRestriction, int creditRestriction,
                     int practiceDefenceRestriction, int vkrRestriction) {
         records = new HashMap<>();
-        records.put(ElectronicBook.typeControl.TASK, new Grades(taskRestriction));
-        records.put(ElectronicBook.typeControl.TEST, new Grades(testRestriction));
-        records.put(ElectronicBook.typeControl.COLLOQUIUM, new Grades(colloquiumRestriction));
-        records.put(ElectronicBook.typeControl.EXAM, new Grades(examRestriction));
-        records.put(ElectronicBook.typeControl.DIFF_CREDIT, new Grades(diffCreditRestriction));
-        records.put(ElectronicBook.typeControl.CREDIT, new Grades(creditRestriction));
-        records.put(ElectronicBook.typeControl.PRACTICE_DEFENCE, new Grades(practiceDefenceRestriction));
-        records.put(ElectronicBook.typeControl.VKR, new Grades(vkrRestriction));
+        records.put(ElectronicBook.TypeControl.TASK, new Grades(taskRestriction));
+        records.put(ElectronicBook.TypeControl.TEST, new Grades(testRestriction));
+        records.put(ElectronicBook.TypeControl.COLLOQUIUM, new Grades(colloquiumRestriction));
+        records.put(ElectronicBook.TypeControl.EXAM, new Grades(examRestriction));
+        records.put(ElectronicBook.TypeControl.DIFF_CREDIT, new Grades(diffCreditRestriction));
+        records.put(ElectronicBook.TypeControl.CREDIT, new Grades(creditRestriction));
+        records.put(ElectronicBook.TypeControl.PRACTICE_DEFENCE,
+            new Grades(practiceDefenceRestriction));
+        records.put(ElectronicBook.TypeControl.VKR, new Grades(vkrRestriction));
     }
 
     /**Adds grade to book, shell.
@@ -54,7 +56,7 @@ public class Semester {
      * @return true if successful, false otherwise
      *
      */
-    public boolean addGradeSemester(int grade, ElectronicBook.typeControl type, String subject) {
+    public boolean addGradeSemester(int grade, ElectronicBook.TypeControl type, String subject) {
         return records.get(type).addGrade(grade, subject);
     }
 
@@ -93,11 +95,11 @@ public class Semester {
      *
      */
     public boolean checkFinalMarks(int exam, int diffCredit) {
-        if (!records.get(ElectronicBook.typeControl.EXAM).
-            getGrades().stream().allMatch(s -> s >= exam)) {
+        if (!records.get(ElectronicBook.TypeControl.EXAM)
+            .getGrades().stream().allMatch(s -> s >= exam)) {
             return false;
         }
-        return records.get(ElectronicBook.typeControl.DIFF_CREDIT).
+        return records.get(ElectronicBook.TypeControl.DIFF_CREDIT).
             getGrades().stream().allMatch(s -> s >= exam);
     }
 }

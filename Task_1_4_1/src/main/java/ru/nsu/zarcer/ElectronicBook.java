@@ -37,9 +37,9 @@ public class ElectronicBook {
      * @return true if successful, false otherwise
      *
      */
-    public boolean addGradeBook(int semesterNumber, int grade, typeControl type, String subject) {
-        return semesters.get(semesterNumber - 1).
-            addGradeSemester(grade, type, subject);
+    public boolean addGradeBook(int semesterNumber, int grade, TypeControl type, String subject) {
+        return semesters.get(semesterNumber - 1)
+            .addGradeSemester(grade, type, subject);
     }
 
     /**Arithmetic medium.
@@ -48,10 +48,10 @@ public class ElectronicBook {
      *
      */
     public double averageGrade() {
-        int totalMarks = semesters.stream().
-            mapToInt(Semester::getMarksCnt).sum();
-        int totalValueMarks = semesters.stream().
-            mapToInt(Semester::getMarksValue).sum();
+        int totalMarks = semesters.stream()
+            .mapToInt(Semester::getMarksCnt).sum();
+        int totalValueMarks = semesters.stream()
+            .mapToInt(Semester::getMarksValue).sum();
         if (totalMarks == 0) {
             return 0;
         }
@@ -70,8 +70,8 @@ public class ElectronicBook {
             return false;
         }
         return (semesters.get(currentSemester - 3).
-            checkFinalMarks(4, 3) && semesters.
-            get(currentSemester - 2).checkFinalMarks(4, 3));
+            checkFinalMarks(4, 3) && semesters
+            .get(currentSemester - 2).checkFinalMarks(4, 3));
     }
 
     /**Checks if person can get red diploma.
@@ -82,10 +82,6 @@ public class ElectronicBook {
      *
      */
     public boolean checkRedDiploma(int currentSemester) {
-        int totalMarks = semesters.stream().
-            limit(currentSemester).mapToInt(Semester::getMarksCnt).sum();
-        int totalFiveMarks = semesters.stream().
-            limit(currentSemester).mapToInt(Semester::getFiveMarksCnt).sum();
         if (currentSemester == 8) {
             if (semesters.get(7).getMarksValue() != 5) {
                 return false;
@@ -94,9 +90,13 @@ public class ElectronicBook {
         if (!semesters.stream().limit(currentSemester).allMatch(s -> s.checkFinalMarks(4, 4))) {
             return false;
         }
+        int totalMarks = semesters.stream().limit(currentSemester)
+            .mapToInt(Semester::getMarksCnt).sum();
         if (totalMarks == 0) {
             return false;
         }
+        int totalFiveMarks = semesters.stream().limit(currentSemester)
+            .mapToInt(Semester::getFiveMarksCnt).sum();
         return !(((double) totalFiveMarks / totalMarks) < 0.75);
     }
 
@@ -111,9 +111,9 @@ public class ElectronicBook {
         if (currentSemester == 1 || currentSemester == 2) {
             return false;
         }
-        return (semesters.get(currentSemester - 3).
-            checkFinalMarks(5, 5) && semesters.
-            get(currentSemester - 2).checkFinalMarks(5, 5));
+        return (semesters.get(currentSemester - 3)
+            .checkFinalMarks(5, 5) && semesters
+            .get(currentSemester - 2).checkFinalMarks(5, 5));
     }
 
     /**Just getter for semesters.
@@ -128,7 +128,7 @@ public class ElectronicBook {
     /**
      * Enum class for types of assignments.
      */
-    public enum typeControl {
+    public enum TypeControl {
         TASK,
         TEST,
         COLLOQUIUM,

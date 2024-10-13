@@ -14,7 +14,7 @@ class SemesterTest {
             3, 1, 3,
             3, 3,
             0, 0);
-        semesterTest.addGradeSemester(5, ElectronicBook.typeControl.TASK, "Math");
+        semesterTest.addGradeSemester(5, ElectronicBook.TypeControl.TASK, "Math");
         assertEquals(5, semesterTest.getMarksValue());
     }
 
@@ -24,7 +24,7 @@ class SemesterTest {
             3, 1, 3,
             3, 3,
             0, 0);
-        semesterTest.addGradeSemester(5, ElectronicBook.typeControl.TASK, "Math");
+        semesterTest.addGradeSemester(5, ElectronicBook.TypeControl.TASK, "Math");
         assertEquals(1, semesterTest.getMarksCnt());
     }
 
@@ -34,7 +34,7 @@ class SemesterTest {
             3, 1, 3,
             3, 3,
             0, 0);
-        semesterTest.addGradeSemester(5, ElectronicBook.typeControl.TASK, "Math");
+        semesterTest.addGradeSemester(5, ElectronicBook.TypeControl.TASK, "Math");
         assertEquals(1, semesterTest.getFiveMarksCnt());
     }
 
@@ -44,9 +44,9 @@ class SemesterTest {
             3, 1, 3,
             3, 3,
             0, 0);
-        semesterTest.addGradeSemester(3, ElectronicBook.typeControl.EXAM, "Math");
+        semesterTest.addGradeSemester(3, ElectronicBook.TypeControl.EXAM, "Math");
         assertFalse(semesterTest.checkFinalMarks(4, 4));
-        semesterTest.addGradeSemester(4, ElectronicBook.typeControl.DIFF_CREDIT, "Math");
+        semesterTest.addGradeSemester(4, ElectronicBook.TypeControl.DIFF_CREDIT, "Math");
         assertTrue(semesterTest.checkFinalMarks(3, 4));
     }
 
