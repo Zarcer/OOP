@@ -6,7 +6,7 @@ import java.util.List;
 public class ElectronicBook {
     private List<Semester> semesters;
 
-    ElectronicBook(){
+    ElectronicBook() {
         semesters = new ArrayList<>();
         semesters.add(new Semester(2, 3, 1, 3, 3, 3, 0, 0));
         semesters.add(new Semester(2, 3, 1, 3, 3, 2, 0, 0));
@@ -18,53 +18,52 @@ public class ElectronicBook {
         semesters.add(new Semester(0, 0, 0, 0, 0, 0, 0, 1));
     }
 
-    public boolean addGradeBook(int semesterNumber, int grade, typeControl type, String subject){
-        return semesters.get(semesterNumber-1).addGradeSemester(grade, type, subject);
+    public boolean addGradeBook(int semesterNumber, int grade, typeControl type, String subject) {
+        return semesters.get(semesterNumber - 1).addGradeSemester(grade, type, subject);
     }
 
-    public double averageGrade(){
-        int totalMarks=semesters.stream().mapToInt(Semester::getMarksCnt).sum();
-        int totalValueMarks=semesters.stream().mapToInt(Semester::getMarksValue).sum();
-        if(totalMarks==0){
+    public double averageGrade() {
+        int totalMarks = semesters.stream().mapToInt(Semester::getMarksCnt).sum();
+        int totalValueMarks = semesters.stream().mapToInt(Semester::getMarksValue).sum();
+        if (totalMarks == 0) {
             return 0;
         }
-        return (double)totalValueMarks/totalMarks;
+        return (double) totalValueMarks / totalMarks;
     }
 
-    public boolean checkPaidFree(int currentSemester){
-        if(currentSemester==1||currentSemester==2){
+    public boolean checkPaidFree(int currentSemester) {
+        if (currentSemester == 1 || currentSemester == 2) {
             return false;
         }
-        return (semesters.get(currentSemester-3).checkFinalMarks(4, 3)&&semesters.get(currentSemester-2).checkFinalMarks(4, 3));
+        return (semesters.get(currentSemester - 3).checkFinalMarks(4, 3) && semesters.get(currentSemester - 2).checkFinalMarks(4, 3));
     }
 
-    public boolean checkRedDiploma(int currentSemester){
-        int totalMarks = semesters.stream().mapToInt(Semester::getMarksCnt).sum();
-        int totalFiveMarks = semesters.stream().mapToInt(Semester::getFiveMarksCnt).sum();
-        for(int i = 0;i<currentSemester;i++){
-            if(!semesters.get(i).checkFinalMarks(4, 4)){
+    public boolean checkRedDiploma(int currentSemester) {
+        int totalMarks = semesters.stream().limit(currentSemester).mapToInt(Semester::getMarksCnt).sum();
+        int totalFiveMarks = semesters.stream().limit(currentSemester).mapToInt(Semester::getFiveMarksCnt).sum();
+        if (currentSemester == 8) {
+            if (semesters.get(7).getMarksValue() != 5) {
                 return false;
             }
-            if(i==7){
-                if(semesters.get(i).getMarksValue()!=5){
-                    return false;
-                }
-            }
         }
-        if(totalMarks==0){
+        if (!semesters.stream().limit(currentSemester).allMatch(s -> s.checkFinalMarks(4, 4))) {
             return false;
         }
-        if(((double)totalFiveMarks/totalMarks)<0.75){
+        if (totalMarks == 0) {
             return false;
         }
-        return true;
+        return !(((double) totalFiveMarks / totalMarks) < 0.75);
     }
 
-    public boolean increasedScholarship(int currentSemester){
-        if(currentSemester==1||currentSemester==2){
+    public boolean increasedScholarship(int currentSemester) {
+        if (currentSemester == 1 || currentSemester == 2) {
             return false;
         }
-        return (semesters.get(currentSemester-3).checkFinalMarks(5, 5)&&semesters.get(currentSemester-2).checkFinalMarks(5, 5));
+        return (semesters.get(currentSemester - 3).checkFinalMarks(5, 5) && semesters.get(currentSemester - 2).checkFinalMarks(5, 5));
+    }
+
+    public List<Semester> getSemesters() {
+        return semesters;
     }
 
     public enum typeControl {

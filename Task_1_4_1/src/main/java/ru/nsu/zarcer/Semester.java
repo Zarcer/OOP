@@ -2,7 +2,6 @@ package ru.nsu.zarcer;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Stream;
 
 public class Semester {
 
@@ -20,7 +19,7 @@ public class Semester {
         records.put(ElectronicBook.typeControl.VKR, new Grades(vkrRestriction));
     }
 
-    public boolean addGradeSemester(int grade, ElectronicBook.typeControl type, String subject){
+    public boolean addGradeSemester(int grade, ElectronicBook.typeControl type, String subject) {
         return records.get(type).addGrade(grade, subject);
     }
 
@@ -32,12 +31,12 @@ public class Semester {
         return records.values().stream().mapToInt(Grades::getFiveMarksCnt).sum();
     }
 
-    public int getMarksValue(){
+    public int getMarksValue() {
         return records.values().stream().mapToInt(Grades::getMarksValue).sum();
     }
 
-    public boolean checkFinalMarks(int exam, int diffCredit){
-        if(!records.get(ElectronicBook.typeControl.EXAM).getGrades().stream().allMatch(s->s>=exam)){
+    public boolean checkFinalMarks(int exam, int diffCredit) {
+        if (!records.get(ElectronicBook.typeControl.EXAM).getGrades().stream().allMatch(s -> s >= exam)) {
             return false;
         }
         return records.get(ElectronicBook.typeControl.DIFF_CREDIT).getGrades().stream().allMatch(s -> s >= exam);
