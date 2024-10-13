@@ -40,6 +40,29 @@ public class Mul extends Expression {
         return first.evaluate(dict) * second.evaluate(dict);
     }
 
+    @Override
+    public Expression cut() {
+        if(!first.checkVariable()&&!second.checkVariable()){
+            int result = this.eval("x = 666");
+            return new Number(result);
+        }
+        if(first.equals(new Number(0))||second.equals(new Number(0))){
+            return new Number(0);
+        }
+        if(first.equals(new Number(1))){
+            return second.cut();
+        }
+        if(second.equals(new Number(1))){
+            return first.cut();
+        }
+        return new Mul(first.cut(), second.cut());
+    }
+
+    @Override
+    public boolean checkVariable() {
+        return (first.checkVariable() || second.checkVariable());
+    }
+
     /**
      * Override for equals method.
      *
@@ -49,6 +72,9 @@ public class Mul extends Expression {
      */
     @Override
     public boolean equals(Object obj) {
+        if(!(obj instanceof Mul)){
+            return false;
+        }
         Mul mul = (Mul) obj;
         return first.equals(mul.first) && second.equals(mul.second);
     }

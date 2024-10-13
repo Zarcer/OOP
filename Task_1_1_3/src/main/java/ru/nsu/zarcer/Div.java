@@ -41,6 +41,20 @@ public class Div extends Expression {
         return first.evaluate(dict) / second.evaluate(dict);
     }
 
+    @Override
+    public Expression cut() {
+        if(!first.checkVariable()&&!second.checkVariable()){
+            int result = this.eval("x = 666");
+            return new Number(result);
+        }
+        return new Div(first.cut(), second.cut());
+    }
+
+    @Override
+    public boolean checkVariable() {
+        return (first.checkVariable() || second.checkVariable());
+    }
+
     /**
      * Override for equals method.
      *
@@ -50,6 +64,9 @@ public class Div extends Expression {
      */
     @Override
     public boolean equals(Object obj) {
+        if(!(obj instanceof Div)){
+            return false;
+        }
         Div div = (Div) obj;
         return first.equals(div.first) && second.equals(div.second);
     }

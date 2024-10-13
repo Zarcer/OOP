@@ -37,6 +37,16 @@ public class Number extends Expression {
         return value;
     }
 
+    @Override
+    public Expression cut() {
+        return new Number(value);
+    }
+
+    @Override
+    public boolean checkVariable() {
+        return false;
+    }
+
     /**
      * Override for equals method.
      *
@@ -46,6 +56,9 @@ public class Number extends Expression {
      */
     @Override
     public boolean equals(Object obj) {
+        if(!(obj instanceof Number)){
+            return false;
+        }
         Number numb = (Number) obj;
         return value == numb.value;
     }

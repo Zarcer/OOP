@@ -63,4 +63,8 @@ public abstract class Expression {
      * @return returns int value, result of expression calculation
      */
     public abstract int evaluate(HashMap<String, Integer> dict);
+
+    public abstract Expression cut();
+
+    public abstract boolean checkVariable();
 }

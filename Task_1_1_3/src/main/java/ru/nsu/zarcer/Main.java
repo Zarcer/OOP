@@ -5,50 +5,34 @@ package ru.nsu.zarcer;
  */
 public class Main {
     public static void main(String[] args) {
+        Expression e = new Add(new Number(3), new Mul(new Number(2), new Variable("x")));
+        Expression cuted = e.cut();
+        System.out.println(cuted.toString());
     }
 
-    /**
-     * Parse string to expression class.
-     *
-     * @param s string that will be parsed
-     *
-     * @return recursive call
-     */
     public static Expression parseIntoExpr(String s) {
-        int parentCnt = 0;
-        int operIndex = -1;
-        char oper = ' ';
-        if (s.startsWith("(") && s.endsWith(")")) {
-            s = s.substring(1, s.length() - 1);
-        }
-        for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            if (c == '(') {
-                parentCnt++;
-            } else if (c == ')') {
-                parentCnt--;
-            } else if (parentCnt == 0 && (c == '+' || c == '-' || c == '/' || c == '*')) {
-                operIndex = i;
-                oper = c;
-                break;
-            }
-        }
-        if (operIndex != -1) {
-            String firstString = s.substring(0, operIndex);
-            String secondString = s.substring(operIndex + 1);
-            Expression first = parseIntoExpr(firstString);
-            Expression second = parseIntoExpr(secondString);
-            switch (oper) {
-                case '+':
-                    return new Add(first, second);
-                case '-':
-                    return new Sub(first, second);
-                case '/':
-                    return new Div(first, second);
-                case '*':
-                    return new Mul(first, second);
-                default:
-                    return new Number(-1);
+        String[] opers = {"+-", "*/"};
+        for(String op : opers){
+            for (int i = s.length()-1; i>=0; i--) {
+                char c = s.charAt(i);
+                if (op.indexOf(c) != -1) {
+                    String firstString = s.substring(0, i);
+                    String secondString = s.substring(i+1);
+                    Expression first = parseIntoExpr(firstString);
+                    Expression second = parseIntoExpr(secondString);
+                    switch (c) {
+                        case '+':
+                            return new Add(first, second);
+                        case '-':
+                            return new Sub(first, second);
+                        case '/':
+                            return new Div(first, second);
+                        case '*':
+                            return new Mul(first, second);
+                        default:
+                            return new Number(-1);
+                    }
+                }
             }
         }
         if (Character.isDigit(s.charAt(0))) {

@@ -41,6 +41,16 @@ public class Variable extends Expression {
         return dict.get(name);
     }
 
+    @Override
+    public Expression cut() {
+        return new Variable(name);
+    }
+
+    @Override
+    public boolean checkVariable() {
+        return true;
+    }
+
     /**
      * Override for equals method.
      *
@@ -50,6 +60,9 @@ public class Variable extends Expression {
      */
     @Override
     public boolean equals(Object obj) {
+        if(!(obj instanceof Variable)){
+            return false;
+        }
         Variable vari = (Variable) obj;
         return Objects.equals(name, vari.name);
     }

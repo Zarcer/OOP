@@ -39,6 +39,20 @@ public class Add extends Expression {
         return first.evaluate(dict) + second.evaluate(dict);
     }
 
+    @Override
+    public Expression cut() {
+//        if(!first.checkVariable() && !second.checkVariable()){
+//            int result = this.eval("x = 666");
+//            return new Number(result);
+//        }
+        return new Add(this.first.cut(), this.second.cut());
+    }
+
+    @Override
+    public boolean checkVariable() {
+        return (first.checkVariable() || second.checkVariable());
+    }
+
     /**
      * Override for equals method.
      *
@@ -48,6 +62,9 @@ public class Add extends Expression {
      */
     @Override
     public boolean equals(Object obj) {
+        if(!(obj instanceof Add)){
+            return false;
+        }
         Add add = (Add) obj;
         return first.equals(add.first) && second.equals(add.second);
     }
@@ -71,4 +88,6 @@ public class Add extends Expression {
     public int hashCode() {
         return Objects.hash(first, second);
     }
+
+
 }

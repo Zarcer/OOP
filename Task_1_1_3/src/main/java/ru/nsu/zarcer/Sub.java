@@ -39,6 +39,23 @@ public class Sub extends Expression {
         return first.evaluate(dict) - second.evaluate(dict);
     }
 
+    @Override
+    public Expression cut() {
+        if(!first.checkVariable()&&!second.checkVariable()){
+            int result = this.eval("x = 666");
+            return new Number(result);
+        }
+        if(first.equals(second)){
+            return new Number(0);
+        }
+        return new Sub(first.cut(), second.cut());
+    }
+
+    @Override
+    public boolean checkVariable() {
+        return (first.checkVariable() || second.checkVariable());
+    }
+
     /**
      * Override for equals method.
      *
@@ -48,6 +65,9 @@ public class Sub extends Expression {
      */
     @Override
     public boolean equals(Object obj) {
+        if(!(obj instanceof Sub)){
+            return false;
+        }
         Sub sub = (Sub) obj;
         return first.equals(sub.first) && second.equals(sub.second);
     }
