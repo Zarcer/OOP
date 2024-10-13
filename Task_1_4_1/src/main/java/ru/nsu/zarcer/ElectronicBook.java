@@ -69,8 +69,8 @@ public class ElectronicBook {
         if (currentSemester == 1 || currentSemester == 2) {
             return false;
         }
-        return (semesters.get(currentSemester - 3).
-            checkFinalMarks(4, 3) && semesters
+        return (semesters.get(currentSemester - 3)
+            .checkFinalMarks(4, 3) && semesters
             .get(currentSemester - 2).checkFinalMarks(4, 3));
     }
 

@@ -99,7 +99,7 @@ public class Semester {
             .getGrades().stream().allMatch(s -> s >= exam)) {
             return false;
         }
-        return records.get(ElectronicBook.TypeControl.DIFF_CREDIT).
-            getGrades().stream().allMatch(s -> s >= exam);
+        return records.get(ElectronicBook.TypeControl.DIFF_CREDIT)
+            .getGrades().stream().allMatch(s -> s >= exam);
     }
 }
