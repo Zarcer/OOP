@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":6,"i1":10,"i2":6,"i3":10};
+var data = {"i0":10,"i1":6,"i2":6,"i3":6,"i4":10,"i5":6,"i6":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -179,27 +179,49 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
+<td class="colFirst"><code><a href="Expression.html" title="class in ru.nsu.zarcer">Expression</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#checkAndFinale(ru.nsu.zarcer.Expression,ru.nsu.zarcer.Expression)">checkAndFinale</a></span>&#8203;(<a href="Expression.html" title="class in ru.nsu.zarcer">Expression</a>&nbsp;first,
+              <a href="Expression.html" title="class in ru.nsu.zarcer">Expression</a>&nbsp;second)</code></th>
+<td class="colLast">
+<div class="block">Method for dealing with check variable.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>abstract boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#checkVariable()">checkVariable</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Recursively checks if expression has variables.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>abstract <a href="Expression.html" title="class in ru.nsu.zarcer">Expression</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#cut()">cut</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Recursively cuts expression.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>abstract <a href="Expression.html" title="class in ru.nsu.zarcer">Expression</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#derivate(java.lang.String)">derivate</a></span>&#8203;(java.lang.String&nbsp;variable)</code></th>
 <td class="colLast">
 <div class="block">Abstract method for recursive derivation.</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#eval(java.lang.String)">eval</a></span>&#8203;(java.lang.String&nbsp;s)</code></th>
 <td class="colLast">
 <div class="block">Outer function that calculates expression.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>abstract int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#evaluate(java.util.HashMap)">evaluate</a></span>&#8203;(java.util.HashMap&lt;java.lang.String,&#8203;java.lang.Integer&gt;&nbsp;dict)</code></th>
 <td class="colLast">
 <div class="block">Abstract method for recursive evaluation.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#print()">print</a></span>()</code></th>
 <td class="colLast">
@@ -285,7 +307,7 @@ extends java.lang.Object</pre>
 <div class="block">Abstract method for recursive derivation.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>variable</code> - variable name of what derivation will go</dd>
+<dd><code>variable</code> - variable name what derivation will go</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>returns derivated expression</dd>
 </dl>
@@ -294,7 +316,7 @@ extends java.lang.Object</pre>
 <a id="evaluate(java.util.HashMap)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>evaluate</h4>
 <pre class="methodSignature">public abstract&nbsp;int&nbsp;evaluate&#8203;(java.util.HashMap&lt;java.lang.String,&#8203;java.lang.Integer&gt;&nbsp;dict)</pre>
@@ -304,6 +326,52 @@ extends java.lang.Object</pre>
 <dd><code>dict</code> - dictionary with pairs where key it is variable name</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>returns int value, result of expression calculation</dd>
+</dl>
+</li>
+</ul>
+<a id="cut()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>cut</h4>
+<pre class="methodSignature">public abstract&nbsp;<a href="Expression.html" title="class in ru.nsu.zarcer">Expression</a>&nbsp;cut()</pre>
+<div class="block">Recursively cuts expression.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>returns new expression</dd>
+</dl>
+</li>
+</ul>
+<a id="checkVariable()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>checkVariable</h4>
+<pre class="methodSignature">public abstract&nbsp;boolean&nbsp;checkVariable()</pre>
+<div class="block">Recursively checks if expression has variables.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>true if it has, false otherwise</dd>
+</dl>
+</li>
+</ul>
+<a id="checkAndFinale(ru.nsu.zarcer.Expression,ru.nsu.zarcer.Expression)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>checkAndFinale</h4>
+<pre class="methodSignature">public&nbsp;<a href="Expression.html" title="class in ru.nsu.zarcer">Expression</a>&nbsp;checkAndFinale&#8203;(<a href="Expression.html" title="class in ru.nsu.zarcer">Expression</a>&nbsp;first,
+                                 <a href="Expression.html" title="class in ru.nsu.zarcer">Expression</a>&nbsp;second)</pre>
+<div class="block">Method for dealing with check variable.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>first</code> - expression</dd>
+<dd><code>second</code> - expression</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>new expression</dd>
 </dl>
 </li>
 </ul>
