@@ -13,7 +13,7 @@ class ExpressionTest {
     }
 
     @Test
-    void checkAndFinaleTest(){
+    void checkAndFinaleTest() {
         Expression first = new Number(3);
         Expression second = new Number(4);
         Mul test = new Mul(first, second);

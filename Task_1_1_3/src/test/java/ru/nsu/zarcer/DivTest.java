@@ -1,8 +1,10 @@
 package ru.nsu.zarcer;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 class DivTest {
     @Test
@@ -11,7 +13,7 @@ class DivTest {
         Div zero = (Div) test.derivate("x");
         Div afterDer = new Div(new Sub(new Mul(new Number(0), new Number(2)),
                 new Mul(new Number(6),
-                new Number(0))), new Mul(new Number(2), new Number(2)));
+                        new Number(0))), new Mul(new Number(2), new Number(2)));
         assertTrue(zero.equals(afterDer));
     }
 
@@ -30,14 +32,14 @@ class DivTest {
     }
 
     @Test
-    void  cutTest(){
+    void cutTest() {
         Expression e = new Div(new Number(6), new Number(2));
         Expression cuted = e.cut();
         assertEquals(cuted, new Number(3));
     }
 
     @Test
-    void checkVariableTest(){
+    void checkVariableTest() {
         Expression e = new Div(new Number(6), new Number(2));
         assertFalse(e.checkVariable());
     }

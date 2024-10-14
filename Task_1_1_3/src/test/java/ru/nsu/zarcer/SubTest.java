@@ -1,8 +1,10 @@
 package ru.nsu.zarcer;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 class SubTest {
     @Test
@@ -28,7 +30,7 @@ class SubTest {
     }
 
     @Test
-    void  cutTest(){
+    void cutTest() {
         Expression e = new Sub(new Number(6), new Number(3));
         Expression cuted = e.cut();
         assertEquals(cuted, new Number(3));
@@ -37,7 +39,7 @@ class SubTest {
     }
 
     @Test
-    void checkVariableTest(){
+    void checkVariableTest() {
         Expression e = new Sub(new Number(6), new Number(3));
         assertFalse(e.checkVariable());
     }
