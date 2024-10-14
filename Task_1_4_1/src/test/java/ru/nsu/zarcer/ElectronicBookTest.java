@@ -50,6 +50,8 @@ class ElectronicBookTest {
         ElectronicBook electronicBook = new ElectronicBook();
         ElectronicBook test = new ElectronicBook();
         ElectronicBook testSecond = new ElectronicBook();
+        electronicBook.addGradeBook(1, 5, ElectronicBook.TypeControl.EXAM, "History");
+        test.addGradeBook(1, 5, ElectronicBook.TypeControl.EXAM, "History");
         testSecond.addGradeBook(1, 3, ElectronicBook.TypeControl.TASK, "Math");
         testSecond.addGradeBook(1, 3, ElectronicBook.TypeControl.TASK, "Math");
         testSecond.addGradeBook(1, 3, ElectronicBook.TypeControl.TEST, "Math");
@@ -57,7 +59,6 @@ class ElectronicBookTest {
         testSecond.addGradeBook(1, 5, ElectronicBook.TypeControl.TEST, "Math");
         assertFalse(testSecond.checkRedDiploma(2));
         assertFalse(electronicBook.checkRedDiploma(1));
-        test.addGradeBook(1, 5, ElectronicBook.TypeControl.EXAM, "History");
         test.addGradeBook(1, 5, ElectronicBook.TypeControl.EXAM, "Imperative");
         test.addGradeBook(1, 5, ElectronicBook.TypeControl.EXAM, "Math");
         test.addGradeBook(1, 4, ElectronicBook.TypeControl.DIFF_CREDIT, "Haskell");
@@ -71,8 +72,6 @@ class ElectronicBookTest {
         test.addGradeBook(2, 5, ElectronicBook.TypeControl.DIFF_CREDIT, "tikva");
         test.addGradeBook(3, 3, ElectronicBook.TypeControl.EXAM, "gg");
         assertFalse(test.checkRedDiploma(4));
-
-        electronicBook.addGradeBook(1, 5, ElectronicBook.TypeControl.EXAM, "History");
         electronicBook.addGradeBook(1, 5, ElectronicBook.TypeControl.EXAM, "Imperative");
         electronicBook.addGradeBook(1, 5, ElectronicBook.TypeControl.EXAM, "Math");
         electronicBook.addGradeBook(1, 4, ElectronicBook.TypeControl.DIFF_CREDIT, "Haskell");
