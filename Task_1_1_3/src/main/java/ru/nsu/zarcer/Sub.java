@@ -19,7 +19,6 @@ public class Sub extends Expression {
      * Just derivation.
      *
      * @param variable if there is no correct variable, all variables will just go to zero
-     *
      * @return recursive call
      */
     @Override
@@ -31,7 +30,6 @@ public class Sub extends Expression {
      * Calculation of expression.
      *
      * @param dict dictionary with pairs variable name value
-     *
      * @return recursive call
      */
     @Override
@@ -39,27 +37,27 @@ public class Sub extends Expression {
         return first.evaluate(dict) - second.evaluate(dict);
     }
 
-    /**Recursively cuts expression.
+    /**
+     * Recursively cuts expression.
      *
      * @return returns new expression
-     *
      */
     @Override
     public Expression cut() {
         Expression temp;
-        if((temp=checkAndFinale(first, second))==null){
+        if ((temp = checkAndFinale(first, second)) == null) {
             return new Sub(this.first.cut(), this.second.cut());
         }
-        if(first.equals(second)){
+        if (first.equals(second)) {
             return new Number(0);
         }
         return temp;
     }
 
-    /**Recursively checks if expression has variables.
+    /**
+     * Recursively checks if expression has variables.
      *
      * @return true if it has, false otherwise
-     *
      */
     @Override
     public boolean checkVariable() {
@@ -70,12 +68,11 @@ public class Sub extends Expression {
      * Override for equals method.
      *
      * @param obj with what compare
-     *
      * @return recursive call
      */
     @Override
     public boolean equals(Object obj) {
-        if(!(obj instanceof Sub)){
+        if (!(obj instanceof Sub)) {
             return false;
         }
         Sub sub = (Sub) obj;

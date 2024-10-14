@@ -17,7 +17,6 @@ public class Number extends Expression {
      * Just derivation.
      *
      * @param variable if there is no correct variable, all variables will just go to zero
-     *
      * @return returns number with 0 value
      */
     @Override
@@ -29,7 +28,6 @@ public class Number extends Expression {
      * Calculation of expression.
      *
      * @param dict dictionary with pairs variable name value
-     *
      * @return returns value of number
      */
     @Override
@@ -37,20 +35,20 @@ public class Number extends Expression {
         return value;
     }
 
-    /**Recursively cuts expression.
+    /**
+     * Recursively cuts expression.
      *
      * @return returns new expression
-     *
      */
     @Override
     public Expression cut() {
         return new Number(value);
     }
 
-    /**Recursively checks if expression has variables.
+    /**
+     * Recursively checks if expression has variables.
      *
      * @return true if it has, false otherwise
-     *
      */
     @Override
     public boolean checkVariable() {
@@ -61,12 +59,11 @@ public class Number extends Expression {
      * Override for equals method.
      *
      * @param obj with what compare
-     *
      * @return compare just by values
      */
     @Override
     public boolean equals(Object obj) {
-        if(!(obj instanceof Number)){
+        if (!(obj instanceof Number)) {
             return false;
         }
         Number numb = (Number) obj;

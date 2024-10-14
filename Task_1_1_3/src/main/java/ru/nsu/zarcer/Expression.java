@@ -12,7 +12,6 @@ public abstract class Expression {
      * Outer function that calculates expression.
      *
      * @param s string that need to be calculated
-     *
      * @return call that calculate expression
      */
     public int eval(String s) {
@@ -23,11 +22,10 @@ public abstract class Expression {
      * Transform String to hashmap, giving each value its name.
      *
      * @param variables string that be transformed to map
-     *
      * @return returns hashmap dictionary
      */
     private HashMap<String, Integer> stringToMap(String variables) {
-        if(Objects.equals(variables, "")){
+        if (Objects.equals(variables, "")) {
             return new HashMap<>();
         }
         String[] words = variables.split(";");
@@ -68,31 +66,29 @@ public abstract class Expression {
      */
     public abstract int evaluate(HashMap<String, Integer> dict);
 
-    /**Recursively cuts expression.
+    /**
+     * Recursively cuts expression.
      *
      * @return returns new expression
-     *
      */
     public abstract Expression cut();
 
-    /**Recursively checks if expression has variables.
+    /**
+     * Recursively checks if expression has variables.
      *
      * @return true if it has, false otherwise
-     *
      */
     public abstract boolean checkVariable();
 
-    /**Method for dealing with check variable.
+    /**
+     * Method for dealing with check variable.
      *
-     * @param first expression
-     *
+     * @param first  expression
      * @param second expression
-     *
      * @return new expression
-     *
      */
-    public Expression checkAndFinale(Expression first, Expression second){
-        if(!first.checkVariable() && !second.checkVariable()){
+    public Expression checkAndFinale(Expression first, Expression second) {
+        if (!first.checkVariable() && !second.checkVariable()) {
             int result = this.eval("");
             return new Number(result);
         }

@@ -7,21 +7,20 @@ public class Main {
     public static void main(String[] args) {
     }
 
-    /**Parse expression from string to expression without parents.
+    /**
+     * Parse expression from string to expression without parents.
      *
      * @param s string that needed to be parsed
-     *
      * @return an expression
-     *
      */
     public static Expression parseIntoExpr(String s) {
         String[] opers = {"+-", "*/"};
-        for(String op : opers){
-            for (int i = s.length()-1; i>=0; i--) {
+        for (String op : opers) {
+            for (int i = s.length() - 1; i >= 0; i--) {
                 char c = s.charAt(i);
                 if (op.indexOf(c) != -1) {
                     String firstString = s.substring(0, i);
-                    String secondString = s.substring(i+1);
+                    String secondString = s.substring(i + 1);
                     Expression first = parseIntoExpr(firstString);
                     Expression second = parseIntoExpr(secondString);
                     switch (c) {
