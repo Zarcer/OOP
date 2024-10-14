@@ -1,9 +1,8 @@
 package ru.nsu.zarcer;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class DivTest {
     @Test
@@ -28,5 +27,18 @@ class DivTest {
         Expression test = new Div(new Number(6), new Number(2));
         String stringTest = test.toString();
         assertEquals("(6/2)", stringTest);
+    }
+
+    @Test
+    void  cutTest(){
+        Expression e = new Div(new Number(6), new Number(2));
+        Expression cuted = e.cut();
+        assertEquals(cuted, new Number(3));
+    }
+
+    @Test
+    void checkVariableTest(){
+        Expression e = new Div(new Number(6), new Number(2));
+        assertFalse(e.checkVariable());
     }
 }

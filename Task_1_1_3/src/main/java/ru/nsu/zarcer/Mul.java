@@ -40,11 +40,16 @@ public class Mul extends Expression {
         return first.evaluate(dict) * second.evaluate(dict);
     }
 
+    /**Recursively cuts expression.
+     *
+     * @return returns new expression
+     *
+     */
     @Override
     public Expression cut() {
-        if(!first.checkVariable()&&!second.checkVariable()){
-            int result = this.eval("x = 666");
-            return new Number(result);
+        Expression temp;
+        if((temp=checkAndFinale(first, second))==null){
+            return new Mul(this.first.cut(), this.second.cut());
         }
         if(first.equals(new Number(0))||second.equals(new Number(0))){
             return new Number(0);
@@ -55,9 +60,14 @@ public class Mul extends Expression {
         if(second.equals(new Number(1))){
             return first.cut();
         }
-        return new Mul(first.cut(), second.cut());
+        return temp;
     }
 
+    /**Recursively checks if expression has variables.
+     *
+     * @return true if it has, false otherwise
+     *
+     */
     @Override
     public boolean checkVariable() {
         return (first.checkVariable() || second.checkVariable());

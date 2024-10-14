@@ -1,9 +1,8 @@
 package ru.nsu.zarcer;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class VariableTest {
     @Test
@@ -30,5 +29,18 @@ class VariableTest {
         Expression test = new Variable("x");
         String stringTest = test.toString();
         assertEquals("x", stringTest);
+    }
+
+    @Test
+    void  cutTest(){
+        Expression e = new Variable("x");
+        Expression cuted = e.cut();
+        assertEquals(cuted, new Variable("x"));
+    }
+
+    @Test
+    void checkVariableTest(){
+        Expression e = new Variable("x");
+        assertTrue(e.checkVariable());
     }
 }

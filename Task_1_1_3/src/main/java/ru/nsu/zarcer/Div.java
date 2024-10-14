@@ -41,15 +41,25 @@ public class Div extends Expression {
         return first.evaluate(dict) / second.evaluate(dict);
     }
 
+    /**Recursively cuts expression.
+     *
+     * @return returns new expression
+     *
+     */
     @Override
     public Expression cut() {
-        if(!first.checkVariable()&&!second.checkVariable()){
-            int result = this.eval("x = 666");
-            return new Number(result);
+        Expression temp;
+        if((temp=checkAndFinale(first, second))==null){
+            return new Div(this.first.cut(), this.second.cut());
         }
-        return new Div(first.cut(), second.cut());
+        return temp;
     }
 
+    /**Recursively checks if expression has variables.
+     *
+     * @return true if has, false otherwise
+     *
+     */
     @Override
     public boolean checkVariable() {
         return (first.checkVariable() || second.checkVariable());

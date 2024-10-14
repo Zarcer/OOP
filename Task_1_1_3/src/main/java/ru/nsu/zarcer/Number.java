@@ -37,11 +37,21 @@ public class Number extends Expression {
         return value;
     }
 
+    /**Recursively cuts expression.
+     *
+     * @return returns new expression
+     *
+     */
     @Override
     public Expression cut() {
         return new Number(value);
     }
 
+    /**Recursively checks if expression has variables.
+     *
+     * @return true if it has, false otherwise
+     *
+     */
     @Override
     public boolean checkVariable() {
         return false;

@@ -5,11 +5,15 @@ package ru.nsu.zarcer;
  */
 public class Main {
     public static void main(String[] args) {
-        Expression e = new Add(new Number(3), new Mul(new Number(2), new Variable("x")));
-        Expression cuted = e.cut();
-        System.out.println(cuted.toString());
     }
 
+    /**Parse expression from string to expression without parents.
+     *
+     * @param s string that needed to be parsed
+     *
+     * @return an expression
+     *
+     */
     public static Expression parseIntoExpr(String s) {
         String[] opers = {"+-", "*/"};
         for(String op : opers){

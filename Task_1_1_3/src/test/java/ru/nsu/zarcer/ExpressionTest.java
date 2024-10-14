@@ -12,4 +12,12 @@ class ExpressionTest {
         assertEquals(12, result);
     }
 
+    @Test
+    void checkAndFinaleTest(){
+        Expression first = new Number(3);
+        Expression second = new Number(4);
+        Mul test = new Mul(first, second);
+        assertEquals(new Number(12), test.checkAndFinale(first, second));
+    }
+
 }

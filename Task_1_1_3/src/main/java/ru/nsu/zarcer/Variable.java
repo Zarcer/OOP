@@ -41,11 +41,21 @@ public class Variable extends Expression {
         return dict.get(name);
     }
 
+    /**Recursively cuts expression.
+     *
+     * @return returns new expression
+     *
+     */
     @Override
     public Expression cut() {
         return new Variable(name);
     }
 
+    /**Recursively checks if expression has variables.
+     *
+     * @return true if it has, false otherwise
+     *
+     */
     @Override
     public boolean checkVariable() {
         return true;
