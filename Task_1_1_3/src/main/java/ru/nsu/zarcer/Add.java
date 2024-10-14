@@ -19,7 +19,6 @@ public class Add extends Expression {
      * Just derivation.
      *
      * @param variable if there is no correct variable, all variables will just go to zero
-     *
      * @return recursive call
      */
     @Override
@@ -31,7 +30,6 @@ public class Add extends Expression {
      * Calculation of expression.
      *
      * @param dict dictionary with pairs variable name and value
-     *
      * @return recursive call
      */
     @Override
@@ -40,14 +38,40 @@ public class Add extends Expression {
     }
 
     /**
+     * Recursively cuts expression.
+     *
+     * @return returns new expression
+     */
+    @Override
+    public Expression cut() {
+        Expression temp;
+        if ((temp = checkAndFinale(first, second)) == null) {
+            return new Add(this.first.cut(), this.second.cut());
+        }
+        return temp;
+    }
+
+    /**
+     * Recursively checks if expression has variables.
+     *
+     * @return true if has, false otherwise
+     */
+    @Override
+    public boolean checkVariable() {
+        return (first.checkVariable() || second.checkVariable());
+    }
+
+    /**
      * Override for equals method.
      *
      * @param obj with what compare
-     *
      * @return recursive call
      */
     @Override
     public boolean equals(Object obj) {
+        if (!(obj instanceof Add)) {
+            return false;
+        }
         Add add = (Add) obj;
         return first.equals(add.first) && second.equals(add.second);
     }
@@ -71,4 +95,6 @@ public class Add extends Expression {
     public int hashCode() {
         return Objects.hash(first, second);
     }
+
+
 }

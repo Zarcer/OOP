@@ -17,7 +17,6 @@ public class Variable extends Expression {
      * Just derivation.
      *
      * @param variable if there is no correct variable, all variables will just go to zero
-     *
      * @return returns number depending on variable name
      */
     @Override
@@ -33,7 +32,6 @@ public class Variable extends Expression {
      * Calculation of expression.
      *
      * @param dict dictionary with pairs variable name value
-     *
      * @return returns variable value, using as a key name of variable
      */
     @Override
@@ -42,14 +40,36 @@ public class Variable extends Expression {
     }
 
     /**
+     * Recursively cuts expression.
+     *
+     * @return returns new expression
+     */
+    @Override
+    public Expression cut() {
+        return new Variable(name);
+    }
+
+    /**
+     * Recursively checks if expression has variables.
+     *
+     * @return true if it has, false otherwise
+     */
+    @Override
+    public boolean checkVariable() {
+        return true;
+    }
+
+    /**
      * Override for equals method.
      *
      * @param obj with what compare
-     *
      * @return return boolean value
      */
     @Override
     public boolean equals(Object obj) {
+        if (!(obj instanceof Variable)) {
+            return false;
+        }
         Variable vari = (Variable) obj;
         return Objects.equals(name, vari.name);
     }

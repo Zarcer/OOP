@@ -1,6 +1,7 @@
 package ru.nsu.zarcer;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 /**
  * Baseclass for other classes.
@@ -11,7 +12,6 @@ public abstract class Expression {
      * Outer function that calculates expression.
      *
      * @param s string that need to be calculated
-     *
      * @return call that calculate expression
      */
     public int eval(String s) {
@@ -22,10 +22,12 @@ public abstract class Expression {
      * Transform String to hashmap, giving each value its name.
      *
      * @param variables string that be transformed to map
-     *
      * @return returns hashmap dictionary
      */
     private HashMap<String, Integer> stringToMap(String variables) {
+        if (Objects.equals(variables, "")) {
+            return new HashMap<>();
+        }
         String[] words = variables.split(";");
         HashMap<String, Integer> dict = new HashMap<String, Integer>();
         for (int i = 0; i < words.length; i++) {
@@ -51,7 +53,7 @@ public abstract class Expression {
     /**
      * Abstract method for recursive derivation.
      *
-     * @param variable variable name of what derivation will go
+     * @param variable variable name what derivation will go
      * @return returns derivated expression
      */
     public abstract Expression derivate(String variable);
@@ -63,4 +65,33 @@ public abstract class Expression {
      * @return returns int value, result of expression calculation
      */
     public abstract int evaluate(HashMap<String, Integer> dict);
+
+    /**
+     * Recursively cuts expression.
+     *
+     * @return returns new expression
+     */
+    public abstract Expression cut();
+
+    /**
+     * Recursively checks if expression has variables.
+     *
+     * @return true if it has, false otherwise
+     */
+    public abstract boolean checkVariable();
+
+    /**
+     * Method for dealing with check variable.
+     *
+     * @param first  expression
+     * @param second expression
+     * @return new expression
+     */
+    public Expression checkAndFinale(Expression first, Expression second) {
+        if (!first.checkVariable() && !second.checkVariable()) {
+            int result = this.eval("");
+            return new Number(result);
+        }
+        return null;
+    }
 }

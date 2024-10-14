@@ -1,6 +1,7 @@
 package ru.nsu.zarcer;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -28,5 +29,22 @@ class MulTest {
         Expression test = new Mul(new Number(1), new Number(2));
         String stringTest = test.toString();
         assertEquals("(1*2)", stringTest);
+    }
+
+    @Test
+    void cutTest() {
+        Expression e = new Mul(new Number(6), new Number(2));
+        Expression cuted = e.cut();
+        assertEquals(cuted, new Number(12));
+        Expression testFirst = new Add(new Variable("x"), new Mul(new Number(0), new Number(5)));
+        assertEquals(new Add(new Variable("x"), new Number(0)), testFirst.cut());
+        Expression testSecond = new Add(new Variable("x"), new Mul(new Number(1), new Number(5)));
+        assertEquals(new Add(new Variable("x"), new Number(5)), testSecond.cut());
+    }
+
+    @Test
+    void checkVariableTest() {
+        Expression e = new Mul(new Number(6), new Number(2));
+        assertFalse(e.checkVariable());
     }
 }
