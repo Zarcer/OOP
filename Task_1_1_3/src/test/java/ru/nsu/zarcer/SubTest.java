@@ -32,6 +32,8 @@ class SubTest {
         Expression e = new Sub(new Number(6), new Number(3));
         Expression cuted = e.cut();
         assertEquals(cuted, new Number(3));
+        Expression test = new Add(new Variable("x"), new Sub(new Number(5), new Number(5)));
+        assertEquals(new Add(new Variable("x"), new Number(0)), test.cut());
     }
 
     @Test

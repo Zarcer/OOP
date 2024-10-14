@@ -34,6 +34,10 @@ class MulTest {
         Expression e = new Mul(new Number(6), new Number(2));
         Expression cuted = e.cut();
         assertEquals(cuted, new Number(12));
+        Expression testFirst = new Add(new Variable("x"), new Mul(new Number(0), new Number(5)));
+        assertEquals(new Add(new Variable("x"), new Number(0)), testFirst.cut());
+        Expression testSecond = new Add(new Variable("x"), new Mul(new Number(1), new Number(5)));
+        assertEquals(new Add(new Variable("x"), new Number(5)), testSecond.cut());
     }
 
     @Test
