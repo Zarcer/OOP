@@ -55,7 +55,7 @@ public abstract class Expression {
     /**
      * Abstract method for recursive derivation.
      *
-     * @param variable variable name of what derivation will go
+     * @param variable variable name what derivation will go
      * @return returns derivated expression
      */
     public abstract Expression derivate(String variable);
