@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.zarcer","l":"Main"}];updateSearchResults();
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.zarcer","l":"NotPrimeFinder"},{"p":"ru.nsu.zarcer","l":"PrimeCore"},{"p":"ru.nsu.zarcer","l":"PrimeOperations"}];updateSearchResults();
