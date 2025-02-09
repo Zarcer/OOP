@@ -2,11 +2,11 @@ package ru.nsu.zarcer;
 import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.stream.Collectors;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class NotPrimeFinder {
     public static boolean consistent(int[] numbers) {
-
         for(int number : numbers){
             if(PrimeOperations.isNotPrime(number)){
                 return true;
@@ -17,9 +17,10 @@ public class NotPrimeFinder {
 
     public static boolean consistentThreads(int[] numbersArray, int neededCores) throws InterruptedException {
         ArrayDeque<PrimeCore> stack = new ArrayDeque<>();
-        ArrayDeque<Integer> numbers = Arrays.stream(numbersArray).boxed().collect(Collectors.toCollection(ArrayDeque::new));
+        AtomicInteger index = new AtomicInteger(0);
+        int size = numbersArray.length;
         while(stack.size()<neededCores){
-            stack.push(new PrimeCore(numbers));
+            stack.push(new PrimeCore(numbersArray, index, size));
             stack.getFirst().start();
         }
         for(PrimeCore thread : stack){

@@ -1,22 +1,25 @@
 package ru.nsu.zarcer;
 
-import java.util.ArrayDeque;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class PrimeCore extends Thread {
-    private ArrayDeque<Integer> numbers;
+    private int[] numbers;
     private boolean notPrimeFound=false;
-    PrimeCore(ArrayDeque<Integer> numbers){
+    private AtomicInteger atomicIndex;
+    private int size;
+    PrimeCore(int[] numbers, AtomicInteger index, int arraySize){
         this.numbers=numbers;
+        this.atomicIndex=index;
+        this.size=arraySize;
     }
     public void run(){
         while(true){
             int number;
-            synchronized (numbers) {
-                if(numbers.isEmpty()){
-                    return;
-                }
-                number = numbers.pop();
+            int currIndex = atomicIndex.getAndIncrement();
+            if(currIndex>=size){
+                return;
             }
+            number=numbers[currIndex];
             if(PrimeOperations.isNotPrime(number)){
                 notPrimeFound=true;
             }
