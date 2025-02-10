@@ -2,7 +2,7 @@ package ru.nsu.zarcer;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class PrimeCore implements Runnable {
+public class PrimeCore extends Thread {
     private int[] numbers;
     private boolean notPrimeFound=false;
     private AtomicInteger atomicIndex;
@@ -12,6 +12,8 @@ public class PrimeCore implements Runnable {
         this.atomicIndex=index;
         this.size=arraySize;
     }
+
+    @Override
     public void run(){
         while(true){
             int number;
