@@ -8,6 +8,7 @@ public class NotPrimeFinderThreads implements PrimeFinderInterface {
     NotPrimeFinderThreads(int cores){
         this.numberWorkingCores = cores;
     }
+
     @Override
     public boolean checkNonPrime(int[] numbersArray) {
         ArrayDeque<Thread> stack = new ArrayDeque<>();
@@ -27,13 +28,16 @@ public class NotPrimeFinderThreads implements PrimeFinderInterface {
                 System.out.println(e.getMessage());
             }
             if(cores.pop().notPrimeFoundGetter()){
-                for(Thread thread : stack){
-                    thread.interrupt();
+                try{
+                    for(Thread thread : stack){
+                        thread.join();
+                    }
+                } catch (InterruptedException e) {
+                    System.out.println(e.getMessage());
                 }
                 return true;
             }
         }
         return false;
     }
-
 }
