@@ -4,25 +4,32 @@ import java.util.ArrayDeque;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class NotPrimeFinderThreads implements PrimeFinderInterface {
-    private int neededCores;
+    private int numberWorkingCores;
     NotPrimeFinderThreads(int cores){
-        this.neededCores = cores;
+        this.numberWorkingCores = cores;
     }
+    @Override
     public boolean checkNonPrime(int[] numbersArray) {
-        ArrayDeque<PrimeCore> stack = new ArrayDeque<>();
+        ArrayDeque<Thread> stack = new ArrayDeque<>();
+        ArrayDeque<PrimeCore> cores = new ArrayDeque<>();
         AtomicInteger index = new AtomicInteger(0);
         int size = numbersArray.length;
-        while(stack.size()<neededCores){
-            stack.push(new PrimeCore(numbersArray, index, size));
+        while(stack.size()<numberWorkingCores){
+            cores.push(new PrimeCore(numbersArray, index, size));
+            stack.push(new Thread(cores.getFirst()));
             stack.getFirst().start();
         }
-        for(PrimeCore thread : stack){
+        size = stack.size();
+        for(int i = 0;i<size;i++){
             try{
-                thread.join();
+                stack.pop().join();
             } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+                System.out.println(e.getMessage());
             }
-            if(thread.notPrimeFoundGetter()){
+            if(cores.pop().notPrimeFoundGetter()){
+                for(Thread thread : stack){
+                    thread.interrupt();
+                }
                 return true;
             }
         }

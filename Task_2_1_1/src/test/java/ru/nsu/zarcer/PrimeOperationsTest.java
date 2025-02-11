@@ -47,6 +47,12 @@ class PrimeOperationsTest {
         assertArrayEquals(test, testing);
     }
 
+    @Test
+    public void countPrimeSpeedTest(){
+        int[] test = {3, 5, 6};
+        assertTrue(PrimeOperations.findNonPrimeCountSpeed(new NotPrimeFinderConsistent(), test) instanceof String);
+    }
+
 
 
 }

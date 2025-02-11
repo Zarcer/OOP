@@ -28,4 +28,9 @@ public class PrimeOperations {
         }
         return list.stream().mapToInt(Integer::intValue).toArray();
     }
+
+    public static String findNonPrimeCountSpeed(PrimeFinderInterface operation, int[] workingArray){
+        long start = System.currentTimeMillis();
+        return (operation.checkNonPrime(workingArray))+" "+(System.currentTimeMillis() - start);
+    }
 }

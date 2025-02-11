@@ -12,11 +12,12 @@ class PrimeCoreTest {
         int[] testFirst = {2, 3, 5};;
         AtomicInteger first = new AtomicInteger(0);
         PrimeCore firstCore = new PrimeCore(testFirst, first, testFirst.length);
-        firstCore.start();
+        Thread firstThread = new Thread(firstCore);
+        firstThread.start();
         try{
-            firstCore.join();
+            firstThread.join();
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
         assertFalse(firstCore.notPrimeFoundGetter());
     }
@@ -26,11 +27,12 @@ class PrimeCoreTest {
         int[] testSecond = {2, 3, 6};
         AtomicInteger second = new AtomicInteger(0);
         PrimeCore secondCore = new PrimeCore(testSecond, second, testSecond.length);
-        secondCore.start();
+        Thread secondThread = new Thread(secondCore);
+        secondThread.start();
         try{
-            secondCore.join();
+            secondThread.join();
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
         assertTrue(secondCore.notPrimeFoundGetter());
     }
@@ -40,11 +42,12 @@ class PrimeCoreTest {
         int[] testSecond = {6, 6, 6, 6, 6, 6};
         AtomicInteger second = new AtomicInteger(0);
         PrimeCore secondCore = new PrimeCore(testSecond, second, testSecond.length);
-        secondCore.start();
+        Thread secondThread = new Thread(secondCore);
+        secondThread.start();
         try{
-            secondCore.join();
+            secondThread.join();
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
         assertTrue(secondCore.notPrimeFoundGetter());
     }
@@ -54,11 +57,12 @@ class PrimeCoreTest {
         int[] testSecond = {3, 3, 3, 3, 3, 3};
         AtomicInteger second = new AtomicInteger(0);
         PrimeCore secondCore = new PrimeCore(testSecond, second, testSecond.length);
-        secondCore.start();
+        Thread secondThread = new Thread(secondCore);
+        secondThread.start();
         try{
-            secondCore.join();
+            secondThread.join();
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
         assertFalse(secondCore.notPrimeFoundGetter());
     }
@@ -68,11 +72,12 @@ class PrimeCoreTest {
         int[] testSecond = {0, 0, 0, 0, 0, 0};
         AtomicInteger second = new AtomicInteger(0);
         PrimeCore secondCore = new PrimeCore(testSecond, second, testSecond.length);
-        secondCore.start();
+        Thread secondThread = new Thread(secondCore);
+        secondThread.start();
         try{
-            secondCore.join();
+            secondThread.join();
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
         assertTrue(secondCore.notPrimeFoundGetter());
     }
