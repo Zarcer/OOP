@@ -76,6 +76,7 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">PrimeOperations</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Class with all operating which interacting with prime numbers.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -106,13 +107,19 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#findNonPrimeCountSpeed(ru.nsu.zarcer.PrimeFinderInterface,int%5B%5D)" class="member-name-link">findNonPrimeCountSpeed</a><wbr>(ru.nsu.zarcer.PrimeFinderInterface&nbsp;operation,
  int[]&nbsp;workingArray)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Method for calculating speed.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#isNotPrime(int)" class="member-name-link">isNotPrime</a><wbr>(int&nbsp;number)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Method for checking if number is prime or not.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static int[]</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#primeGenerator(int)" class="member-name-link">primeGenerator</a><wbr>(int&nbsp;N)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Method for generating prime numbers.</div>
+</div>
 </div>
 </div>
 </div>
@@ -148,12 +155,26 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="isNotPrime(int)">
 <h3>isNotPrime</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isNotPrime</span><wbr><span class="parameters">(int&nbsp;number)</span></div>
+<div class="block">Method for checking if number is prime or not.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>number</code> - number to be checked</dd>
+<dt>Returns:</dt>
+<dd>true if non-prime, false otherwise</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="primeGenerator(int)">
 <h3>primeGenerator</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">int[]</span>&nbsp;<span class="element-name">primeGenerator</span><wbr><span class="parameters">(int&nbsp;N)</span></div>
+<div class="block">Method for generating prime numbers.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>N</code> - how many prime numbers should be generated</dd>
+<dt>Returns:</dt>
+<dd>int array of prime numbers</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -161,6 +182,14 @@ loadScripts(document, 'script');</script>
 <h3>findNonPrimeCountSpeed</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">findNonPrimeCountSpeed</span><wbr><span class="parameters">(ru.nsu.zarcer.PrimeFinderInterface&nbsp;operation,
  int[]&nbsp;workingArray)</span></div>
+<div class="block">Method for calculating speed.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>operation</code> - what class use to calculate non-prime numbers</dd>
+<dd><code>workingArray</code> - array of int itself</dd>
+<dt>Returns:</dt>
+<dd>first word if result of checkNonPrime, second is calculation time</dd>
+</dl>
 </section>
 </li>
 </ul>
