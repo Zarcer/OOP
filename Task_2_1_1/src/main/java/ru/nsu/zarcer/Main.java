@@ -1,10 +1,10 @@
 package ru.nsu.zarcer;
 
 /**
- * Just main class
+ * Just main class.
  */
 public class Main {
-    /**Default main
+    /**Default main.
      *
      * @param args didn't use here
      */

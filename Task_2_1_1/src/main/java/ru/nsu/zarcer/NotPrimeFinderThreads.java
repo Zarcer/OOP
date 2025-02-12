@@ -2,14 +2,25 @@ package ru.nsu.zarcer;
 
 import java.util.ArrayDeque;
 import java.util.concurrent.atomic.AtomicInteger;
-
+/**
+ * Class for computing non-prime numbers using threads.
+ */
 public class NotPrimeFinderThreads implements PrimeFinderInterface {
     private int numberWorkingCores;
 
+    /**Constructor for this class.
+     *
+     * @param cores how many cores should be used for calculation
+     */
     NotPrimeFinderThreads(int cores) {
         this.numberWorkingCores = cores;
     }
-
+    /** Method for finding non-prime number.
+     *
+     * @param numbersArray int array
+     *
+     * @return boolean, true if array has non-prime number, false otherwise
+     */
     @Override
     public boolean checkNonPrime(int[] numbersArray) {
         ArrayDeque<Thread> stack = new ArrayDeque<>();
