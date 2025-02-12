@@ -1,34 +1,34 @@
 package ru.nsu.zarcer;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.stream.Stream;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 
-import java.util.stream.Stream;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 class NotPrimeFinderTests {
 
     @ParameterizedTest
     @ArgumentsSource(NotPrimeFinderProvider.class)
-    void NotPrimeFalse(PrimeFinderInterface operation) {
+    void notPrimeFalse(PrimeFinderInterface operation) {
         int[] test = {3, 5, 7};
         assertFalse(operation.checkNonPrime(test));
     }
 
     @ParameterizedTest
     @ArgumentsSource(NotPrimeFinderProvider.class)
-    void NotPrimeTrue(PrimeFinderInterface operation) {
+    void notPrimeTrue(PrimeFinderInterface operation) {
         int[] test = {3, 6, 5};
         assertTrue(operation.checkNonPrime(test));
     }
 
     @ParameterizedTest
     @ArgumentsSource(NotPrimeFinderProvider.class)
-    void NotPrimeSameNumberFalse(PrimeFinderInterface operation) {
+    void notPrimeSameNumberFalse(PrimeFinderInterface operation) {
         int[] test = {3, 3, 3, 3, 3, 3, 3};
         assertFalse(operation.checkNonPrime(test));
     }
@@ -36,21 +36,21 @@ class NotPrimeFinderTests {
 
     @ParameterizedTest
     @ArgumentsSource(NotPrimeFinderProvider.class)
-    void NotPrimeSameNumbersTrue(PrimeFinderInterface operation) {
+    void notPrimeSameNumbersTrue(PrimeFinderInterface operation) {
         int[] test = {6, 6, 6, 6, 6, 6, 6};
         assertTrue(operation.checkNonPrime(test));
     }
 
     @ParameterizedTest
     @ArgumentsSource(NotPrimeFinderProvider.class)
-    void NotPrimeZeros(PrimeFinderInterface operation) {
+    void notPrimeZeros(PrimeFinderInterface operation) {
         int[] test = {0, 0, 0, 0, 0, 0, 0};
         assertTrue(operation.checkNonPrime(test));
     }
 
     @ParameterizedTest
     @ArgumentsSource(NotPrimeFinderProvider.class)
-    void NotPrimeOnes(PrimeFinderInterface operation) {
+    void notPrimeOnes(PrimeFinderInterface operation) {
         int[] test = {1, 1, 1, 1, 1, 1, 1};
         assertTrue(operation.checkNonPrime(test));
     }

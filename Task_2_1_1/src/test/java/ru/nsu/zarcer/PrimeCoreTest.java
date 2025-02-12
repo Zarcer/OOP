@@ -1,14 +1,14 @@
 package ru.nsu.zarcer;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
-
 import java.util.concurrent.atomic.AtomicInteger;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class PrimeCoreTest {
     @Test
-    public void CoreTestFalse() {
+    public void coreTestFalse() {
         int[] testFirst = {2, 3, 5};
         ;
         AtomicInteger first = new AtomicInteger(0);
@@ -24,7 +24,7 @@ class PrimeCoreTest {
     }
 
     @Test
-    public void CoreTestTrue() {
+    public void coreTestTrue() {
         int[] testSecond = {2, 3, 6};
         AtomicInteger second = new AtomicInteger(0);
         PrimeCore secondCore = new PrimeCore(testSecond, second, testSecond.length);
@@ -39,7 +39,7 @@ class PrimeCoreTest {
     }
 
     @Test
-    public void CoreTestSameNumbersTrue() {
+    public void coreTestSameNumbersTrue() {
         int[] testSecond = {6, 6, 6, 6, 6, 6};
         AtomicInteger second = new AtomicInteger(0);
         PrimeCore secondCore = new PrimeCore(testSecond, second, testSecond.length);
@@ -54,7 +54,7 @@ class PrimeCoreTest {
     }
 
     @Test
-    public void CoreTestSameNumbersFalse() {
+    public void coreTestSameNumbersFalse() {
         int[] testSecond = {3, 3, 3, 3, 3, 3};
         AtomicInteger second = new AtomicInteger(0);
         PrimeCore secondCore = new PrimeCore(testSecond, second, testSecond.length);
@@ -69,7 +69,7 @@ class PrimeCoreTest {
     }
 
     @Test
-    public void CoreTestSameNumbersZeros() {
+    public void coreTestSameNumbersZeros() {
         int[] testSecond = {0, 0, 0, 0, 0, 0};
         AtomicInteger second = new AtomicInteger(0);
         PrimeCore secondCore = new PrimeCore(testSecond, second, testSecond.length);

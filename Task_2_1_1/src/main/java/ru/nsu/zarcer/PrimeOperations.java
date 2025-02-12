@@ -26,17 +26,17 @@ public class PrimeOperations {
 
     /**Method for generating prime numbers.
      *
-     * @param N how many prime numbers should be generated
+     * @param n how many prime numbers should be generated
      *
      * @return int array of prime numbers
      */
-    public static int[] primeGenerator(int N) {
-        if ((N == 1 || N == 0)) {
+    public static int[] primeGenerator(int n) {
+        if ((n == 1 || n == 0)) {
             return new int[0];
         }
         int x;
         ArrayDeque<Integer> list = new ArrayDeque<>();
-        for (x = 2; x <= N; x++) {
+        for (x = 2; x <= n; x++) {
             if (!isNotPrime(x)) {
                 list.push(x);
             }
@@ -52,7 +52,8 @@ public class PrimeOperations {
      *
      * @return first word if result of checkNonPrime, second is calculation time
      */
-    public static String findNonPrimeCountSpeed(PrimeFinderInterface operation, int[] workingArray) {
+    public static String findNonPrimeCountSpeed(PrimeFinderInterface operation,
+                                                int[] workingArray) {
         long start = System.currentTimeMillis();
         return (operation.checkNonPrime(workingArray)) + " " + (System.currentTimeMillis() - start);
     }

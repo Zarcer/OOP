@@ -5,6 +5,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Class for computing non-prime numbers using threads.
  */
+
 public class NotPrimeFinderThreads implements PrimeFinderInterface {
     private int numberWorkingCores;
 
@@ -12,6 +13,7 @@ public class NotPrimeFinderThreads implements PrimeFinderInterface {
      *
      * @param cores how many cores should be used for calculation
      */
+
     NotPrimeFinderThreads(int cores) {
         this.numberWorkingCores = cores;
     }
@@ -21,6 +23,7 @@ public class NotPrimeFinderThreads implements PrimeFinderInterface {
      *
      * @return boolean, true if array has non-prime number, false otherwise
      */
+
     @Override
     public boolean checkNonPrime(int[] numbersArray) {
         ArrayDeque<Thread> stack = new ArrayDeque<>();
