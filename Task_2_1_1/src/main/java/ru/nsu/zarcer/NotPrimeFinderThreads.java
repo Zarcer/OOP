@@ -5,7 +5,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class NotPrimeFinderThreads implements PrimeFinderInterface {
     private int numberWorkingCores;
-    NotPrimeFinderThreads(int cores){
+
+    NotPrimeFinderThreads(int cores) {
         this.numberWorkingCores = cores;
     }
 
@@ -15,21 +16,22 @@ public class NotPrimeFinderThreads implements PrimeFinderInterface {
         ArrayDeque<PrimeCore> cores = new ArrayDeque<>();
         AtomicInteger index = new AtomicInteger(0);
         int size = numbersArray.length;
-        while(stack.size()<numberWorkingCores){
+        while (stack.size() < numberWorkingCores) {
             cores.push(new PrimeCore(numbersArray, index, size));
             stack.push(new Thread(cores.getFirst()));
             stack.getFirst().start();
         }
-        size = stack.size();
-        for(int i = 0;i<size;i++){
-            try{
-                stack.pop().join();
+        for (Thread core : stack) {
+            try {
+                core.join();
             } catch (InterruptedException e) {
                 System.out.println(e.getMessage());
+                core.interrupt();
             }
-            if(cores.pop().notPrimeFoundGetter()){
-                try{
-                    for(Thread thread : stack){
+            if (cores.pop().notPrimeFoundGetter()) {
+                try {
+                    for (Thread thread : stack) {
+                        thread.interrupt();
                         thread.join();
                     }
                 } catch (InterruptedException e) {

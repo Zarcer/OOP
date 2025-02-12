@@ -17,42 +17,41 @@ class PrimeOperationsTest {
     }
 
     @Test
-    public void isNotPrimeTestZero(){
+    public void isNotPrimeTestZero() {
         assertTrue(PrimeOperations.isNotPrime(0));
     }
 
     @Test
-    public void isNotPrimeTestOne(){
+    public void isNotPrimeTestOne() {
         assertTrue(PrimeOperations.isNotPrime(1));
     }
 
     @Test
-    public void primeGeneratorTestOrdinary(){
+    public void primeGeneratorTestOrdinary() {
         int[] test = PrimeOperations.primeGenerator(5);
         int[] testing = {5, 3, 2};
         assertArrayEquals(test, testing);
     }
 
     @Test
-    public void primeGeneratorTestZero(){
+    public void primeGeneratorTestZero() {
         int[] test = PrimeOperations.primeGenerator(0);
         int[] testing = {};
         assertArrayEquals(test, testing);
     }
 
     @Test
-    public void primeGeneratorTestOne(){
+    public void primeGeneratorTestOne() {
         int[] test = PrimeOperations.primeGenerator(1);
         int[] testing = {};
         assertArrayEquals(test, testing);
     }
 
     @Test
-    public void countPrimeSpeedTest(){
+    public void countPrimeSpeedTest() {
         int[] test = {3, 5, 6};
         assertTrue(PrimeOperations.findNonPrimeCountSpeed(new NotPrimeFinderConsistent(), test) instanceof String);
     }
-
 
 
 }

@@ -9,12 +9,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class PrimeCoreTest {
     @Test
     public void CoreTestFalse() {
-        int[] testFirst = {2, 3, 5};;
+        int[] testFirst = {2, 3, 5};
+        ;
         AtomicInteger first = new AtomicInteger(0);
         PrimeCore firstCore = new PrimeCore(testFirst, first, testFirst.length);
         Thread firstThread = new Thread(firstCore);
         firstThread.start();
-        try{
+        try {
             firstThread.join();
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
@@ -29,7 +30,7 @@ class PrimeCoreTest {
         PrimeCore secondCore = new PrimeCore(testSecond, second, testSecond.length);
         Thread secondThread = new Thread(secondCore);
         secondThread.start();
-        try{
+        try {
             secondThread.join();
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
@@ -44,7 +45,7 @@ class PrimeCoreTest {
         PrimeCore secondCore = new PrimeCore(testSecond, second, testSecond.length);
         Thread secondThread = new Thread(secondCore);
         secondThread.start();
-        try{
+        try {
             secondThread.join();
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
@@ -59,7 +60,7 @@ class PrimeCoreTest {
         PrimeCore secondCore = new PrimeCore(testSecond, second, testSecond.length);
         Thread secondThread = new Thread(secondCore);
         secondThread.start();
-        try{
+        try {
             secondThread.join();
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
@@ -74,7 +75,7 @@ class PrimeCoreTest {
         PrimeCore secondCore = new PrimeCore(testSecond, second, testSecond.length);
         Thread secondThread = new Thread(secondCore);
         secondThread.start();
-        try{
+        try {
             secondThread.join();
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
