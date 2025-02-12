@@ -1,8 +1,8 @@
 package ru.nsu.zarcer;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 import org.junit.jupiter.api.Test;
 
@@ -51,7 +51,9 @@ class PrimeOperationsTest {
     @Test
     public void countPrimeSpeedTest() {
         int[] test = {3, 5, 6};
-        assertTrue(PrimeOperations.findNonPrimeCountSpeed(new NotPrimeFinderConsistent(), test) instanceof String);
+        assertTrue(PrimeOperations.
+            findNonPrimeCountSpeed(new NotPrimeFinderConsistent(),
+                test) instanceof String);
     }
 
 
