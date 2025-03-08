@@ -5,8 +5,8 @@ import java.util.ArrayDeque;
 public class Courier implements Runnable {
     private int capacity;
     private ArrayDeque<Integer> takenOrders=new ArrayDeque<>();
-    private Warehouse storage;
-    Courier(int capacity, Warehouse storage){
+    private Pizzeria storage;
+    Courier(int capacity, Pizzeria storage){
         this.capacity=capacity;
         this.storage=storage;
     }

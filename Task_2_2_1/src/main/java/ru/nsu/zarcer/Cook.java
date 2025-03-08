@@ -3,8 +3,8 @@ package ru.nsu.zarcer;
 public class Cook implements Runnable{
     private int speed;
     private int orderNumber;
-    private Warehouse storage;
-    Cook(int speed, Warehouse storage){
+    private Pizzeria storage;
+    Cook(int speed, Pizzeria storage){
         this.speed=speed;
         this.storage=storage;
     }

@@ -3,8 +3,8 @@ package ru.nsu.zarcer;
 import java.util.ArrayList;
 
 public class WorkingProcess {
-    public static void startRoutine(int N, int speed, int M, int courierCapacity, int warehouseCapacity){
-        Warehouse warehouse = new Warehouse(warehouseCapacity, N);
+    public static boolean startRoutine(int N, int speed, int M, int courierCapacity, int warehouseCapacity){
+        Pizzeria warehouse = new Pizzeria(warehouseCapacity, N);
         ArrayList<Thread> cooks = new ArrayList<>();
         ArrayList<Thread> couriers = new ArrayList<>();
         for(int i = 0;i<N;i++){
@@ -19,9 +19,11 @@ public class WorkingProcess {
             warehouse.putOrder(i);
             try{
                 Thread.sleep(1000);
-            } catch (InterruptedException ignored) {
+            } catch (InterruptedException e) {
+                return false;
             }
         }
         warehouse.dayOverSetter(cooks, couriers);
+        return true;
     }
 }
