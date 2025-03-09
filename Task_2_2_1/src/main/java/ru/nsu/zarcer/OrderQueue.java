@@ -2,8 +2,11 @@ package ru.nsu.zarcer;
 
 import java.util.ArrayDeque;
 
+
+
 public class OrderQueue {
     private ArrayDeque<Integer> orderList;
+    public static final int DAY_OVER_CODE = 0;
     private boolean dayOverCheck=false;
     OrderQueue(){
         orderList=new ArrayDeque<>();
@@ -18,7 +21,7 @@ public class OrderQueue {
     synchronized public int getOrder() throws InterruptedException {
         while (orderList.isEmpty()) {
             if (dayOverCheck) {
-                return 0;
+                return DAY_OVER_CODE;
             }
             wait();
         }

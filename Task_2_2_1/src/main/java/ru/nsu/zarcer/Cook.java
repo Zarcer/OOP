@@ -12,7 +12,7 @@ public class Cook implements Runnable{
         while(true){
             try{
                 orderNumber=storage.getOrder();
-                if(orderNumber==0){
+                if(orderNumber==OrderQueue.DAY_OVER_CODE){
                     storage.cookingOver();
                     return;
                 }
