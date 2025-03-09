@@ -64,7 +64,6 @@ class PizzeriaTest {
     @Test
     public void dayOverTest() {
         Pizzeria warehouse = new Pizzeria(2, 1);
-        assertFalse(warehouse.getDayOverCheckValue());
         ArrayList<Thread> listCook = new ArrayList<>();
         ArrayList<Thread> listCour = new ArrayList<>();
         Thread cook0 = new Thread(new Cook(0, warehouse), "Cook0");

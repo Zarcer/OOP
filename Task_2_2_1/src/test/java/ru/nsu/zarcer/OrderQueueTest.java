@@ -9,7 +9,7 @@ class OrderQueueTest {
     @Test
     public void putGetTest() {
         Pizzeria pizza = new Pizzeria(1, 1);
-        OrderQueue test = new OrderQueue(pizza);
+        OrderQueue test = new OrderQueue();
         test.putOrder(99);
         try{
             assertEquals(test.getOrder(), 99);

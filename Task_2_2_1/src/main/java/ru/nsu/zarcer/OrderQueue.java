@@ -4,32 +4,30 @@ import java.util.ArrayDeque;
 
 public class OrderQueue {
     private ArrayDeque<Integer> orderList;
-    private Object orderListLock;
-    private Pizzeria pizzeria;
-    OrderQueue(Pizzeria pizzeria){
+    private boolean dayOverCheck=false;
+    OrderQueue(){
         orderList=new ArrayDeque<>();
-        orderListLock=new Object();
-        this.pizzeria=pizzeria;
     }
 
-    public void putOrder(int orderNumber){
-        synchronized (orderListLock){
-            orderList.push(orderNumber);
-            System.out.println("["+orderNumber+"]"+"[new order]");
-            orderListLock.notify();
-        }
+    synchronized public void putOrder(int orderNumber) {
+        orderList.push(orderNumber);
+        System.out.println("[" + orderNumber + "]" + "[new order]");
+        notify();
     }
 
-    public int getOrder() throws InterruptedException {
-        synchronized (orderListLock){
-            while(orderList.isEmpty()){
-                if(pizzeria.getDayOverCheckValue()){
-                    return 0;
-                }
-                orderListLock.wait();
+    synchronized public int getOrder() throws InterruptedException {
+        while (orderList.isEmpty()) {
+            if (dayOverCheck) {
+                return 0;
             }
-            System.out.println("["+orderList.getLast()+"][started execution]["+Thread.currentThread().getName()+"]");
-            return orderList.pollLast();
+            wait();
         }
+        System.out.println("[" + orderList.getLast() + "][started execution][" + Thread.currentThread().getName() + "]");
+        return orderList.pollLast();
+    }
+
+    public void setDayOverCheck(){
+        dayOverCheck=true;
+
     }
 }

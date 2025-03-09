@@ -7,10 +7,9 @@ public class Pizzeria {
     private int cooksNumber;
     private Warehouse warehouse;
     private OrderQueue orderQueue;
-    private boolean dayOverCheck=false;
     Pizzeria(int capacity, int cooksNumber){
         warehouse = new Warehouse(capacity);
-        orderQueue = new OrderQueue(this);
+        orderQueue = new OrderQueue();
         this.cooksNumber=cooksNumber;
     }
 
@@ -30,11 +29,7 @@ public class Pizzeria {
         return orderQueue.getOrder();
     }
 
-    public boolean getDayOverCheckValue(){
-        return dayOverCheck;
-    }
-
-    public void cookingOver(){
+    synchronized public void cookingOver(){
         cooksNumber--;
     }
 
@@ -47,7 +42,7 @@ public class Pizzeria {
     }
 
     public void dayOverSetter(ArrayList<Thread> cooks, ArrayList<Thread> couriers){
-        dayOverCheck=true;
+        orderQueue.setDayOverCheck();
         for(Thread cook:cooks){
             cook.interrupt();
         }
