@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.zarcer","l":"Direction"},{"p":"ru.nsu.zarcer","l":"Main"},{"p":"ru.nsu.zarcer","l":"Position"},{"p":"ru.nsu.zarcer","l":"SnakeGameController"},{"p":"ru.nsu.zarcer","l":"SnakeGameModel"},{"p":"ru.nsu.zarcer","l":"SnakeGameView"}];updateSearchResults();
