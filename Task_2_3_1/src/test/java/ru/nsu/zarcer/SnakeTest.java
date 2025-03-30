@@ -45,7 +45,7 @@ class SnakeTest {
         Snake snake = new Snake(5, 5);
         snake.setDirection(Direction.LEFT);
         snake.move(false);
-        assertEquals(new Position(6, 5), snake.getHead()); // Should still move right
+        assertEquals(new Position(6, 5), snake.getHead());
     }
 
 }
