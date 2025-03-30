@@ -1,5 +1,7 @@
 package ru.nsu.zarcer;
 
+import java.util.Objects;
+
 public class Position {
     public int x, y;
     public Position(int x, int y) {
@@ -26,5 +28,10 @@ public class Position {
         if (!(o instanceof Position)) return false;
         Position p = (Position) o;
         return this.x == p.x && this.y == p.y;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 }

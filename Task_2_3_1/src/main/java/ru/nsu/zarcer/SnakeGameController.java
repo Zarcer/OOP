@@ -3,17 +3,32 @@ package ru.nsu.zarcer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 public class SnakeGameController {
-    private SnakeGameModel model;
-    private SnakeGameView view;
+    private GameState model;
     private Timeline gameLoop;
 
-    public SnakeGameController(SnakeGameModel model, SnakeGameView view) {
-        this.model = model;
-        this.view = view;
+    @FXML
+    private Label scoreLabel;
+
+    @FXML
+    private Pane gameBoard;
+
+    public SnakeGameController() {
+        model = new GameState();
+    }
+
+    @FXML
+    public void initialize() {
+        scoreLabel.textProperty().bind(model.scoreProperty().asString("Score: %d"));
+        startGameLoop();
     }
 
     public void startGameLoop() {
@@ -23,32 +38,45 @@ public class SnakeGameController {
     }
 
     private void updateGame(ActionEvent event) {
-        model.moveSnake();
-        view.updateGrid();
+        model.update();
         if (model.isGameOver()) {
             gameLoop.stop();
-            System.out.println("stop");
+        }
+        updateGameBoard();
+    }
+
+    private void updateGameBoard() {
+        gameBoard.getChildren().clear();
+        Position foodPos = model.getField().getFood();
+        Rectangle food = new Rectangle(20, 20, Color.RED);
+        food.setX(foodPos.x * 20);
+        food.setY(foodPos.y * 20);
+        gameBoard.getChildren().add(food);
+        for (Position pos : model.getSnake().getBody()) {
+            Rectangle rect = new Rectangle(20, 20, Color.GREEN);
+            rect.setX(pos.x * 20);
+            rect.setY(pos.y * 20);
+            gameBoard.getChildren().add(rect);
         }
     }
 
     public void handleKeyPress(javafx.scene.input.KeyEvent event) {
         KeyCode key = event.getCode();
         switch (key) {
-            case UP:
-                model.setDirection(Direction.UP);
+            case W:
+                model.getSnake().setDirection(Direction.UP);
                 break;
-            case DOWN:
-                model.setDirection(Direction.DOWN);
+            case S:
+                model.getSnake().setDirection(Direction.DOWN);
                 break;
-            case LEFT:
-                model.setDirection(Direction.LEFT);
+            case A:
+                model.getSnake().setDirection(Direction.LEFT);
                 break;
-            case RIGHT:
-                model.setDirection(Direction.RIGHT);
+            case D:
+                model.getSnake().setDirection(Direction.RIGHT);
                 break;
             default:
                 break;
         }
     }
 }
-
