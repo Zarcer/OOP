@@ -2,26 +2,37 @@ package ru.nsu.zarcer;
 
 import java.util.Objects;
 
+/**
+ * Position class, needed for comparing, moving.
+ */
 public class Position {
 
-    private int x;
-    private int y;
+    private int firstCoordinate;
+    private int secondCoordinate;
 
-    public Position(int x, int y) {
-        this.x = x;
-        this.y = y;
+    /**
+     * Initializer with coordinates.
+     *
+     * @param firstCoordinate x
+     *
+     * @param secondCoordinate y
+     *
+     */
+    public Position(int firstCoordinate, int secondCoordinate) {
+        this.firstCoordinate = firstCoordinate;
+        this.secondCoordinate = secondCoordinate;
     }
 
     public Position move(Direction direction) {
         switch (direction) {
             case UP:
-                return new Position(x, y - 1);
+                return new Position(firstCoordinate, secondCoordinate - 1);
             case DOWN:
-                return new Position(x, y + 1);
+                return new Position(firstCoordinate, secondCoordinate + 1);
             case LEFT:
-                return new Position(x - 1, y);
+                return new Position(firstCoordinate - 1, secondCoordinate);
             case RIGHT:
-                return new Position(x + 1, y);
+                return new Position(firstCoordinate + 1, secondCoordinate);
             default:
                 return this;
         }
@@ -33,19 +44,19 @@ public class Position {
             return false;
         }
         Position p = (Position) o;
-        return this.x == p.x && this.y == p.y;
+        return this.firstCoordinate == p.firstCoordinate && this.secondCoordinate == p.secondCoordinate;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(x, y);
+        return Objects.hash(firstCoordinate, secondCoordinate);
     }
 
     public int getX() {
-        return x;
+        return firstCoordinate;
     }
 
     public int getY() {
-        return y;
+        return secondCoordinate;
     }
 }

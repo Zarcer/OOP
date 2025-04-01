@@ -69,6 +69,12 @@ public class SnakeGameController {
         }
     }
 
+    /**
+     * First user input handler.
+     *
+     * @param event handler, works with fxml file
+     *
+     */
     public void handleKeyPress(javafx.scene.input.KeyEvent event) {
         KeyCode key = event.getCode();
         switch (key) {

@@ -34,7 +34,7 @@ public class Snake {
     }
 
     /**
-     *Second handler of user input
+     *Second handler of user input.
      *
      * @param newDirection enum direction
      *
