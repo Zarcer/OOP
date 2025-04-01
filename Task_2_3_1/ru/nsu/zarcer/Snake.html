@@ -76,6 +76,7 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Snake</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Model for snake body.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -89,7 +90,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(int,int)" class="member-name-link">Snake</a><wbr>(int&nbsp;startX,
  int&nbsp;startY)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Initializer with coordinates.</div>
+</div>
 </div>
 </section>
 </li>
@@ -106,22 +109,34 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#checkCollision(ru.nsu.zarcer.Position)" class="member-name-link">checkCollision</a><wbr>(<a href="Position.html" title="class in ru.nsu.zarcer">Position</a>&nbsp;pos)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Method for checking collision with wall or itself.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/LinkedList.html" title="class or interface in java.util" class="external-link">LinkedList</a>&lt;<a href="Position.html" title="class in ru.nsu.zarcer">Position</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getBody()" class="member-name-link">getBody</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Getter for snake body.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="Direction.html" title="enum class in ru.nsu.zarcer">Direction</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getDirection()" class="member-name-link">getDirection</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Getter for direction.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="Position.html" title="class in ru.nsu.zarcer">Position</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getHead()" class="member-name-link">getHead</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Getter for head position.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#move(boolean)" class="member-name-link">move</a><wbr>(boolean&nbsp;ateFood)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Move method, add head, delete one cell from tail if snake didn't eat.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setDirection(ru.nsu.zarcer.Direction)" class="member-name-link">setDirection</a><wbr>(<a href="Direction.html" title="enum class in ru.nsu.zarcer">Direction</a>&nbsp;newDirection)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Second handler of user input</div>
+</div>
 </div>
 </div>
 </div>
@@ -144,6 +159,12 @@ loadScripts(document, 'script');</script>
 <h3>Snake</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Snake</span><wbr><span class="parameters">(int&nbsp;startX,
  int&nbsp;startY)</span></div>
+<div class="block">Initializer with coordinates.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>startX</code> - first coordinate for pane</dd>
+<dd><code>startY</code> - second coordinate for pane</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -158,36 +179,68 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getBody()">
 <h3>getBody</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/LinkedList.html" title="class or interface in java.util" class="external-link">LinkedList</a>&lt;<a href="Position.html" title="class in ru.nsu.zarcer">Position</a>&gt;</span>&nbsp;<span class="element-name">getBody</span>()</div>
+<div class="block">Getter for snake body.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>use linked list for convince</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="setDirection(ru.nsu.zarcer.Direction)">
 <h3>setDirection</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setDirection</span><wbr><span class="parameters">(<a href="Direction.html" title="enum class in ru.nsu.zarcer">Direction</a>&nbsp;newDirection)</span></div>
+<div class="block">Second handler of user input</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>newDirection</code> - enum direction</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getDirection()">
 <h3>getDirection</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Direction.html" title="enum class in ru.nsu.zarcer">Direction</a></span>&nbsp;<span class="element-name">getDirection</span>()</div>
+<div class="block">Getter for direction.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>enum</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getHead()">
 <h3>getHead</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Position.html" title="class in ru.nsu.zarcer">Position</a></span>&nbsp;<span class="element-name">getHead</span>()</div>
+<div class="block">Getter for head position.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>position type</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="move(boolean)">
 <h3>move</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">move</span><wbr><span class="parameters">(boolean&nbsp;ateFood)</span></div>
+<div class="block">Move method, add head, delete one cell from tail if snake didn't eat.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>ateFood</code> - check for not removing cell</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="checkCollision(ru.nsu.zarcer.Position)">
 <h3>checkCollision</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">checkCollision</span><wbr><span class="parameters">(<a href="Position.html" title="class in ru.nsu.zarcer">Position</a>&nbsp;pos)</span></div>
+<div class="block">Method for checking collision with wall or itself.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>pos</code> - position what needed to be checked</dd>
+<dt>Returns:</dt>
+<dd>boolean answer</dd>
+</dl>
 </section>
 </li>
 </ul>
