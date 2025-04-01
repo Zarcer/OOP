@@ -11,6 +11,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
+/**
+ * Class for working with fxml, gui and user input.
+ */
 public class SnakeGameController {
     private GameState model;
     private Timeline gameLoop;
@@ -31,6 +34,9 @@ public class SnakeGameController {
         startGameLoop();
     }
 
+    /**
+     * Passive cycle movement.
+     */
     public void startGameLoop() {
         gameLoop = new Timeline(new KeyFrame(Duration.millis(model.getSpeed()), this::updateGame));
         gameLoop.setCycleCount(Timeline.INDEFINITE);
@@ -45,6 +51,9 @@ public class SnakeGameController {
         updateGameBoard();
     }
 
+    /**
+     * Coloring parts, initial placement.
+     */
     private void updateGameBoard() {
         gameBoard.getChildren().clear();
         Position foodPos = model.getField().getFood();

@@ -3,6 +3,9 @@ package ru.nsu.zarcer;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
+/**
+ * Class for controlling game logic using Snake and field classes.
+ */
 public class GameState {
     private static final int SPEED = 500;
     private IntegerProperty score = new SimpleIntegerProperty(0);
@@ -10,6 +13,9 @@ public class GameState {
     private Field field;
     private boolean gameOver;
 
+    /**
+     * Initializer, creation of field and snake, also check of gameOver.
+     */
     public GameState() {
         field = new Field();
         snake = new Snake(field.getWidth() / 2, field.getHeight() / 2);
@@ -24,6 +30,9 @@ public class GameState {
         score.set(score.get() + 10);
     }
 
+    /**
+     * Cycle movement, generating food, checking collisions.
+     */
     public void update() {
         if (gameOver) {
             return;
