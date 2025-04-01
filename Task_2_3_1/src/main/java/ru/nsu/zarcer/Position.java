@@ -23,6 +23,14 @@ public class Position {
         this.secondCoordinate = secondCoordinate;
     }
 
+    /**
+     * Calculating of next movement position.
+     *
+     * @param direction where move
+     *
+     * @return new calculated position
+     *
+     */
     public Position move(Direction direction) {
         switch (direction) {
             case UP:
@@ -44,7 +52,8 @@ public class Position {
             return false;
         }
         Position p = (Position) o;
-        return this.firstCoordinate == p.firstCoordinate && this.secondCoordinate == p.secondCoordinate;
+        return this.firstCoordinate == p
+            .firstCoordinate && this.secondCoordinate == p.secondCoordinate;
     }
 
     @Override
