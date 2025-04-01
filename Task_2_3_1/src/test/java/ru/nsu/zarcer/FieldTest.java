@@ -1,6 +1,8 @@
 package ru.nsu.zarcer;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
 
 class FieldTest {
@@ -8,8 +10,8 @@ class FieldTest {
     void testFoodIsWithinBounds() {
         Field field = new Field();
         Position food = field.getFood();
-        assertTrue(food.x >= 0 && food.x < field.getWidth());
-        assertTrue(food.y >= 0 && food.y < field.getHeight());
+        assertTrue(food.getX() >= 0 && food.getX() < field.getWidth());
+        assertTrue(food.getY() >= 0 && food.getY() < field.getHeight());
     }
 
     @Test

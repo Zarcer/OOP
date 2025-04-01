@@ -21,7 +21,7 @@ public class Field {
     }
 
     public boolean isOutOfBounds(Position pos) {
-        return pos.x < 0 || pos.x >= WIDTH || pos.y < 0 || pos.y >= HEIGHT;
+        return pos.getX() < 0 || pos.getX() >= WIDTH || pos.getY() < 0 || pos.getY() >= HEIGHT;
     }
 
     public Position getFood() {

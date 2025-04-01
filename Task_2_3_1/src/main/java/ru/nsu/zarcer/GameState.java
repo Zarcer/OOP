@@ -25,7 +25,9 @@ public class GameState {
     }
 
     public void update() {
-        if (gameOver) return;
+        if (gameOver) {
+            return;
+        }
         Position newHead = snake.getHead().move(snake.getDirection());
         if (field.isOutOfBounds(newHead) || snake.checkCollision(newHead)) {
             gameOver = true;

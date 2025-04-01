@@ -17,10 +17,10 @@ public class Snake {
     }
 
     public void setDirection(Direction newDirection) {
-        if ((direction == Direction.UP && newDirection == Direction.DOWN) ||
-            (direction == Direction.DOWN && newDirection == Direction.UP) ||
-            (direction == Direction.LEFT && newDirection == Direction.RIGHT) ||
-            (direction == Direction.RIGHT && newDirection == Direction.LEFT)) {
+        if ((direction == Direction.UP && newDirection == Direction.DOWN)
+            || (direction == Direction.DOWN && newDirection == Direction.UP)
+            || (direction == Direction.LEFT && newDirection == Direction.RIGHT)
+            || (direction == Direction.RIGHT && newDirection == Direction.LEFT)) {
             return;
         }
         direction = newDirection;

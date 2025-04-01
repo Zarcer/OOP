@@ -49,13 +49,13 @@ public class SnakeGameController {
         gameBoard.getChildren().clear();
         Position foodPos = model.getField().getFood();
         Rectangle food = new Rectangle(20, 20, Color.RED);
-        food.setX(foodPos.x * 20);
-        food.setY(foodPos.y * 20);
+        food.setX(foodPos.getX() * 20);
+        food.setY(foodPos.getY() * 20);
         gameBoard.getChildren().add(food);
         for (Position pos : model.getSnake().getBody()) {
             Rectangle rect = new Rectangle(20, 20, Color.GREEN);
-            rect.setX(pos.x * 20);
-            rect.setY(pos.y * 20);
+            rect.setX(pos.getX() * 20);
+            rect.setY(pos.getY() * 20);
             gameBoard.getChildren().add(rect);
         }
     }

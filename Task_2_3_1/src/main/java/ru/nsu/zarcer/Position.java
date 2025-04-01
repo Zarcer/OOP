@@ -3,11 +3,15 @@ package ru.nsu.zarcer;
 import java.util.Objects;
 
 public class Position {
-    public int x, y;
+
+    private int x;
+    private int y;
+
     public Position(int x, int y) {
         this.x = x;
         this.y = y;
     }
+
     public Position move(Direction direction) {
         switch (direction) {
             case UP:
@@ -25,7 +29,9 @@ public class Position {
 
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof Position)) return false;
+        if (!(o instanceof Position)) {
+            return false;
+        }
         Position p = (Position) o;
         return this.x == p.x && this.y == p.y;
     }
@@ -33,5 +39,13 @@ public class Position {
     @Override
     public int hashCode() {
         return Objects.hash(x, y);
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 }
