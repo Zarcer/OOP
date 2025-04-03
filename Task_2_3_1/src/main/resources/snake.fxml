@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.nsu.zarcer.SnakeGameController">
+    <Label fx:id="scoreLabel" layoutX="10" layoutY="10" text="Score: 0"/>
+    <Pane fx:id="gameBoard" layoutX="10" layoutY="40" prefWidth="400" prefHeight="300"/>
+</AnchorPane>
